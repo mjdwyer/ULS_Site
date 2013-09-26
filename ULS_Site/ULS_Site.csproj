@@ -1,0 +1,2132 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{82E7C527-B19B-4140-A87E-7AF79C571763}</ProjectGuid>
+    <ProjectTypeGuids>{603c0e0b-db56-11dc-be95-000d561079b0};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ULS_Site</RootNamespace>
+    <AssemblyName>ULS_Site</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CrystalRptViewerController.cs" />
+    <Compile Include="Controllers\ElectronicsController.cs" />
+    <Compile Include="Controllers\EquipTrackController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProjStoriesController.cs" />
+    <Compile Include="Controllers\QualificationController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dynamic.cs" />
+    <Compile Include="equipment.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Electronics.cs" />
+    <Compile Include="Models\EquipTrak.cs" />
+    <Compile Include="Models\Qualifications.cs" />
+    <Compile Include="Models\SecAdmin.cs" />
+    <Compile Include="Models\uls_db1.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>uls_db.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\uls_dbDataContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\CertListByEmployee.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CertListByEmployee.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ElectronicsAirCardInv.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ElectronicsAirCardInv.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ElectronicsAirCardInvDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ElectronicsAirCardInvDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ElectronicsAssignTo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ElectronicsAssignTo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ElectronicsAssignToDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ElectronicsAssignToDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ElectronicsInvByType.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ElectronicsInvByType.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ElectronicsInvByTypeDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ElectronicsInvByTypeDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EmpListDueToExpire90DaysDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmpListDueToExpire90DaysDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EmpListExpiredCertsDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmpListExpiredCertsDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EmployeeListDueToExpireCerts.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmployeeListDueToExpireCerts.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EmployeeListExpiredCerts.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmployeeListExpiredCerts.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipApportionedInv.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipApportionedInv.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipApportionedInvDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipApportionedInvDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipAssignedTo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipAssignedTo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipAssignedToHist.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipAssignedToHist.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipAssignToHist.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipAssignToHist.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipAssinedTo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipAssinedTo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipBrokeHist.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipBrokeHist.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipBrokenHist.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipBrokenHist.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipChangeLogByID.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipChangeLogByID.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipChangeLogByIDDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipChangeLogByIDDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipChangeLogHistDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipChangeLogHistDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipChangeLogHst.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipChangeLogHst.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipEZPASS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipEZPASS.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipEZPASSDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipEZPASSDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipFuelCard.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipFuelCard.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipFuelCardDivInv.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipFuelCardDivInv.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipFuelCrdDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipFuelCrdDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipFuelCrdInvDivDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipFuelCrdInvDivDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipGPSInv.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipGPSInv.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipGPSInvDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipGPSInvDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipHUTInv.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipHUTInv.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipHUTInvDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipHUTInvDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipIFTAInv.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipIFTAInv.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipIFTAInvDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipIFTAInvDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipInspDueMngdByDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipInspDueMngdByDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipInspectionDue.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipInspectionDue.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipInspectionDueDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipInspectionDueDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipInspectionDueMngBy.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipInspectionDueMngBy.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipInspectionsDueMngBy.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipInspectionsDueMngBy.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipInspectionsDueMngByDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipInspectionsDueMngByDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipInvByGVW.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipInvByGVW.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipInvByGVWDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipInvByGVWDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipInvByLoc.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipInvByLoc.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipInvByLocDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipInvByLocDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipInvByType.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipInvByType.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipInvByTypeAndLoc.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipInvByTypeAndLoc.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipInvByTypeandLocDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipInvByTypeandLocDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipInvWithCost.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipInvWithCost.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipInvWithCostDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipInvWithCostDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipLeasedInventory.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipLeasedInventory.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipLojackInventory.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipLojackInventory.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipLojackInventoryDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipLojackInventoryDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipmentInvByType.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipmentInvByType.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipmentOnLoan.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipmentOnLoan.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipMngByHist.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipMngByHist.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipMngByHistDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipMngByHistDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipOneReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipOneReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipOneReportDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipOneReportDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipOneSvcReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipOneSvcReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipOneSvcReportDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipOneSvcReportDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipOnLoan.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipOnLoan.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipSvcCostHist.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipSvcCostHist.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipSvcCostHistAll.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipSvcCostHistAll.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipSvcCostHistAllDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipSvcCostHistAllDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipSvcCostHistAllTypesDivs.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipSvcCostHistAllTypesDivs.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipSvcCostHistAllTypesDivsDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipSvcCostHistAllTypesDivsDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipSvcCostHistBySvcType.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipSvcCostHistBySvcType.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipSvcCostHistBySvcTypeDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipSvcCostHistBySvcTypeDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipSvcCostHistByType.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipSvcCostHistByType.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipSvcCostHistByTypeDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipSvcCostHistByTypeDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipSvcCostHistDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipSvcCostHistDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipToBeSold.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipToBeSold.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipToBeSoldDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipToBeSoldDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipTotalInvDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipTotalInvDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipTotalInventory.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipTotalInventory.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipTotalInvRegBy.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipTotalInvRegBy.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EquipTotalInvRegByDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipTotalInvRegByDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipUnknownInvDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipUnknownInvDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipUnknownInventory.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipUnknownInventory.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\GetCertListByEmployeeDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetCertListByEmployeeDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GetLeasedInventoryDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetLeasedInventoryDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GetToolChangeLogHistDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetToolChangeLogHistDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\QEmpLstByCertDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QEmpLstByCertDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\QualEmpListByCert.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QualEmpListByCert.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\QualEmpListByCompany.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QualEmpListByCompany.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\QualEmpListByCompanyDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QualEmpListByCompanyDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SmallToolsAssignedTo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SmallToolsAssignedTo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SmallToolsAssignedToDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SmallToolsAssignedToDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SvcAllCrewHistDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SvcAllCrewHistDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SvcSchedAllCrewsHist.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SvcSchedAllCrewsHist.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SvcSchedByCrewDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SvcSchedByCrewDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SvcSchedByCrewHist.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SvcSchedByCrewHist.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\TollSvcCostHistAllDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TollSvcCostHistAllDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ToolInvByLoc.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolInvByLoc.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ToolLojackInventory.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolLojackInventory.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ToolOneReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolOneReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ToolOneRpDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolOneRpDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ToolOneSvcReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolOneSvcReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ToolOneSvcReportDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolOneSvcReportDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ToolsAssignedTo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolsAssignedTo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ToolsAssignedToDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolsAssignedToDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ToolsAssignedToHist.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolsAssignedToHist.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ToolsAssignedToHistDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolsAssignedToHistDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ToolsBrokenHist.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolsBrokenHist.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ToolsBrokenHistDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolsBrokenHistDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ToolsChangeLogById.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolsChangeLogById.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ToolsChangeLogByIdDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolsChangeLogByIdDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ToolsChangeLogHist.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolsChangeLogHist.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ToolsInvByLocDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolsInvByLocDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ToolsInvByType.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolsInvByType.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ToolsInvByTypeDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolsInvByTypeDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ToolsLojackInv.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolsLojackInv.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ToolsOnLoan.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolsOnLoan.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ToolsOnLoanDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolsOnLoanDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ToolsToBeSoldDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolsToBeSoldDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ToolsTotalInv.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolsTotalInv.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ToolsTotalInvDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolsTotalInvDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ToolsTotalInvRegBy.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolsTotalInvRegBy.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ToolsTotalInvRegByDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolsTotalInvRegByDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ToolsUnknownInv.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolsUnknownInv.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ToolsUnknownInvDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolsUnknownInvDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ToolSvcCostHistAll.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolSvcCostHistAll.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ToolSvcCostHistByType.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolSvcCostHistByType.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ToolSvcCostHistByTypeDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolSvcCostHistByTypeDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ToolSvcCostHistReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolSvcCostHistReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ToolSvcCostHistReportBySvcType.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolSvcCostHistReportBySvcType.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ToolSvcCostHistReportBySvcTypeDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolSvcCostHistReportBySvcTypeDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ToolSvcCostHistReportDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolSvcCostHistReportDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ToolToBeSold.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolToBeSold.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SessionTimeoutActionFilter.cs" />
+    <Compile Include="Views\Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\ChangePasswordSuccess.aspx.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Account\ChangePasswordSuccess.aspx.designer.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Home\About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Directions.aspx.cs">
+      <DependentUpon>Directions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Home\Directions.aspx.designer.cs">
+      <DependentUpon>Directions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Home\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Management.aspx.cs">
+      <DependentUpon>Management.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Home\Management.aspx.designer.cs">
+      <DependentUpon>Management.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="banner1.jpg" />
+    <Content Include="Content\images\ajax-loader.gif" />
+    <Content Include="Content\images\arrows-ffffff.png" />
+    <Content Include="Content\images\backinup.jpg" />
+    <Content Include="Content\images\city_snow.jpg" />
+    <Content Include="Content\images\city_snow2.jpg" />
+    <Content Include="Content\images\city_trench1.jpg" />
+    <Content Include="Content\images\city_trench2.jpg" />
+    <Content Include="Content\images\help.gif" />
+    <Content Include="Content\images\help2.gif" />
+    <Content Include="Content\images\help3.gif" />
+    <Content Include="Content\images\jquery\ui-bg_diagonal-maze_20_6e4f1c_10x10.png" />
+    <Content Include="Content\images\jquery\ui-bg_diagonal-maze_40_000000_10x10.png" />
+    <Content Include="Content\images\jquery\ui-bg_fine-grain_10_eceadf_60x60.png" />
+    <Content Include="Content\images\jquery\ui-bg_fine-grain_10_f8f7f6_60x60.png" />
+    <Content Include="Content\images\jquery\ui-bg_fine-grain_15_eceadf_60x60.png" />
+    <Content Include="Content\images\jquery\ui-bg_fine-grain_15_f7f3de_60x60.png" />
+    <Content Include="Content\images\jquery\ui-bg_fine-grain_15_ffffff_60x60.png" />
+    <Content Include="Content\images\jquery\ui-bg_fine-grain_65_654b24_60x60.png" />
+    <Content Include="Content\images\jquery\ui-bg_fine-grain_68_b83400_60x60.png" />
+    <Content Include="Content\images\jquery\ui-icons_222222_256x240.png" />
+    <Content Include="Content\images\jquery\ui-icons_3572ac_256x240.png" />
+    <Content Include="Content\images\jquery\ui-icons_8c291d_256x240.png" />
+    <Content Include="Content\images\jquery\ui-icons_b83400_256x240.png" />
+    <Content Include="Content\images\jquery\ui-icons_fbdb93_256x240.png" />
+    <Content Include="Content\images\jquery\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\images\left-col-slice.jpg" />
+    <Content Include="Content\images\long-pipe-and-machine.jpg" />
+    <Content Include="Content\images\long-view-of-pipe.jpg" />
+    <Content Include="Content\images\masthead-1A.jpg" />
+    <Content Include="Content\images\masthead-1B.jpg" />
+    <Content Include="Content\images\masthead-1C.jpg" />
+    <Content Include="Content\images\masthead-2A.jpg" />
+    <Content Include="Content\images\masthead-2B.jpg" />
+    <Content Include="Content\images\masthead-2C.jpg" />
+    <Content Include="Content\images\masthead.jpg" />
+    <Content Include="Content\images\ProjHighlights\MDICC001.jpg" />
+    <Content Include="Content\images\ProjHighlights\MDICC002.jpg" />
+    <Content Include="Content\images\ProjHighlights\MDICC003.jpg" />
+    <Content Include="Content\images\ProjHighlights\MDICC004.jpg" />
+    <Content Include="Content\images\ProjHighlights\MDICC_1598.jpg" />
+    <Content Include="Content\images\ProjHighlights\MDICC_1598_2.jpg" />
+    <Content Include="Content\images\ProjHighlights\MDICC_1600.jpg" />
+    <Content Include="Content\images\ProjHighlights\MDICC_1601.jpg" />
+    <Content Include="Content\images\ProjHighlights\MDICC_1602.jpg" />
+    <Content Include="Content\images\ProjHighlights\MDICC_1603.jpg" />
+    <Content Include="Content\images\ProjHighlights\MDICC_1605.jpg" />
+    <Content Include="Content\images\ProjHighlights\MDICC_1608.jpg" />
+    <Content Include="Content\images\ProjHighlights\MDICC_1609.jpg" />
+    <Content Include="Content\images\ProjHighlights\MDICC_1610.jpg" />
+    <Content Include="Content\images\ProjHighlights\MDICC_1611.jpg" />
+    <Content Include="Content\images\ProjHighlights\MNTCOFRED1.jpg" />
+    <Content Include="Content\images\ProjHighlights\MNTCOFRED2.jpg" />
+    <Content Include="Content\images\ProjHighlights\MNTCOFRED3.jpg" />
+    <Content Include="Content\images\ProjHighlights\MNTCOFRED4.jpg" />
+    <Content Include="Content\images\ProjHighlights\MNTCOFRED5.jpg" />
+    <Content Include="Content\images\shadow.png" />
+    <Content Include="Content\images\sub_hoe1.jpg" />
+    <Content Include="Content\images\test.jpg" />
+    <Content Include="Content\javascript\ElectronicTracker.js" />
+    <Content Include="Content\javascript\ElectronicTrackerFuncs.js" />
+    <Content Include="Content\javascript\ElectronicTrackerRO.js" />
+    <Content Include="Content\javascript\EquipTracker - Copy.js" />
+    <Content Include="Content\javascript\EquipTracker.js" />
+    <Content Include="Content\javascript\EquipTrackerFuncs.js" />
+    <Content Include="Content\javascript\EquipTrackerRO.js" />
+    <Content Include="Content\javascript\EquipTrackerRO2 - Copy.js" />
+    <Content Include="Content\javascript\EquipTrackerRO2.js" />
+    <Content Include="Content\javascript\grid.locale-en.js" />
+    <Content Include="Content\javascript\hoverIntent.js" />
+    <Content Include="Content\javascript\jquery-1.3.2-vsdoc.js" />
+    <Content Include="Content\javascript\jquery-1.3.2.js" />
+    <Content Include="Content\javascript\jquery-1.3.2.min.js" />
+    <Content Include="Content\javascript\jquery-ui-1.7.2.custom.min.js" />
+    <Content Include="Content\javascript\jquery.alphanumeric.js" />
+    <Content Include="Content\javascript\jquery.bgiframe.min.js" />
+    <Content Include="Content\javascript\jquery.form.js" />
+    <Content Include="Content\javascript\jquery.jqGrid.js" />
+    <Content Include="Content\javascript\jquery.jqGrid.min.js" />
+    <Content Include="Content\javascript\jquery.jqGrid38.min.js" />
+    <Content Include="Content\javascript\jquery.maskedinput-1.2.2.js" />
+    <Content Include="Content\javascript\jquery.validate.js" />
+    <Content Include="Content\javascript\Qualificatons2.js" />
+    <Content Include="Content\javascript\superfish.js" />
+    <Content Include="Content\javascript\supersubs.js" />
+    <Content Include="Content\javascript\SvcAdmin.js" />
+    <Content Include="Content\jquery-ui-1.7.2.custom.css" />
+    <Content Include="Content\jquery.searchFilter.css" />
+    <Content Include="Content\MicrosoftAjax.debug.js" />
+    <Content Include="Content\MicrosoftAjax.js" />
+    <Content Include="Content\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Content\superfish-navbar.css" />
+    <Content Include="Content\superfish-vertical.css" />
+    <Content Include="Content\superfish.css" />
+    <Content Include="Content\ui.jqgrid.css" />
+    <Content Include="Content\uls.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Reports\ReportImages\calendar.gif" />
+    <Content Include="Reports\ReportImages\crlogo.gif" />
+    <Content Include="Reports\ReportImages\export.gif" />
+    <Content Include="Reports\ReportImages\exportd.gif" />
+    <Content Include="Reports\ReportImages\export_over.gif" />
+    <Content Include="Reports\ReportImages\First.gif" />
+    <Content Include="Reports\ReportImages\Firstd.gif" />
+    <Content Include="Reports\ReportImages\first_over.gif" />
+    <Content Include="Reports\ReportImages\gotopage.gif" />
+    <Content Include="Reports\ReportImages\gotopaged.gif" />
+    <Content Include="Reports\ReportImages\gotopage_over.gif" />
+    <Content Include="Reports\ReportImages\grouptree.gif" />
+    <Content Include="Reports\ReportImages\grouptreed.gif" />
+    <Content Include="Reports\ReportImages\grouptreepressed.gif" />
+    <Content Include="Reports\ReportImages\grouptree_over.gif" />
+    <Content Include="Reports\ReportImages\Last.gif" />
+    <Content Include="Reports\ReportImages\Lastd.gif" />
+    <Content Include="Reports\ReportImages\last_over.gif" />
+    <Content Include="Reports\ReportImages\Next.gif" />
+    <Content Include="Reports\ReportImages\Nextd.gif" />
+    <Content Include="Reports\ReportImages\next_over.gif" />
+    <Content Include="Reports\ReportImages\Prev.gif" />
+    <Content Include="Reports\ReportImages\Prevd.gif" />
+    <Content Include="Reports\ReportImages\prev_over.gif" />
+    <Content Include="Reports\ReportImages\print.gif" />
+    <Content Include="Reports\ReportImages\printd.gif" />
+    <Content Include="Reports\ReportImages\print_over.gif" />
+    <Content Include="Reports\ReportImages\Refresh.gif" />
+    <Content Include="Reports\ReportImages\refreshd.gif" />
+    <Content Include="Reports\ReportImages\refresh_over.gif" />
+    <Content Include="Reports\ReportImages\Search.gif" />
+    <Content Include="Reports\ReportImages\searchd.gif" />
+    <Content Include="Reports\ReportImages\search_over.gif" />
+    <Content Include="Reports\ReportImages\up.gif" />
+    <Content Include="Reports\ReportImages\upd.gif" />
+    <Content Include="Reports\ReportImages\up_over.gif" />
+    <Content Include="Views\Account\Login.aspx" />
+    <Content Include="Views\Admin\SecAdmin.aspx" />
+    <Content Include="Views\CrystalRptViewer\ElectronicsRptViewer.aspx" />
+    <Content Include="Views\CrystalRptViewer\Index.aspx" />
+    <Content Include="Views\CrystalRptViewer\QualificationRptViewer.aspx" />
+    <Content Include="Views\CrystalRptViewer\SvcRptViewer.aspx" />
+    <Content Include="Views\Electronics\Electronics.aspx" />
+    <Content Include="Views\Electronics\ElectronicsAsgnDlgList.ascx" />
+    <Content Include="Views\Electronics\ElectronicsEditDlg.ascx" />
+    <Content Include="Views\Electronics\RptElectronicsTypes.ascx" />
+    <Content Include="Views\EquipTrack\EquipAfterAssignImages.ascx" />
+    <Content Include="Views\EquipTrack\EquipAsgnDlgList.ascx" />
+    <Content Include="Views\EquipTrack\EquipBeforeAssignImages.ascx" />
+    <Content Include="Views\EquipTrack\EquipEditDlg.ascx" />
+    <Content Include="Views\EquipTrack\EquipImages.ascx" />
+    <Content Include="Views\EquipTrack\EquipSvcDlgTypes.ascx" />
+    <Content Include="Views\EquipTrack\EquipTrack.aspx" />
+    <Content Include="Views\EquipTrack\InvalidUser.aspx" />
+    <Content Include="Views\EquipTrack\RptAssignTo.ascx" />
+    <Content Include="Views\EquipTrack\RptAssignToHist.ascx" />
+    <Content Include="Views\EquipTrack\RptEquipIds.ascx" />
+    <Content Include="Views\EquipTrack\RptEquipInvByTypeandLoc.ascx" />
+    <Content Include="Views\EquipTrack\RptEquipMngByHist.ascx" />
+    <Content Include="Views\EquipTrack\RptEquipSvcCostAllTypesDivs.ascx" />
+    <Content Include="Views\EquipTrack\RptEquipSvcCostHist.ascx" />
+    <Content Include="Views\EquipTrack\RptEquipSvcCostHistSvcType.ascx" />
+    <Content Include="Views\EquipTrack\RptEquipSvcCostHistType.ascx" />
+    <Content Include="Views\EquipTrack\RptEquipTotalInvByGVW.ascx" />
+    <Content Include="Views\EquipTrack\RptEquipTotalInvWithCost.ascx" />
+    <Content Include="Views\EquipTrack\RptFuelCrdDiv.ascx" />
+    <Content Include="Views\EquipTrack\RptInspection.ascx" />
+    <Content Include="Views\EquipTrack\RptLocations.ascx" />
+    <Content Include="Views\EquipTrack\RptOnLoanTo.ascx" />
+    <Content Include="Views\EquipTrack\RptToolIds.ascx" />
+    <Content Include="Views\EquipTrack\RptToolsByType.ascx" />
+    <Content Include="Views\EquipTrack\RptToolSvccostHist.ascx" />
+    <Content Include="Views\EquipTrack\RptToolSvcCostHistSvcType.ascx" />
+    <Content Include="Views\EquipTrack\RptToolSvcCostHistType.ascx" />
+    <Content Include="Views\EquipTrack\RptTypes.ascx" />
+    <Content Include="Views\EquipTrack\SmallToolEditDlg.ascx" />
+    <Content Include="Views\EquipTrack\ToolAsgnDlgList.ascx" />
+    <Content Include="Views\EquipTrack\ToolEditDlg.ascx" />
+    <Content Include="Views\EquipTrack\ToolSvcDlgTypes.ascx" />
+    <Content Include="Views\Home\Contacts.aspx" />
+    <Content Include="Views\Home\Directions.aspx" />
+    <Content Include="Views\Home\Management - Copy.aspx" />
+    <Content Include="Views\Home\Management.aspx" />
+    <Content Include="Views\Home\ProjHighlights.aspx" />
+    <Content Include="Views\Home\UnderConstruction.aspx" />
+    <Content Include="Views\Home\Welcome.aspx" />
+    <Content Include="Views\ProjStories\DranesvilleVA.aspx" />
+    <Content Include="Views\ProjStories\MD_InterCountyConnector.aspx" />
+    <Content Include="Views\ProjStories\MontcoFredMD.aspx" />
+    <Content Include="Views\ProjStories\PrinceGeorgeCoMD.aspx" />
+    <Content Include="Views\Qualification\EmployeeEditDlg.ascx" />
+    <Content Include="Views\Qualification\QualEditDlg.ascx" />
+    <Content Include="Views\Qualification\QualEmployees.ascx" />
+    <Content Include="Views\Qualification\QualEmpWarnRecogDates.ascx" />
+    <Content Include="Views\Qualification\Qualification.aspx" />
+    <Content Include="Views\Service\Index.aspx" />
+    <Content Include="Views\Service\IndexBkup.aspx" />
+    <Content Include="Views\Service\ReSchedPhone.aspx" />
+    <Content Include="Views\Service\SelectSvcDate.aspx" />
+    <Content Include="Views\Service\SvcAdmin.aspx" />
+    <Content Include="Views\Service\SvcDateResult.aspx" />
+    <Content Include="Views\Service\SvcForemen.ascx" />
+    <Content Include="Web.config" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\jquery-1.3.1.js" />
+    <Content Include="Scripts\jquery-1.3.1.min.js" />
+    <Content Include="Scripts\jquery-1.3.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.3.1.min-vsdoc.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Views\Account\ChangePassword.aspx" />
+    <Content Include="Views\Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Views\Account\LogOn.aspx" />
+    <Content Include="Views\Account\Register.aspx" />
+    <Content Include="Views\Home\About.aspx" />
+    <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Shared\Error.aspx" />
+    <Content Include="Views\Shared\LogOnUserControl.ascx" />
+    <Content Include="Views\Shared\Site.Master" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Models\uls_db.dbml.layout">
+      <DependentUpon>uls_db.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\javascript\jquery-1.3.2.min.js.old" />
+    <None Include="Models\uls_db.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>uls_db1.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\ElectronicsAirCardInvDS.xsc">
+      <DependentUpon>ElectronicsAirCardInvDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ElectronicsAirCardInvDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ElectronicsAirCardInvDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\ElectronicsAirCardInvDS.xss">
+      <DependentUpon>ElectronicsAirCardInvDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ElectronicsAssignToDS.xsc">
+      <DependentUpon>ElectronicsAssignToDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ElectronicsAssignToDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ElectronicsAssignToDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\ElectronicsAssignToDS.xss">
+      <DependentUpon>ElectronicsAssignToDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ElectronicsInvByTypeDS.xsc">
+      <DependentUpon>ElectronicsInvByTypeDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ElectronicsInvByTypeDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ElectronicsInvByTypeDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\ElectronicsInvByTypeDS.xss">
+      <DependentUpon>ElectronicsInvByTypeDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EmpListDueToExpire90DaysDS.xsc">
+      <DependentUpon>EmpListDueToExpire90DaysDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EmpListDueToExpire90DaysDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EmpListDueToExpire90DaysDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EmpListDueToExpire90DaysDS.xss">
+      <DependentUpon>EmpListDueToExpire90DaysDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EmpListExpiredCertsDS.xsc">
+      <DependentUpon>EmpListExpiredCertsDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EmpListExpiredCertsDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EmpListExpiredCertsDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EmpListExpiredCertsDS.xss">
+      <DependentUpon>EmpListExpiredCertsDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipApportionedInvDS.xsc">
+      <DependentUpon>EquipApportionedInvDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipApportionedInvDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipApportionedInvDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipApportionedInvDS.xss">
+      <DependentUpon>EquipApportionedInvDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipAssignedTo.xsc">
+      <DependentUpon>EquipAssignedTo.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipAssignedTo.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipAssignedTo.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipAssignedTo.xss">
+      <DependentUpon>EquipAssignedTo.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipAssignedToHist.xsc">
+      <DependentUpon>EquipAssignedToHist.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipAssignedToHist.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipAssignedToHist.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipAssignedToHist.xss">
+      <DependentUpon>EquipAssignedToHist.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipBrokenHist.xsc">
+      <DependentUpon>EquipBrokenHist.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipBrokenHist.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipBrokenHist.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipBrokenHist.xss">
+      <DependentUpon>EquipBrokenHist.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipChangeLogByIDDS.xsc">
+      <DependentUpon>EquipChangeLogByIDDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipChangeLogByIDDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipChangeLogByIDDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipChangeLogByIDDS.xss">
+      <DependentUpon>EquipChangeLogByIDDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipChangeLogHistDS.xsc">
+      <DependentUpon>EquipChangeLogHistDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipChangeLogHistDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipChangeLogHistDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipChangeLogHistDS.xss">
+      <DependentUpon>EquipChangeLogHistDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipEZPASSDS.xsc">
+      <DependentUpon>EquipEZPASSDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipEZPASSDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipEZPASSDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipEZPASSDS.xss">
+      <DependentUpon>EquipEZPASSDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipFuelCrdDS.xsc">
+      <DependentUpon>EquipFuelCrdDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipFuelCrdDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipFuelCrdDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\EquipFuelCrdDS.xss">
+      <DependentUpon>EquipFuelCrdDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipFuelCrdInvDivDS.xsc">
+      <DependentUpon>EquipFuelCrdInvDivDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipFuelCrdInvDivDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipFuelCrdInvDivDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\EquipFuelCrdInvDivDS.xss">
+      <DependentUpon>EquipFuelCrdInvDivDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipGPSInvDS.xsc">
+      <DependentUpon>EquipGPSInvDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipGPSInvDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipGPSInvDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipGPSInvDS.xss">
+      <DependentUpon>EquipGPSInvDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipHUTInvDS.xsc">
+      <DependentUpon>EquipHUTInvDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipHUTInvDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipHUTInvDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipHUTInvDS.xss">
+      <DependentUpon>EquipHUTInvDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipIFTAInvDS.xsc">
+      <DependentUpon>EquipIFTAInvDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipIFTAInvDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipIFTAInvDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipIFTAInvDS.xss">
+      <DependentUpon>EquipIFTAInvDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipInspDueMngdByDS.xsc">
+      <DependentUpon>EquipInspDueMngdByDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipInspDueMngdByDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipInspDueMngdByDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipInspDueMngdByDS.xss">
+      <DependentUpon>EquipInspDueMngdByDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipInspectionDueDS.xsc">
+      <DependentUpon>EquipInspectionDueDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipInspectionDueDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipInspectionDueDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipInspectionDueDS.xss">
+      <DependentUpon>EquipInspectionDueDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipInspectionsDueMngByDS.xsc">
+      <DependentUpon>EquipInspectionsDueMngByDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipInspectionsDueMngByDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipInspectionsDueMngByDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipInspectionsDueMngByDS.xss">
+      <DependentUpon>EquipInspectionsDueMngByDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipInvByGVWDS.xsc">
+      <DependentUpon>EquipInvByGVWDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipInvByGVWDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipInvByGVWDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipInvByGVWDS.xss">
+      <DependentUpon>EquipInvByGVWDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipInvByLocDS.xsc">
+      <DependentUpon>EquipInvByLocDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipInvByLocDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipInvByLocDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipInvByLocDS.xss">
+      <DependentUpon>EquipInvByLocDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipInvByType.xsc">
+      <DependentUpon>EquipInvByType.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipInvByType.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipInvByType.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipInvByType.xss">
+      <DependentUpon>EquipInvByType.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipInvByTypeandLocDS.xsc">
+      <DependentUpon>EquipInvByTypeandLocDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipInvByTypeandLocDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipInvByTypeandLocDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipInvByTypeandLocDS.xss">
+      <DependentUpon>EquipInvByTypeandLocDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipInvWithCostDS.xsc">
+      <DependentUpon>EquipInvWithCostDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipInvWithCostDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipInvWithCostDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipInvWithCostDS.xss">
+      <DependentUpon>EquipInvWithCostDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipLojackInventoryDS.xsc">
+      <DependentUpon>EquipLojackInventoryDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipLojackInventoryDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipLojackInventoryDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipLojackInventoryDS.xss">
+      <DependentUpon>EquipLojackInventoryDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipMngByHistDS.xsc">
+      <DependentUpon>EquipMngByHistDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipMngByHistDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipMngByHistDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipMngByHistDS.xss">
+      <DependentUpon>EquipMngByHistDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipOneReportDS.xsc">
+      <DependentUpon>EquipOneReportDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipOneReportDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipOneReportDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipOneReportDS.xss">
+      <DependentUpon>EquipOneReportDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipOneSvcReportDS.xsc">
+      <DependentUpon>EquipOneSvcReportDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipOneSvcReportDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipOneSvcReportDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipOneSvcReportDS.xss">
+      <DependentUpon>EquipOneSvcReportDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipOnLoan.xsc">
+      <DependentUpon>EquipOnLoan.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipOnLoan.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipOnLoan.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipOnLoan.xss">
+      <DependentUpon>EquipOnLoan.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipSvcCostHistAllDS.xsc">
+      <DependentUpon>EquipSvcCostHistAllDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipSvcCostHistAllDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipSvcCostHistAllDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipSvcCostHistAllDS.xss">
+      <DependentUpon>EquipSvcCostHistAllDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipSvcCostHistAllTypesDivsDS.xsc">
+      <DependentUpon>EquipSvcCostHistAllTypesDivsDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipSvcCostHistAllTypesDivsDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipSvcCostHistAllTypesDivsDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipSvcCostHistAllTypesDivsDS.xss">
+      <DependentUpon>EquipSvcCostHistAllTypesDivsDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipSvcCostHistBySvcTypeDS.xsc">
+      <DependentUpon>EquipSvcCostHistBySvcTypeDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipSvcCostHistBySvcTypeDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipSvcCostHistBySvcTypeDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipSvcCostHistBySvcTypeDS.xss">
+      <DependentUpon>EquipSvcCostHistBySvcTypeDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipSvcCostHistByTypeDS.xsc">
+      <DependentUpon>EquipSvcCostHistByTypeDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipSvcCostHistByTypeDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipSvcCostHistByTypeDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipSvcCostHistByTypeDS.xss">
+      <DependentUpon>EquipSvcCostHistByTypeDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipSvcCostHistDS.xsc">
+      <DependentUpon>EquipSvcCostHistDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipSvcCostHistDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipSvcCostHistDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipSvcCostHistDS.xss">
+      <DependentUpon>EquipSvcCostHistDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipToBeSoldDS.xsc">
+      <DependentUpon>EquipToBeSoldDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipToBeSoldDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipToBeSoldDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipToBeSoldDS.xss">
+      <DependentUpon>EquipToBeSoldDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipTotalInvDS.xsc">
+      <DependentUpon>EquipTotalInvDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipTotalInvDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipTotalInvDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipTotalInvDS.xss">
+      <DependentUpon>EquipTotalInvDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipTotalInvRegByDS.xsc">
+      <DependentUpon>EquipTotalInvRegByDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipTotalInvRegByDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipTotalInvRegByDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipTotalInvRegByDS.xss">
+      <DependentUpon>EquipTotalInvRegByDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipUnknownInvDS.xsc">
+      <DependentUpon>EquipUnknownInvDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipUnknownInvDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipUnknownInvDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\EquipUnknownInvDS.xss">
+      <DependentUpon>EquipUnknownInvDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\GetCertListByEmployeeDS.xsc">
+      <DependentUpon>GetCertListByEmployeeDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\GetCertListByEmployeeDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GetCertListByEmployeeDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\GetCertListByEmployeeDS.xss">
+      <DependentUpon>GetCertListByEmployeeDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\GetLeasedInventoryDS.xsc">
+      <DependentUpon>GetLeasedInventoryDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\GetLeasedInventoryDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GetLeasedInventoryDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\GetLeasedInventoryDS.xss">
+      <DependentUpon>GetLeasedInventoryDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\GetToolChangeLogHistDS.xsc">
+      <DependentUpon>GetToolChangeLogHistDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\GetToolChangeLogHistDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GetToolChangeLogHistDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\GetToolChangeLogHistDS.xss">
+      <DependentUpon>GetToolChangeLogHistDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\QEmpLstByCertDS.xsc">
+      <DependentUpon>QEmpLstByCertDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\QEmpLstByCertDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QEmpLstByCertDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\QEmpLstByCertDS.xss">
+      <DependentUpon>QEmpLstByCertDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\QualEmpListByCompanyDS.xsc">
+      <DependentUpon>QualEmpListByCompanyDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\QualEmpListByCompanyDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QualEmpListByCompanyDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\QualEmpListByCompanyDS.xss">
+      <DependentUpon>QualEmpListByCompanyDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\SmallToolsAssignedToDS.xsc">
+      <DependentUpon>SmallToolsAssignedToDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\SmallToolsAssignedToDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SmallToolsAssignedToDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\SmallToolsAssignedToDS.xss">
+      <DependentUpon>SmallToolsAssignedToDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\SvcAllCrewHistDS.xsc">
+      <DependentUpon>SvcAllCrewHistDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\SvcAllCrewHistDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SvcAllCrewHistDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\SvcAllCrewHistDS.xss">
+      <DependentUpon>SvcAllCrewHistDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\SvcSchedByCrewDS.xsc">
+      <DependentUpon>SvcSchedByCrewDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\SvcSchedByCrewDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SvcSchedByCrewDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\SvcSchedByCrewDS.xss">
+      <DependentUpon>SvcSchedByCrewDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\TollSvcCostHistAllDS.xsc">
+      <DependentUpon>TollSvcCostHistAllDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\TollSvcCostHistAllDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TollSvcCostHistAllDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\TollSvcCostHistAllDS.xss">
+      <DependentUpon>TollSvcCostHistAllDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolOneRpDS.xsc">
+      <DependentUpon>ToolOneRpDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolOneRpDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ToolOneRpDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\ToolOneRpDS.xss">
+      <DependentUpon>ToolOneRpDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolOneSvcReportDS.xsc">
+      <DependentUpon>ToolOneSvcReportDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolOneSvcReportDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ToolOneSvcReportDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\ToolOneSvcReportDS.xss">
+      <DependentUpon>ToolOneSvcReportDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsAssignedToDS.xsc">
+      <DependentUpon>ToolsAssignedToDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsAssignedToDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ToolsAssignedToDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\ToolsAssignedToDS.xss">
+      <DependentUpon>ToolsAssignedToDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsAssignedToHistDS.xsc">
+      <DependentUpon>ToolsAssignedToHistDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsAssignedToHistDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ToolsAssignedToHistDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\ToolsAssignedToHistDS.xss">
+      <DependentUpon>ToolsAssignedToHistDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsBrokenHistDS.xsc">
+      <DependentUpon>ToolsBrokenHistDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsBrokenHistDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ToolsBrokenHistDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\ToolsBrokenHistDS.xss">
+      <DependentUpon>ToolsBrokenHistDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsChangeLogByIdDS.xsc">
+      <DependentUpon>ToolsChangeLogByIdDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsChangeLogByIdDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ToolsChangeLogByIdDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\ToolsChangeLogByIdDS.xss">
+      <DependentUpon>ToolsChangeLogByIdDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsInvByLocDS.xsc">
+      <DependentUpon>ToolsInvByLocDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsInvByLocDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ToolsInvByLocDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\ToolsInvByLocDS.xss">
+      <DependentUpon>ToolsInvByLocDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsInvByTypeDS.xsc">
+      <DependentUpon>ToolsInvByTypeDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsInvByTypeDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ToolsInvByTypeDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\ToolsInvByTypeDS.xss">
+      <DependentUpon>ToolsInvByTypeDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsLojackInv.xsc">
+      <DependentUpon>ToolsLojackInv.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsLojackInv.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ToolsLojackInv.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\ToolsLojackInv.xss">
+      <DependentUpon>ToolsLojackInv.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsOnLoanDS.xsc">
+      <DependentUpon>ToolsOnLoanDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsOnLoanDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ToolsOnLoanDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\ToolsOnLoanDS.xss">
+      <DependentUpon>ToolsOnLoanDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsToBeSoldDS.xsc">
+      <DependentUpon>ToolsToBeSoldDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsToBeSoldDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ToolsToBeSoldDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\ToolsToBeSoldDS.xss">
+      <DependentUpon>ToolsToBeSoldDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsTotalInvDS.xsc">
+      <DependentUpon>ToolsTotalInvDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsTotalInvDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ToolsTotalInvDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\ToolsTotalInvDS.xss">
+      <DependentUpon>ToolsTotalInvDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsTotalInvRegByDS.xsc">
+      <DependentUpon>ToolsTotalInvRegByDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsTotalInvRegByDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ToolsTotalInvRegByDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\ToolsTotalInvRegByDS.xss">
+      <DependentUpon>ToolsTotalInvRegByDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsUnknownInvDS.xsc">
+      <DependentUpon>ToolsUnknownInvDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolsUnknownInvDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ToolsUnknownInvDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\ToolsUnknownInvDS.xss">
+      <DependentUpon>ToolsUnknownInvDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolSvcCostHistByTypeDS.xsc">
+      <DependentUpon>ToolSvcCostHistByTypeDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolSvcCostHistByTypeDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ToolSvcCostHistByTypeDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\ToolSvcCostHistByTypeDS.xss">
+      <DependentUpon>ToolSvcCostHistByTypeDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolSvcCostHistReportBySvcTypeDS.xsc">
+      <DependentUpon>ToolSvcCostHistReportBySvcTypeDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolSvcCostHistReportBySvcTypeDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ToolSvcCostHistReportBySvcTypeDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\ToolSvcCostHistReportBySvcTypeDS.xss">
+      <DependentUpon>ToolSvcCostHistReportBySvcTypeDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolSvcCostHistReportDS.xsc">
+      <DependentUpon>ToolSvcCostHistReportDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolSvcCostHistReportDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ToolSvcCostHistReportDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\ToolSvcCostHistReportDS.xss">
+      <DependentUpon>ToolSvcCostHistReportDS.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\CertListByEmployee.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CertListByEmployee.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ElectronicsAirCardInv.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ElectronicsAirCardInv.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ElectronicsAssignTo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ElectronicsAssignTo.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ElectronicsInvByType.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ElectronicsInvByType.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EmployeeListDueToExpireCerts.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EmployeeListDueToExpireCerts.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EmployeeListExpiredCerts.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EmployeeListExpiredCerts.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipApportionedInv.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipApportionedInv.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipAssignToHist.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipAssignToHist.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipAssinedTo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipAssinedTo.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipBrokeHist.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipBrokeHist.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipChangeLogByID.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipChangeLogByID.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipChangeLogHst.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipChangeLogHst.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipEZPASS.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipEZPASS.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipFuelCard.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipFuelCard.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipFuelCardDivInv.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipFuelCardDivInv.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipGPSInv.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipGPSInv.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipHUTInv.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipHUTInv.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipIFTAInv.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipIFTAInv.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipInspectionDue.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipInspectionDue.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipInspectionDueMngBy.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipInspectionDueMngBy.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipInspectionsDueMngBy.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipInspectionsDueMngBy.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipInvByGVW.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipInvByGVW.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipInvByLoc.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipInvByLoc.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipInvByTypeAndLoc.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipInvByTypeAndLoc.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipInvWithCost.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipInvWithCost.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipLeasedInventory.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipLeasedInventory.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipLojackInventory.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipLojackInventory.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipmentInvByType.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipmentInvByType.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipmentOnLoan.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipmentOnLoan.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipMngByHist.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipMngByHist.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipOneReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipOneReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipOneSvcReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipOneSvcReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipSvcCostHist.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipSvcCostHist.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipSvcCostHistAll.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipSvcCostHistAll.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipSvcCostHistAllTypesDivs.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipSvcCostHistAllTypesDivs.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipSvcCostHistBySvcType.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipSvcCostHistBySvcType.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipSvcCostHistByType.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipSvcCostHistByType.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipToBeSold.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipToBeSold.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipTotalInventory.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipTotalInventory.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipTotalInvRegBy.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipTotalInvRegBy.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipUnknownInventory.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipUnknownInventory.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\QualEmpListByCert.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>QualEmpListByCert.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\QualEmpListByCompany.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>QualEmpListByCompany.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SmallToolsAssignedTo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SmallToolsAssignedTo.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SvcSchedAllCrewsHist.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SvcSchedAllCrewsHist.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SvcSchedByCrewHist.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SvcSchedByCrewHist.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ToolInvByLoc.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ToolInvByLoc.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ToolLojackInventory.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ToolLojackInventory.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ToolOneReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ToolOneReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ToolOneSvcReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ToolOneSvcReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ToolsAssignedTo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ToolsAssignedTo.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ToolsAssignedToHist.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ToolsAssignedToHist.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ToolsBrokenHist.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ToolsBrokenHist.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ToolsChangeLogById.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ToolsChangeLogById.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ToolsChangeLogHist.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ToolsChangeLogHist.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ToolsInvByType.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ToolsInvByType.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ToolsOnLoan.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ToolsOnLoan.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ToolsTotalInv.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ToolsTotalInv.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ToolsTotalInvRegBy.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ToolsTotalInvRegBy.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ToolsUnknownInv.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ToolsUnknownInv.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ToolSvcCostHistAll.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ToolSvcCostHistAll.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ToolSvcCostHistByType.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ToolSvcCostHistByType.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ToolSvcCostHistReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ToolSvcCostHistReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ToolSvcCostHistReportBySvcType.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ToolSvcCostHistReportBySvcType.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ToolToBeSold.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ToolToBeSold.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\equipImages\" />
+    <Folder Include="Content\equip_images\" />
+    <Folder Include="Views\images\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)\..\$(ProjectName)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2118</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

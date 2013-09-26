@@ -1,0 +1,758 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="ULS_db1" Class="uls_dbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(local);Initial Catalog=ULS_db1;Persist Security Info=True;User ID=uls2008" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ULS_db1ConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.office_locations" Member="office_locations">
+    <Type Name="office_location">
+      <Column Name="location_name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="location_address" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="default_from" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.equip_type_avt" Member="equip_type_avts">
+    <Type Name="equip_type_avt">
+      <Column Name="type_id" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="type_desc" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="equip_type_avt_service_due_parm" Member="service_due_parms" ThisKey="type_id" OtherKey="type_id" Type="service_due_parm" />
+    </Type>
+  </Table>
+  <Table Name="dbo.make_avt" Member="make_avts">
+    <Type Name="make_avt">
+      <Column Name="make_id" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="make_descr" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.division_avt" Member="division_avts">
+    <Type Name="division_avt">
+      <Column Name="div_name" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.fuel_avt" Member="fuel_avts">
+    <Type Name="fuel_avt">
+      <Column Name="fuel_id" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="fuel_descr" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.condition_avt" Member="condition_avts">
+    <Type Name="condition_avt">
+      <Column Name="condition_id" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="condition_descr" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.images" Member="images">
+    <Type Name="image">
+      <Column Name="image_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="entity_id" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="image_type" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="image_path" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.model_avt" Member="model_avts">
+    <Type Name="model_avt">
+      <Column Name="model_id" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="model_descr" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tool_mfgs_avt" Member="tool_mfgs_avts">
+    <Type Name="tool_mfgs_avt">
+      <Column Name="tool_mfg_id" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tool_mfg_descr" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tool_size_avt" Member="tool_size_avts">
+    <Type Name="tool_size_avt">
+      <Column Name="size_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="size_descr" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tools_descr_avt" Member="tools_descr_avts">
+    <Type Name="tools_descr_avt">
+      <Column Name="tools_descr_id" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tools_descr_descr" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tools_item_avt" Member="tools_item_avts">
+    <Type Name="tools_item_avt">
+      <Column Name="tools_type_id" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tools_type_descr" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.service_due_parms" Member="service_due_parms">
+    <Type Name="service_due_parm">
+      <Column Name="type_id" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="service_every" Type="System.Single" DbType="Real" CanBeNull="false" />
+      <Column Name="warning_within" Type="System.Single" DbType="Real" CanBeNull="false" />
+      <Association Name="equip_type_avt_service_due_parm" Member="equip_type_avt" ThisKey="type_id" OtherKey="type_id" Type="equip_type_avt" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.equip_loc_avt" Member="equip_loc_avts">
+    <Type Name="equip_loc_avt">
+      <Column Name="equip_loc" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="division" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="loc_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tools_serv" Member="tools_servs">
+    <Type Name="tools_serv">
+      <Column Name="service_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tool_id" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="service_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="serv_perf_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="mechanic" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="labor_cost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="parts_cost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="serv_reqstd" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="serv_perf_descr" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="parts_reqrd" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="comments" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="tools_serv_avt_tools_serv" Member="tools_serv_avt" ThisKey="serv_perf_id" OtherKey="tool_serv_id" Type="tools_serv_avt" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tools_serv_avt" Member="tools_serv_avts">
+    <Type Name="tools_serv_avt">
+      <Column Name="tool_serv_id" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="too_serv_descr" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Association Name="tools_serv_avt_tools_serv" Member="tools_servs" ThisKey="tool_serv_id" OtherKey="serv_perf_id" Type="tools_serv" />
+    </Type>
+  </Table>
+  <Table Name="dbo.services" Member="services">
+    <Type Name="service">
+      <Column Name="service_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="equip_id" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="service_dt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="serv_perf_id" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="mechanic" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="labor_cost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="parts_cost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="total_cost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="mileage" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="hours" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="serv_reqstd" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="serv_perf_descr" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="parts_reqrd" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="comments" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="services_avt_service" Member="services_avt" ThisKey="serv_perf_id" OtherKey="serv_id" Type="services_avt" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.services_avt" Member="services_avts">
+    <Type Name="services_avt">
+      <Column Name="serv_id" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="serv_descr" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Association Name="services_avt_service" Member="services" ThisKey="serv_id" OtherKey="serv_perf_id" Type="service" />
+    </Type>
+  </Table>
+  <Table Name="dbo.smalltools" Member="smalltools">
+    <Type Name="smalltool">
+      <Column Name="stID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="item" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="size" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MFG" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Model" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SerNum" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ConditionId" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Reg_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Managed_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Assigned_to" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Assigned_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="managed_by_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="returned_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="inoutshop" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="pipeline" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_SmallToolsGrid" Member="vw_SmallToolsGrids">
+    <Type Name="vw_SmallToolsGrid">
+      <Column Name="stID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="item" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="size" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MFG" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Model" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SerNum" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="condition_descr" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="Reg_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Managed_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Assigned_to" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Assigned_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="managed_by_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="returned_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="inoutshop" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="small_tool_loan_color" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="small_tool_assign_color" Type="System.String" DbType="VarChar(9) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tools_assign" Member="tools_assigns">
+    <Type Name="tools_assign">
+      <Column Name="assign_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tool_id" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="assigned_to" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="assigned_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="return_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="asgn_condition_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="ret_condition_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="lst_upd_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="comment_txt" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.assignments" Member="assignments">
+    <Type Name="assignment">
+      <Column Name="assign_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="equip_id" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="assigned_to" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="assigned_dt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="return_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="asgn_condition_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="ret_condition_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="lst_upd_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="comment_txt" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="asgn_miles" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="asgn_hours" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="ret_miles" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="ret_hours" Type="System.Single" DbType="Real" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.assign_to" Member="assign_tos">
+    <Type Name="assign_to">
+      <Column Name="assign_to" Member="assign_to1" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="active_status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="work_loc" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="assign_to_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.default_div" Member="default_divs">
+    <Type Name="default_div">
+      <Column Name="user_id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="div" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="lst_log_on" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Users" Member="aspnet_Users">
+    <Type Name="aspnet_User">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredUserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="MobileAlias" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="IsAnonymous" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastActivityDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="aspnet_User_aspnet_UsersInRole" Member="aspnet_UsersInRoles" ThisKey="UserId" OtherKey="UserId" Type="aspnet_UsersInRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Roles" Member="aspnet_Roles">
+    <Type Name="aspnet_Role">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="RoleId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredRoleName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Association Name="aspnet_Role_aspnet_UsersInRole" Member="aspnet_UsersInRoles" ThisKey="RoleId" OtherKey="RoleId" Type="aspnet_UsersInRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_UsersInRoles" Member="aspnet_UsersInRoles">
+    <Type Name="aspnet_UsersInRole">
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RoleId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="aspnet_Role_aspnet_UsersInRole" Member="aspnet_Role" ThisKey="RoleId" OtherKey="RoleId" Type="aspnet_Role" IsForeignKey="true" />
+      <Association Name="aspnet_User_aspnet_UsersInRole" Member="aspnet_User" ThisKey="UserId" OtherKey="UserId" Type="aspnet_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.svc_schedule_days" Member="svc_schedule_days">
+    <Type Name="svc_schedule_day">
+      <Column Name="svc_sched_dt" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="available" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="tot_crews" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="cur_svcs_sched" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.svc_crews" Member="svc_crews">
+    <Type Name="svc_crew">
+      <Column Name="crew_num" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="svc_foreman_id" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Association Name="svc_foreman_svc_crew" Member="svc_foreman" ThisKey="svc_foreman_id" OtherKey="svc_foreman_id" Type="svc_foreman" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.svc_foreman" Member="svc_foremans">
+    <Type Name="svc_foreman">
+      <Column Name="svc_foreman_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="svc_foreman_nm" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="active_flg" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="svc_foreman_svc_crew" Member="svc_crews" ThisKey="svc_foreman_id" OtherKey="svc_foreman_id" Type="svc_crew" />
+    </Type>
+  </Table>
+  <Table Name="dbo.svc_appointments" Member="svc_appointments">
+    <Type Name="svc_appointment">
+      <Column Name="svc_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="svc_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="last_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="first_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="street_address" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="city" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="state" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="zip" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="home_phone" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="other_phone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="crew" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="reschedule" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="comments" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="foreman_id" Type="System.Int32" DbType="Int" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.equip_edit_log" Member="equip_edit_logs">
+    <Type Name="equip_edit_log">
+      <Column Name="user_id" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="edit_dt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="edit_change" Type="System.String" DbType="VarChar(2000) NOT NULL" CanBeNull="false" />
+      <Column Name="log_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="equip_id" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tool_edit_log" Member="tool_edit_logs">
+    <Type Name="tool_edit_log">
+      <Column Name="user_id" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="edit_dt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="edit_change" Type="System.String" DbType="VarChar(2000) NOT NULL" CanBeNull="false" />
+      <Column Name="log_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tool_id" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.help_msgs" Member="help_msgs">
+    <Type Name="help_msg">
+      <Column Name="help_id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="help_msg" Member="help_msg1" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_EquipAssignGrid" Member="vw_EquipAssignGrids">
+    <Type Name="vw_EquipAssignGrid">
+      <Column Name="equip_id" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="assigned_to" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="assigned_dt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="return_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="asgn_cond_descr" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="ret_cond_descr" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="comment_txt" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="asgn_miles" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="asgn_hours" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="ret_miles" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="ret_hours" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="assign_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="img_cnt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_ToolsAssignGrid" Member="vw_ToolsAssignGrids">
+    <Type Name="vw_ToolsAssignGrid">
+      <Column Name="tool_id" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="assigned_to" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="assigned_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="return_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="asgn_cond_descr" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="ret_cond_descr" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="comment_txt" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="assign_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="img_cnt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.svc_contact" Member="svc_contacts">
+    <Type Name="svc_contact">
+      <Column Name="contact_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="contact_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="contact_number" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="contact_email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="notify1_email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="notify2_email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="notify3_email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.electronics_make_avt" Member="electronics_make_avts">
+    <Type Name="electronics_make_avt">
+      <Column Name="make_id" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="make_desc" Type="System.String" DbType="VarChar(75) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.electronics_model_avt" Member="electronics_model_avts">
+    <Type Name="electronics_model_avt">
+      <Column Name="model_id" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="model_desc" Type="System.String" DbType="VarChar(75) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.electronics_type_avt" Member="electronics_type_avts">
+    <Type Name="electronics_type_avt">
+      <Column Name="type_id" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="type_desc" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.electronics" Member="electronics">
+    <Type Name="electronic">
+      <Column Name="electronics_id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="type_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="make_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="model_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="serial_num" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="air_card_num" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="registered_by" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="managed_by" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="managed_by_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="stolen" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="unknown" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="in_repair" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="totaled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="assigned" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cost" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="year_pur" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="location" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_ElectronicsGrid" Member="vw_ElectronicsGrids">
+    <Type Name="vw_ElectronicsGrid">
+      <Column Name="electronics_id" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="type_desc" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="make_desc" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="model_desc" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="serial_num" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="air_card_num" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="cost" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="year_pur" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="location" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="registered_by" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="managed_by" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="managed_by_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="stolen" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="unknown" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="in_repair" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="totaled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="electronics_loan_color" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="electronics_assign_color" Type="System.String" DbType="VarChar(9) NOT NULL" CanBeNull="false" />
+      <Column Name="rownum" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_ElectronicsAssignGrid" Member="vw_ElectronicsAssignGrids">
+    <Type Name="vw_ElectronicsAssignGrid">
+      <Column Name="assign_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="electronics_id" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="assigned_to" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="assigned_dt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="return_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="asgn_cond_descr" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="ret_cond_descr" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="comment_txt" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.electronics_edit_log" Member="electronics_edit_logs">
+    <Type Name="electronics_edit_log">
+      <Column Name="user_id" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="edit_dt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="edit_change" Type="System.String" DbType="VarChar(2000) NOT NULL" CanBeNull="false" />
+      <Column Name="log_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="electronics_id" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.electronics_assgn" Member="electronics_assgns">
+    <Type Name="electronics_assgn">
+      <Column Name="assign_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="electronics_id" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="assigned_to" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="assigned_dt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="return_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="asgn_condition_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="ret_condition_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="comment_txt" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tools" Member="tools">
+    <Type Name="tool">
+      <Column Name="tool_id" Type="System.String" DbType="NVarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="item_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="descr_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="mfg_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="size_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="model_num" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="serial_num" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="work_loc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="year_pur" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="cost" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="lst_upd_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="stolen" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="sold" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="assigned" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="in_repair" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="totaled" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="electrical" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="registered_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="managed_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="hours" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="managed_by_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="lojack" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="unknown" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="calibration_due_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="calibration_rmdr_wks" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="to_be_sold" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.manage_by_history" Member="manage_by_histories">
+    <Type Name="manage_by_history">
+      <Column Name="mbh_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="epuip_id" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="mng_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="mng_by_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="reg_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="miles_hrs" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="mng_by_dt_end" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_ToolsGrid" Member="vw_ToolsGrids">
+    <Type Name="vw_ToolsGrid">
+      <Column Name="tool_id" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="tools_type_descr" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="tools_descr_descr" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="size_descr" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="tool_mfg_descr" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="model_num" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="serial_num" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="year_pur" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="managed_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="tool_loan_color" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="tool_assign_color" Type="System.String" DbType="VarChar(9) NOT NULL" CanBeNull="false" />
+      <Column Name="managed_by_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="registered_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="work_loc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="cost" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="assigned" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="stolen" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="sold" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="in_repair" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="totaled" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="electrical" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="lojack" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="unknown" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="calibration_due_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="calibration_due_warn" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="calibration_rmdr_wks" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="img_cnt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="rownum" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="to_be_sold" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="assigned_to" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.empQual" Member="empQuals">
+    <Type Name="empQual">
+      <Column Name="employeeId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="empId" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="qualId" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="qualDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="qualExpire" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="evaluator" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="qualCompany" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.qualification" Member="qualifications">
+    <Type Name="qualification">
+      <Column Name="qualID" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="qualDesc" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="qualCompany" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_QualificationsGrid" Member="vw_QualificationsGrids">
+    <Type Name="vw_QualificationsGrid">
+      <Column Name="employeeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="qualId" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="qualDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="qualExpire" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="evaluator" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="qualCompany" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="qualDesc" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="expire_warn" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="rownum" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.empJobClass" Member="empJobClasses">
+    <Type Name="empJobClass">
+      <Column Name="jobClassId" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="jobClassDesc" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_QualificationsAdmin" Member="vw_QualificationsAdmins">
+    <Type Name="vw_QualificationsAdmin">
+      <Column Name="qualID" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="qualDesc" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="qualCompany" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="rownum" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.qual_notification" Member="qual_notifications">
+    <Type Name="qual_notification">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.empWarnRecognition" Member="empWarnRecognitions">
+    <Type Name="empWarnRecognition">
+      <Column Name="employeeID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="empQualWarnRecogDate" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="empWarnRecogFlg" Type="System.Char" DbType="Char(1) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_EquipGrid" Member="vw_EquipGrids">
+    <Type Name="vw_EquipGrid">
+      <Column Name="equip_id" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="type_desc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="make_descr" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="model_descr" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="equip_year" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="work_loc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="insp_due_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="service_due_num" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="miles_hours" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="miles_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="registered_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="managed_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="managed_by_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="tag_expire_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="inspection_warn" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="service_warn" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="tag_warn" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="equip_loan_color" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="equip_assign_color" Type="System.String" DbType="VarChar(9) NOT NULL" CanBeNull="false" />
+      <Column Name="insp_rmdr_wks" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="vin_num" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="title_num" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="gross_v_wt" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="gross_c_wt" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="unlaiden_wt" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="tag_num" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="tag_state" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="fuel_descr" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="cost" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="stolen" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="sold" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="lojack" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="in_repair" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="totaled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="tag_expire_rmdr_wks" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="hut_sticker" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="apportioned" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ifta_sticker" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="gps" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="unknown" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="current_value" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
+      <Column Name="img_cnt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="leased" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="gps_num" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="ezpass" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ezpass_num" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="fuelcard" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="fuelcard_num" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="rownum" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="to_be_sold" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="assigned_to" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="fuel_card_loc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.equipment" Member="equipments">
+    <Type Name="equipment">
+      <Column Name="equip_id" Type="System.String" DbType="NVarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="type_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="make_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="model_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="equip_year" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="vin_num" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="title_num" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="registered_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="work_loc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="gross_v_wt" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="gross_c_wt" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="unlaiden_wt" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="tag_num" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="tag_state" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="fuel" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="cost" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="service_due_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="insp_due_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="service_rmdr_wks" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="insp_rmdr_wks" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="lst_upd_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="stolen" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="sold" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="lojack" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="assigned" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="in_repair" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="totaled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="managed_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="miles_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="managed_by_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="pipeline" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="tag_expire_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="tag_expire_rmdr_wks" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="service_due_num" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="hut_sticker" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="apportioned" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ifta_sticker" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="gps" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="gps_num" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="ezpass" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ezpass_num" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="unknown" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="current_value" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
+      <Column Name="current_value_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="miles_hours" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="leased" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="fuelcard" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="fuelcard_num" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="to_be_sold" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="fuel_card_loc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.employee" Member="employees">
+    <Type Name="employee">
+      <Column Name="employeeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="empId" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="lname" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="fname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="mname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="suffix" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="empStatus" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="org" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="oqId" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ssn" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="address1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="address2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="state" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="zip" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="homephone" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="cellphone" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="payRate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="jobClass" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="oparea" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="MVRcheckDt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CBGcheckDt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DandAcheckDt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DandAresult" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="last_updt_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="last_updt_uid" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="birthDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DLnum" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DLstate" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="DLclass" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DLexpDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="medicalCardExpDt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.UpdateObsoleteId" Method="UpdateObsoleteId">
+    <Parameter Name="id" Type="System.String" DbType="VarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
