@@ -24,7 +24,7 @@
     <script type="text/javascript" src="/Content/javascript/jquery.alphanumeric.js"></script> 
 	<script type="text/javascript">
 
-		    // initialise plugins
+		    // initialise plugins - 
 		    jQuery(function() {
                 $("ul.sf-menu").supersubs({ 
                     minWidth:    12,   // minimum width of sub-menus in em units 
