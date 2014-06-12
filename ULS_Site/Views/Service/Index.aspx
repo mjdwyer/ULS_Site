@@ -1,7 +1,7 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 <asp:Content ID="HeadContentFromPage" ContentPlaceHolderId="EquipHeadContent" runat="server">
-    <script type="text/javascript" src="/Content/javascript/jquery.maskedinput-1.2.2.js"></script>
-    <script type="text/javascript" src="/Content/javascript/jquery.validate.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.maskedinput.min.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.validate.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">

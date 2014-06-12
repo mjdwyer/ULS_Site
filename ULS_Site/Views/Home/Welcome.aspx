@@ -4,8 +4,8 @@
 <script type="text/javascript">
 
     $(document).ready(function() {
-    if ($.browser.mozilla != true)
-        alert('Warning: The ULS Web Portal is best viewed using FireFox. You will experience problems using other browsers such as Internet Explorer. Please logout. Then open this site and logon using Firefox.');
+//    if ($.browser.mozilla != true)
+//        alert('Warning: The ULS Web Portal is best viewed using FireFox. You will experience problems using other browsers such as Internet Explorer. Please logout. Then open this site and logon using Firefox.');
     });
 
 </script>

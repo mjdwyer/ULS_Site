@@ -751,6 +751,40 @@
       <Column Name="medicalCardExpDt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.vw_EquipAssignXferGrid" Member="vw_EquipAssignXferGrids">
+    <Type Name="vw_EquipAssignXferGrid">
+      <Column Name="equip_id" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="return_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="assigned_dt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="asgn_cond_descr" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="ret_cond_descr" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="asgn_miles" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="asgn_hours" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="ret_miles" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="ret_hours" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="assign_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="type_desc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="make_descr" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="model_descr" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="equip_year" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="assigned_to" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_ToolsAssignXferGrid" Member="vw_ToolsAssignXferGrids">
+    <Type Name="vw_ToolsAssignXferGrid">
+      <Column Name="tool_id" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="assigned_to" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="assigned_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="return_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="asgn_cond_descr" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="ret_cond_descr" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="assign_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tools_type_descr" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="tools_descr_descr" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="size_descr" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="tool_mfg_descr" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.UpdateObsoleteId" Method="UpdateObsoleteId">
     <Parameter Name="id" Type="System.String" DbType="VarChar(30)" />
     <Return Type="System.Int32" />

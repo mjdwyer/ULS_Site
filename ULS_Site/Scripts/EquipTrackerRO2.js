@@ -34,11 +34,11 @@ jQuery(document).ready(function() {
         height: 255,
         width: 740,
         rowNum: 5000,
-        colNames: ['ID', 'Type', 'Make', 'Model', 'Year', 'Location', 'Insp Due', 'Serv Due', 'Miles/Hrs', 'Milage Dt', 'Reg By', 'Mngd By', 'Mngd By Dt', 'Tag Exp', '', '', '', '', 'Vin Num', 'Title Num', 'GVW', 'Unlaiden Wt', 'Tag Num', 'Tag State', 'Fuel', 'Cost', 'Inspect Rmndr(wks)', 'Tag Rmndr(wks)', 'Stolen', 'Sold', 'Lojack', 'In Repair', 'Totaled', 'Hut Sticker', 'Apportioned', 'IFTA Sticker', 'GPS', 'Comment', '', 'Unknown', 'Current Value', 'ImgCnt', 'Leased', 'GCW', '', '', '', '', '', 'To Be Sold',''],
+        colNames: ['ID', 'Type', 'Make', 'Model', 'Year', 'Location', 'Insp Due', 'Serv Due', 'Miles/Hrs', 'Milage Dt', 'Reg By', 'Mngd By', 'Mngd By Dt', 'Tag Exp', '', '', '', '', 'Vin Num', 'Title Num', 'GVW', 'Unlaiden Wt', 'Tag Num', 'Tag State', 'Fuel', 'Cost', 'Inspect Rmndr(wks)', 'Tag Rmndr(wks)', 'Stolen', 'Sold', 'Lojack', 'In Repair', 'Totaled', 'Hut Sticker', 'Apportioned', 'IFTA Sticker', 'GPS', 'Comment', '', 'Unknown', 'Current Value', 'ImgCnt', 'Leased', 'GCW', '', '', '', '', '', 'To Be Sold'],
         colModel: [
    		        { name: 'equip_id', index: 'equip_id', width: 65, editable: true, search: true, searchoptions: { sopt: ['eq', 'bw', 'ew']} },
   		        { name: 'type_desc', index: 'type_desc', width: 130, editable: true, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/GetTypesSearch'} },
-   		        { name: 'make_descr', index: 'make_descr', width: 80, editable: true, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/GetMakesSearch'} },
+   		        { name: 'make_descr', index: 'make_descr', width: 80, editable: true, search: true, stype: "select", searchoptions: { sopt: ['cn','eq'], dataUrl: '/EquipTrack/GetMakesSearch'} },
    		        { name: 'model_descr', index: 'model_descr', width: 80, editable: true, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/GetModelsSearch'} },
    		        { name: 'equip_year', index: 'equip_year', width: 60, editable: true, search: false },
    		        { name: 'work_loc', index: 'work_loc', width: 80, editable: true, edittype: "select", editoptions: { dataUrl: '/EquipTrack/GetLocations' }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/GetLocations'} },
@@ -105,8 +105,7 @@ jQuery(document).ready(function() {
             { name: 'ezpass_num', hidden: true, editable: true, editrules: { edithidden: true }, search: false },
             { name: 'fuelcard', hidden: true, editable: true, editrules: { edithidden: true }, search: false },
             { name: 'fuelcard_num', hidden: true, editable: true, editrules: { edithidden: true }, search: false },
-            { name: 'to_be_sold', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/TrueFalseDropdownData'} },
-            { name: 'fuel_card_loc', hidden: true, editable: true, editrules: { edithidden: true }, search: false }
+            { name: 'to_be_sold', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/TrueFalseDropdownData'} }
             ],
         sortname: 'equip_id',
         sortorder: "asc",
@@ -191,7 +190,6 @@ jQuery(document).ready(function() {
                 $("#txtGPSNum").val('');
                 $("#txtEZPASSNum").val('');
                 $("#txtFuelCardNum").val('');
-                $("#ddlFuelCardLoc").val('');
 
                 $('#hdnEquipApportioned').val('');
                 $('#hdnEquipInRepair').val('');
@@ -207,7 +205,7 @@ jQuery(document).ready(function() {
                 $('#hdnEquipFuelCard').val('');
                 $('#hdnEquipUnknown').val('');
                 $('#hdnEquipLeased').val('');
-                    
+
 
                 $("#hdnEditID").val(data.equip_id);
                 $("#txtEquipYear").val(data.equip_year);
@@ -234,8 +232,6 @@ jQuery(document).ready(function() {
                 $("#txtGPSNum").val(data.gps_num);
                 $("#txtEZPASSNum").val(data.ezpass_num);
                 $("#txtFuelCardNum").val(data.fuelcard_num);
-                $("#ddlFuelCardLoc").val(data.fuel_card_loc);
-
                 if (data.lojack == 'True') {
                     $('#chkEquipLojack').attr('checked', true);
                     $('#hdnEquipLojack').val('on');
@@ -402,8 +398,9 @@ jQuery(document).ready(function() {
          {}, // edit options
          {}, // add options
          {}, // del options
-            {odata: ['equals', 'not equal', 'less', 'less or equal', 'greater', 'greater or equal', 'begins with', 'does not begin with', 'is in', 'is not in', 'ends with', 'does not end with', 'contains', 'does not contain'],
-            //         {odata: ['equals','begins with'],
+		{odata: [{ oper: 'eq', text: 'equal' }, { oper: 'ne', text: 'not equal' }, { oper: 'lt', text: 'less' }, { oper: 'le', text: 'less or equal' }, { oper: 'gt', text: 'greater' }, { oper: 'ge', text: 'greater or equal' }, { oper: 'bw', text: 'begins with' }, { oper: 'bn', text: 'does not begin with' }, { oper: 'in', text: 'is in' }, { oper: 'ni', text: 'is not in' }, { oper: 'ew', text: 'ends with' }, { oper: 'en', text: 'does not end with' }, { oper: 'cn', text: 'contains' }, { oper: 'nc', text: 'does not contain' }, { oper: 'nu', text: 'is null' }, { oper: 'nn', text: 'is not null'}],
+		//            {odata: ['equals', 'not equal', 'less', 'less or equal', 'greater', 'greater or equal', 'begins with', 'does not begin with', 'is in', 'is not in', 'ends with', 'does not end with', 'contains', 'does not contain'],
+		//         {odata: ['equals','begins with'],
             closeAfterSearch: true, closeOnEscape: true
         }, // search options
          {} // view options
@@ -488,7 +485,8 @@ jQuery(document).ready(function() {
                       $("#txtEquipGCW").val('');
                       $("#txtEquipUnlaidenWt").val('');
                       $("#ddlTagSt").val('');
-                      $("#ddlFuel").val('');
+                      if (data.fuel_descr.length > 0)
+                          $("#ddlFuel option:econtains(" + data.fuel_descr + ")").attr('selected', 'selected');
                       $("#txtCost").val('');
                       $("#txtCurrentValue").val('');
                       $("#ddlInspRmndr").val('');
@@ -511,7 +509,6 @@ jQuery(document).ready(function() {
                       $("#txtGPSNum").val('');
                       $("#txtEZPassNum").val('');
                       $("#txtFuelCardNum").val('');
-                      $("#ddlFuelCardLoc").val('');
 
                       $('#hdnEquipApportioned').val('');
                       $('#hdnEquipInRepair').val('');
@@ -543,8 +540,7 @@ jQuery(document).ready(function() {
                       $("#txtEquipGCW").val(data.gross_c_wt);
                       $("#txtEquipUnlaidenWt").val(data.unlaiden_wt);
                       $("#ddlTagSt").val(data.tag_state);
-                      if (data.fuel_descr.length > 0)
-                          $("#ddlFuel option:econtains(" + data.fuel_descr + ")").attr('selected', 'selected');
+                      $("#ddlFuel").val(data.fuel_descr);
                       $("#txtCost").val(data.cost);
                       $("#txtCurrentValue").val(data.current_value);
                       $("#ddlInspRmndr").val(data.insp_rmdr_wks);
@@ -553,8 +549,6 @@ jQuery(document).ready(function() {
                       $("#txtGPSNum").val(data.gps_num);
                       $("#txtEZPassNum").val(data.ezpass_num);
                       $("#txtFuelCardNum").val(data.fuelcard_num);
-                      $("#ddlFuelCardLoc").val(data.fuel_card_loc);
-                      
                       if (data.lojack == 'True') {
                           $('#chkEquipLojack').attr('checked', true);
                           $('#hdnEquipLojack').val('on');
@@ -733,7 +727,7 @@ jQuery(document).ready(function() {
                 $('#txtEquipSvcMechanic').val('');
                 $('#txtEquipSvcParts').val('');
                 $('#txtEquipSvcMiles').val('');
-//                $('#txtEquipSvcHours').val('');
+                //                $('#txtEquipSvcHours').val('');
                 //                $('#txtEquipSvcTotal').val('');
                 $('#txtEquipSvcReq').val('');
                 $('#txtEquipSvcPerf').val('');
@@ -745,7 +739,7 @@ jQuery(document).ready(function() {
                 $('#txtEquipSvcMechanic').val(data.mechanic);
                 $('#txtEquipSvcParts').val(data.parts_cost);
                 $('#txtEquipSvcMiles').val(data.mileage);
-//                $('#txtEquipSvcHours').val(data.hours);
+                //                $('#txtEquipSvcHours').val(data.hours);
                 //                $('#txtEquipSvcTotal').val(data.total_cost);
                 $('#txtEquipSvcReq').val(data.serv_reqstd);
                 $('#txtEquipSvcPerf').val(data.serv_perf_descr);
@@ -761,12 +755,12 @@ jQuery(document).ready(function() {
             if (ids != null) {
                 curRowSvc = ids;
                 var data = $("#equip_svc").getRowData(ids);
-//                curSvcOldHours = data.hours;
+                //                curSvcOldHours = data.hours;
                 curSvcOldMileage = data.mileage;
                 var eIM = document.getElementById("hdnSvcOldMileage");
                 eIM.value = curSvcOldMileage;
-//                var eIH = document.getElementById("hdnSvcOldHours");
-//                eIH.value = curSvcOldMileage;
+                //                var eIH = document.getElementById("hdnSvcOldHours");
+                //                eIH.value = curSvcOldMileage;
                 var eIS = document.getElementById("hdnSvcID");
                 eIS.value = data.service_id;
             }
@@ -806,7 +800,7 @@ jQuery(document).ready(function() {
                       eID.value = data.service_id;
                       var eRpt = document.getElementById("hdnReportName");
                       eRpt.value = "EquipOneSvcRpt";
-                      $("#rpt_dialog").dialog('option', 'title', "Service Report for ID: " + data.tool_id);
+                      $("#rpt_dialog").dialog('option', 'title', "Service Report for ID: " + data.equip_id);
 
                       jQuery('#rpt_dialog').dialog('open');
                   }
@@ -833,7 +827,7 @@ jQuery(document).ready(function() {
                       $('#txtEquipSvcMechanic').val('');
                       $('#txtEquipSvcParts').val('');
                       $('#txtEquipSvcMiles').val('');
-//                      $('#txtEquipSvcHours').val('');
+                      //                      $('#txtEquipSvcHours').val('');
                       //                      $('#txtEquipSvcTotal').val('');
                       $('#txtEquipSvcReq').val('');
                       $('#txtEquipSvcPerf').val('');
@@ -845,7 +839,7 @@ jQuery(document).ready(function() {
                       $('#txtEquipSvcMechanic').val(data.mechanic);
                       $('#txtEquipSvcParts').val(data.parts_cost);
                       $('#txtEquipSvcMiles').val(data.mileage);
-//                      $('#txtEquipSvcHours').val(data.hours);
+                      //                      $('#txtEquipSvcHours').val(data.hours);
                       //                      $('#txtEquipSvcTotal').val(data.total_cost);
                       $('#txtEquipSvcReq').val(data.serv_reqstd);
                       $('#txtEquipSvcPerf').val(data.serv_perf_descr);
@@ -879,7 +873,7 @@ jQuery(document).ready(function() {
                       $('#txtEquipSvcMechanic').val('');
                       $('#txtEquipSvcParts').val('');
                       $('#txtEquipSvcMiles').val('');
-//                      $('#txtEquipSvcHours').val('');
+                      //                      $('#txtEquipSvcHours').val('');
                       //                      $('#txtEquipSvcTotal').val('');
                       $('#txtEquipSvcReq').val('');
                       $('#txtEquipSvcPerf').val('');
@@ -1224,7 +1218,7 @@ jQuery(document).ready(function() {
                 $('#chkToolUnknown').attr('checked', false);
                 $('#chkToolInRepair').attr('checked', false);
                 $('#chkToolTotaled').attr('checked', false);
-                
+
                 $("#hdnToolStolen").val('');
                 $("#hdnToolSold").val('');
                 $("#hdnToolToBeSold").val('');
@@ -1319,7 +1313,7 @@ jQuery(document).ready(function() {
                     $('#chkToolTotaled').attr('checked', false);
                     $('#hdnToolTotaled').val('off');
                 }
-                
+
                 $("#tool_dlg_results").html('');
                 OpenToolEditDlg(data);
             }
@@ -1385,8 +1379,9 @@ jQuery(document).ready(function() {
              }
          }
      }, // del options
-            {odata: ['equals', 'not equal', 'less', 'less or equal', 'greater', 'greater or equal', 'begins with', 'does not begin with', 'is in', 'is not in', 'ends with', 'does not end with', 'contains', 'does not contain'],
-            //         {odata: ['equals','begins with'],
+		{odata: [{ oper: 'eq', text: 'equal' }, { oper: 'ne', text: 'not equal' }, { oper: 'lt', text: 'less' }, { oper: 'le', text: 'less or equal' }, { oper: 'gt', text: 'greater' }, { oper: 'ge', text: 'greater or equal' }, { oper: 'bw', text: 'begins with' }, { oper: 'bn', text: 'does not begin with' }, { oper: 'in', text: 'is in' }, { oper: 'ni', text: 'is not in' }, { oper: 'ew', text: 'ends with' }, { oper: 'en', text: 'does not end with' }, { oper: 'cn', text: 'contains' }, { oper: 'nc', text: 'does not contain' }, { oper: 'nu', text: 'is null' }, { oper: 'nn', text: 'is not null'}],
+		//            {odata: ['equals', 'not equal', 'less', 'less or equal', 'greater', 'greater or equal', 'begins with', 'does not begin with', 'is in', 'is not in', 'ends with', 'does not end with', 'contains', 'does not contain'],
+		//         {odata: ['equals','begins with'],
             closeAfterSearch: true, closeOnEscape: true
         }, // search options
          {} // view options
@@ -1674,7 +1669,7 @@ jQuery(document).ready(function() {
                       eID.value = data.service_id;
                       var eRpt = document.getElementById("hdnReportName");
                       eRpt.value = "ToolOneSvcRpt";
-                      $("#rpt_dialog").dialog('option', 'title', "Service Report for ID: " + data.tool_id);
+                      $("#rpt_dialog").data("title.dialog", "Service Report for ID: " + data.tool_id)
 
                       jQuery('#rpt_dialog').dialog('open');
                   }
@@ -1860,7 +1855,7 @@ jQuery(document).ready(function() {
                       bID.value = data.assign_id;
                       var aID = document.getElementById("hdnEquipAssignAfterIDInit");
                       aID.value = data.assign_id;
-                      $("#img_dialog_assign").dialog('option', 'title', "Assignment Images for ID: " + data.tool_id);
+                      $("#img_dialog_assign").data("title.dialog", "Assignment Images for ID: " + data.tool_id)
                       $.get("/EquipTrack/GetEquipImages/" + data.assign_id + "/TOOL_ASSIGN_B", {}, function(data) {
                           $("#img_assign_before_results").html(data);
                       });
@@ -1946,7 +1941,7 @@ jQuery(document).ready(function() {
                       else {
                           alert('Currently selected tool is already assigned!');
                       }
-                      
+
                   }
                   return false;
               },
@@ -2110,8 +2105,9 @@ jQuery(document).ready(function() {
              }
          }
      }, // del options
-            {odata: ['equals', 'not equal', 'less', 'less or equal', 'greater', 'greater or equal', 'begins with', 'does not begin with', 'is in', 'is not in', 'ends with', 'does not end with', 'contains', 'does not contain'],
-            //         {odata: ['equals','begins with'],
+		{odata: [{ oper: 'eq', text: 'equal' }, { oper: 'ne', text: 'not equal' }, { oper: 'lt', text: 'less' }, { oper: 'le', text: 'less or equal' }, { oper: 'gt', text: 'greater' }, { oper: 'ge', text: 'greater or equal' }, { oper: 'bw', text: 'begins with' }, { oper: 'bn', text: 'does not begin with' }, { oper: 'in', text: 'is in' }, { oper: 'ni', text: 'is not in' }, { oper: 'ew', text: 'ends with' }, { oper: 'en', text: 'does not end with' }, { oper: 'cn', text: 'contains' }, { oper: 'nc', text: 'does not contain' }, { oper: 'nu', text: 'is null' }, { oper: 'nn', text: 'is not null'}],
+		//            {odata: ['equals', 'not equal', 'less', 'less or equal', 'greater', 'greater or equal', 'begins with', 'does not begin with', 'is in', 'is not in', 'ends with', 'does not end with', 'contains', 'does not contain'],
+		//         {odata: ['equals','begins with'],
             closeAfterSearch: true, closeOnEscape: true
         }, // search options
          {} // view options
@@ -2195,8 +2191,8 @@ jQuery(document).ready(function() {
               },
               position: "first"
           });
-          $('#smalltoolgridp_center').remove();
-          $('#smalltoolgridp_right').remove();
+    $('#smalltoolgridp_center').remove();
+    $('#smalltoolgridp_right').remove();
 
 
     $(function() {
@@ -2328,7 +2324,7 @@ jQuery(document).ready(function() {
     $(function() {
         $("#equip_edit_dlg").dialog({
             bgiframe: true,
-            width: 775,
+            width: 650,
             modal: true,
             autoOpen: false,
             resizable: false,
@@ -3211,8 +3207,7 @@ function OpenEquipEditSvcDlg(dta) {
 
     $("#equip_svc_success").hide();
     $("#equip_svc_loading").hide();
-    //        $("#equip_svc_edit_dlg").data("title.dialog", oper + " Equipment Service")
-    $("#equip_svc_edit_dlg").dialog('option', 'title', oper + " Equipment Service");
+    $("#equip_svc_edit_dlg").data("title.dialog", oper + " Equipment Service")
 
     $('#txtEquipSvcID').val(dta.equip_id);
     $("#txtEquipSvcID").attr("disabled", "disabled");
@@ -3227,7 +3222,8 @@ function OpenEquipEditSvcDlg(dta) {
 
     $.get("/EquipTrack/GetEquipSvcEditDlg/", {}, function(data) {
         $("#equip_svc_results").html(data);
-        $("#lstEquipSvcTypes option:econtains(" + dta.serv_descr + ")").attr('selected', 'selected');
+        if (dta.serv_descr.length > 0)
+            $("#lstEquipSvcTypes option:econtains(" + dta.serv_descr + ")").attr('selected', 'selected');
     });
 
 }
@@ -3246,8 +3242,7 @@ function OpenToolSvcDlg(dta) {
 
     $("#tool_svc_success").hide();
     $("#tool_svc_loading").hide();
-    //        $("#tool_svc_edit_dlg").data("title.dialog", oper + " Tool Service")
-    $("#tool_svc_edit_dlg").dialog('option', 'title', oper + " Tool Service");
+    $("#tool_svc_edit_dlg").data("title.dialog", oper + " Tool Service")
 
     $('#txtToolSvcID').val(dta.tool_id);
     $("#txtToolSvcID").attr("disabled", "disabled");
@@ -3275,11 +3270,10 @@ function OpenEquipEditAsgnDlg(dta) {
 
         $("#btnEquipAsgnSave").removeAttr("disabled", "disabled");
     }
-    
+
     $("#equip_asgn_success").hide();
     $("#equip_asgn_loading").hide();
-    //        $("#equip_asgn_edit_dlg").data("title.dialog", oper + " Equipment Assigment")
-    $("#equip_asgn_edit_dlg").dialog('option', 'title', oper + " Equipment Assigment");
+    $("#equip_asgn_edit_dlg").data("title.dialog", oper + " Equipment Assigment")
 
     $('#txtEquipAsgnID').val(dta.equip_id);
     $("#txtEquipAsgnID").attr("disabled", "disabled");
@@ -3314,8 +3308,7 @@ function OpenToolAsgnDlg(dta) {
 
     $("#tool_asgn_success").hide();
     $("#tool_asgn_loading").hide();
-    //        $("#tool_asgn_edit_dlg").data("title.dialog", oper + " Tool Assigment")
-    $("#tool_asgn_edit_dlg").dialog('option', 'title', oper + " Tool Assigment");
+    $("#tool_asgn_edit_dlg").data("title.dialog", oper + " Tool Assigment")
 
     $('#txtToolAsgnID').val(dta.tool_id);
     $("#txtToolAsgnID").attr("disabled", "disabled");
@@ -3345,8 +3338,7 @@ function OpenEquipEditDlg(dta) {
     $("#equip_success").hide();
     $("#equip_loading").hide();
 
-    //        $("#equip_edit_dlg").data("title.dialog", oper + " Equipment")
-    $("#equip_edit_dlg").dialog('option', 'title', oper + " Equipment");
+    $("#equip_edit_dlg").data("title.dialog", oper + " Equipment")
 
     if (oper == "Edit") {
         $('#txtEquipID').val(dta.equip_id);
@@ -3367,7 +3359,7 @@ function OpenEquipEditDlg(dta) {
         $('#chkEquipStolen').attr("disabled", "disabled");
         $('#chkEquipTotaled').attr("disabled", "disabled");
         $('#chkEquipLojack').attr("disabled", "disabled");
-//        $('#chkEquipUnknown').attr("disabled", "disabled");
+        //        $('#chkEquipUnknown').attr("disabled", "disabled");
         $('#chkEquipLeased').attr("disabled", "disabled");
         $('#chkHUTSticker').attr("disabled", "disabled");
         $('#chkEquipApportioned').attr("disabled", "disabled");
@@ -3379,7 +3371,7 @@ function OpenEquipEditDlg(dta) {
         $('#txtGPSNum').attr("disabled", "disabled");
         $('#txtFuelCardNum').attr("disabled", "disabled");
 
-//        $("#btnSaveEquip").attr("disabled", "disabled");
+        $("#btnSaveEquip").attr("disabled", "disabled");
     }
     else {
         $('#txtEquipID').val('');
@@ -3397,7 +3389,6 @@ function OpenEquipEditDlg(dta) {
     $('#dtEquipMilesDt').val('');
     $('#dtEquipMilesDt').datepicker('disable');
     $('#dtEquipMilesDt').val(dta.miles_dt);
-
 
     $('#dtEquipTagExp').val('');
     $('#dtEquipTagExp').datepicker('disable');
@@ -3423,9 +3414,6 @@ function OpenEquipEditDlg(dta) {
             $('#ddlEquipModel').attr("disabled", "disabled");
             $('#ddlEquipType').attr("disabled", "disabled");
             $('#ddlEquipRegBy').attr("disabled", "disabled");
-            $('#ddlEquipMngBy').attr("disabled", "disabled");
-            $('#dtEquipMngByDt').datepicker().datepicker('disable');
-            
 
         }
     });
@@ -3440,8 +3428,7 @@ function OpenToolEditDlg(dta) {
     $("#tool_dlg_success").hide();
     $("#tool_loading").hide();
 
-    //        $("#tool_edit_dlg").data("title.dialog", oper + " Tool")
-    $("#tool_edit_dlg").dialog('option', 'title', oper + " Tool");
+    $("#tool_edit_dlg").data("title.dialog", oper + " Tool")
 
     if (oper == "Edit") {
         $('#txtToolID').val(dta.tool_id);
@@ -3456,11 +3443,10 @@ function OpenToolEditDlg(dta) {
         $("#chkToolStolen").attr("disabled", "disabled");
         $("#chkToolElectrical").attr("disabled", "disabled");
         $("#chkToolLojack").attr("disabled", "disabled");
-//        $("#chkToolUnknown").attr("disabled", "disabled");
+        //        $("#chkToolUnknown").attr("disabled", "disabled");
         $("#chkToolTotaled").attr("disabled", "disabled");
 
-        //        $("#btnSaveToolDlg").attr("disabled", "disabled");
-
+        $("#btnSaveToolDlg").attr("disabled", "disabled");
     }
     else {
         $('#txtToolID').val('');
@@ -3477,7 +3463,7 @@ function OpenToolEditDlg(dta) {
     $('#dtCalibrationDue').val(dta.calibration_due_dt);
 
     jQuery('#tool_edit_dlg').dialog('open');
-    
+
     $.get("/EquipTrack/GetToolEditDlg/", {}, function(data) {
         $("#tool_dlg_results").html(data);
         if (oper == "Edit") {
@@ -3498,10 +3484,8 @@ function OpenToolEditDlg(dta) {
             $("#ddlToolType").attr("disabled", "disabled");
             $("#ddlToolSize").attr("disabled", "disabled");
             $("#ddlToolRegBy").attr("disabled", "disabled");
-            $('#ddlToolMngBy').attr("disabled", "disabled");
-            $('#dtToolMngByDt').datepicker().datepicker('disable');
-            
-            
+
+
         }
     });
 
@@ -3516,8 +3500,7 @@ function OpenSmallToolEditDlg(dta) {
     $("#smalltool_dlg_success").hide();
     $("#smalltool_loading").hide();
 
-    //        $("#smalltool_edit_dlg").data("title.dialog", oper + " Small Tool")
-    $("#smalltool_edit_dlg").dialog('option', 'title', oper + " Small Tool");
+    $("#smalltool_edit_dlg").data("title.dialog", oper + " Small Tool")
 
     jQuery('#smalltool_edit_dlg').dialog('open');
 
@@ -3527,7 +3510,7 @@ function OpenSmallToolEditDlg(dta) {
             $('#ddlSmallToolMngBy').val(dta.managed_by);
             $('#ddlSmallToolRegBy').val(dta.reg_by);
             $('#ddlSmallToolAsgnTo').val(dta.assigned_to);
-//            $("#btnSmallToolSave").attr("disabled", "disabled");
+            $("#btnSmallToolSave").attr("disabled", "disabled");
         }
     });
 

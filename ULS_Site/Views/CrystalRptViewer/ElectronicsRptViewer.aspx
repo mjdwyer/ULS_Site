@@ -8,21 +8,21 @@
 	<%if (Convert.ToString(ViewData["default_division"]) == "ULS-PA")
    { %>
    
-    <script type="text/javascript" src="/Content/javascript/ElectronicTracker.js"></script>
+    <script type="text/javascript" src="/Scripts/ElectronicTracker.js"></script>
     <%}%>
 	<%else if (Convert.ToString(ViewData["default_division"]) == "ULS-PA-RO")
    { %>
-    <script type="text/javascript" src="/Content/javascript/ElectronicTrackerRO2.js"></script>
+    <script type="text/javascript" src="/Scripts/ElectronicTrackerRO2.js"></script>
     <%}%>
    <%else { %>
-    <script type="text/javascript" src="/Content/javascript/ElectronicTrackerRO.js"></script>
+    <script type="text/javascript" src="/Scripts/ElectronicTrackerRO.js"></script>
    <% }%>
-    <script type="text/javascript" src="/Content/javascript/ElectronicTrackerFuncs.js"></script>
-    <script type="text/javascript" src="/Content/javascript/hoverIntent.js"></script>
-    <script type="text/javascript" src="/Content/javascript/superfish.js"></script>
-    <script type="text/javascript" src="/Content/javascript/supersubs.js"></script>
-    <script type="text/javascript" src="/Content/javascript/jquery.alphanumeric.js"></script> 
-    <script type="text/javascript" src="/Content/javascript/jquery.maskedinput-1.2.2.js"></script>
+    <script type="text/javascript" src="/Scripts/ElectronicTrackerFuncs.js"></script>
+    <script type="text/javascript" src="/Scripts/hoverIntent.js"></script>
+    <script type="text/javascript" src="/Scripts/superfish.js"></script>
+    <script type="text/javascript" src="/Scripts/supersubs.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.alphanumeric.js"></script> 
+    <script type="text/javascript" src="/Scripts/jquery.maskedinput-1.2.2.js"></script>
 	<script type="text/javascript">
 
 	    // initialise plugins

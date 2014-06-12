@@ -6,12 +6,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="EquipHeadContent" runat="server">
     <link rel="stylesheet" type="text/css" media="screen" href="../../Content/superfish.css" />
 
-    <script type="text/javascript" src="/Content/javascript/Qualificatons2.js?12"></script> 
-    <script type="text/javascript" src="/Content/javascript/hoverIntent.js"></script>
-    <script type="text/javascript" src="/Content/javascript/superfish.js"></script>
-    <script type="text/javascript" src="/Content/javascript/supersubs.js"></script>
-    <script type="text/javascript" src="/Content/javascript/jquery.alphanumeric.js"></script> 
-    <script type="text/javascript" src="/Content/javascript/jquery.maskedinput-1.2.2.js"></script>
+    <script type="text/javascript" src="/Scripts/Qualificatons2.js?12"></script> 
+    <script type="text/javascript" src="/Scripts/hoverIntent.js"></script>
+    <script type="text/javascript" src="/Scripts/superfish.js"></script>
+    <script type="text/javascript" src="/Scripts/supersubs.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.alphanumeric.js"></script> 
+    <script type="text/javascript" src="/Scripts/jquery.maskedinput.min.js"></script>
 	<script type="text/javascript">
 
 		    // initialise plugins
@@ -387,6 +387,7 @@
           <option value="UGI">UGI</option>
           <option value="WG">WG</option>
           <option value="PECO">PECO</option>
+          <option value="VER">VER</option>
         </select>         
         </div>
         </td>
@@ -451,6 +452,7 @@
           <option value="UGI">UGI</option>
           <option value="WG">WG</option>
           <option value="PECO">PECO</option>
+          <option value="VER">VER</option>
         </select></center>         
                 
         <center>
@@ -498,6 +500,7 @@
           <option value="UGI">UGI</option>
           <option value="WG">WG</option>
           <option value="PECO">PECO</option>
+          <option value="VER">VER</option>
           </select>        
         </td>
         </tr>

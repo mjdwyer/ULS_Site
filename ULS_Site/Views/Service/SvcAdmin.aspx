@@ -2,10 +2,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="EquipHeadContent" runat="server">
     <link rel="stylesheet" type="text/css" media="screen" href="../../Content/superfish.css" />
 
-    <script type="text/javascript" src="/Content/javascript/SvcAdmin.js?4"></script>
-    <script type="text/javascript" src="/Content/javascript/hoverIntent.js"></script>
-    <script type="text/javascript" src="/Content/javascript/superfish.js"></script>
-    <script type="text/javascript" src="/Content/javascript/supersubs.js"></script>
+    <script type="text/javascript" src="/Scripts/SvcAdmin.js?4"></script>
+    <script type="text/javascript" src="/Scripts/hoverIntent.js"></script>
+    <script type="text/javascript" src="/Scripts/superfish.js"></script>
+    <script type="text/javascript" src="/Scripts/supersubs.js"></script>
 	<script type="text/javascript">
 
 		    // initialise plugins

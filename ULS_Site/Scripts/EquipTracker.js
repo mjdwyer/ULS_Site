@@ -32,7 +32,7 @@
             height: 255,
             width: 740,
             rowNum: 5000,
-            colNames: ['ID', 'Type', 'Make', 'Model', 'Year', 'Location', 'Insp Due', 'Serv Due', 'Miles/Hrs', 'Milage Dt', 'Reg By', 'Mngd By', 'Mngd By Dt', 'Tag Exp', '', '', '', '', 'Vin Num', 'Title Num', 'GVW', 'Unlaiden Wt', 'Tag Num', 'Tag State', 'Fuel', 'Cost', 'Inspect Rmndr(wks)', 'Tag Rmndr(wks)', 'Stolen', 'Sold', 'Lojack', 'In Repair', 'Totaled', 'Hut Sticker', 'Apportioned', 'IFTA Sticker', 'GPS', 'Comment', '', 'Unknown', 'Current Value', 'ImgCnt', 'Leased', 'GCW', '', '', '', '', '', 'To Be Sold',''],
+            colNames: ['ID', 'Type', 'Make', 'Model', 'Year', 'Location', 'Insp Due', 'Serv Due', 'Miles/Hrs', 'Milage Dt', 'Reg By', 'Mngd By', 'Mngd By Dt', 'Tag Exp', '', '', '', '', 'Vin Num', 'Title Num', 'GVW', 'Unlaiden Wt', 'Tag Num', 'Tag State', 'Fuel', 'Cost', 'Inspect Rmndr(wks)', 'Tag Rmndr(wks)', 'Stolen', 'Sold', 'Lojack', 'In Repair', 'Totaled', 'Hut Sticker', 'Apportioned', 'IFTA Sticker', 'GPS', 'Comment', '', 'Unknown', 'Current Value', 'ImgCnt', 'Leased', 'GCW', '', '', '', '', '', 'To Be Sold', ''],
             colModel: [
    		        { name: 'equip_id', index: 'equip_id', width: 65, editable: true, search: true, searchoptions: { sopt: ['eq', 'bw', 'ew']} },
   		        { name: 'type_desc', index: 'type_desc', width: 130, editable: true, edittype: "select", editoptions: { dataUrl: '/EquipTrack/GetTypes' }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/GetTypesSearch'} },
@@ -389,20 +389,19 @@
 
                 if (uData.searchVal == '') {
                     strCap = 'Inventory for ' + curDiv +
-            '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+            '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
             '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
             '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
             '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-             'ID Color Key: assigned, <font color="green">available</font>, <font color="purple">on loan</font>,&nbsp<div style="background-color:#FFFFCC;width: 55px;float:right">has photo</div>';
+             'ID Color Key: assigned, <font color="green">available</font>, <font color="purple">on loan</font>,&nbsp<div style="background-color:#FFFFCC;width: 55px;float:right;padding-right:20px">has photo</div>';
                 }
                 else {
 
                     strCap = 'Inventory for ' + curDiv +
             '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-            '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
             '<font color="red">FILTER ON:</font>' + '&nbsp;&nbsp;&nbsp;' + uData.searchVal +
             '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-             'ID Color Key: assigned, <font color="green">available</font>, <font color="purple">on loan</font>, &nbsp<div style="background-color:#FFFFCC;width: 55px;float:right">has photo</div>';
+             'ID Color Key: assigned, <font color="green">available</font>, <font color="purple">on loan</font>, &nbsp<div style="background-color:#FFFFCC;width: 55px;float:right;padding-right:20px">has photo</div>';
                     if (uData.searchLojack != '') {
                         alert(uData.searchVal + " is not available.\n Registered By: " + uData.searchRegBy + "\n Stolen: " + uData.searchStolen + "\n Unknown: " + uData.searchUnknown + "\n Leased: " + uData.searchLeased + "\n Sold: " + uData.searchSold + "\n Lojack: " + uData.searchLojack + "\n In Repair: " + uData.searchInRepair + "\n Totaled: " + uData.searchTotaled + "\n ID: " + uData.searchId + "\n To Be Sold: " + uData.searchToBeSold);
                     }
@@ -442,8 +441,9 @@
              return ajaxData;
          }
      }, // del options
-            {odata: ['equals', 'not equal', 'less', 'less or equal', 'greater', 'greater or equal', 'begins with', 'does not begin with', 'is in', 'is not in', 'ends with', 'does not end with', 'contains', 'does not contain'],
-            closeAfterSearch: true, closeOnEscape: true
+		{odata: [{ oper: 'eq', text: 'equal' }, { oper: 'ne', text: 'not equal' }, { oper: 'lt', text: 'less' }, { oper: 'le', text: 'less or equal' }, { oper: 'gt', text: 'greater' }, { oper: 'ge', text: 'greater or equal' }, { oper: 'bw', text: 'begins with' }, { oper: 'bn', text: 'does not begin with' }, { oper: 'in', text: 'is in' }, { oper: 'ni', text: 'is not in' }, { oper: 'ew', text: 'ends with' }, { oper: 'en', text: 'does not end with' }, { oper: 'cn', text: 'contains' }, { oper: 'nc', text: 'does not contain' }, { oper: 'nu', text: 'is null' }, { oper: 'nn', text: 'is not null'}],
+		//            {odata: ['equals', 'not equal', 'less', 'less or equal', 'greater', 'greater or equal', 'begins with', 'does not begin with', 'is in', 'is not in', 'ends with', 'does not end with', 'contains', 'does not contain'],
+		closeAfterSearch: true, closeOnEscape: true
         }, // search options
          {} // view options
           ).navButtonAdd('#equipgridp', {
@@ -460,7 +460,7 @@
                       var eID = document.getElementById("hdnEquipIDInit");
                       eID.value = data.equip_id;
                       $("#img_dialog").dialog('option', 'title', "Images for ID: " + data.equip_id);
-                      //                      $("#img_dialog").data("title.dialog", "Images for ID: " + data.equip_id)
+                      //                      $("#img_dialog").dialog('option', 'title', "Images for ID: " + data.equip_id)
                       $.get("/EquipTrack/GetEquipImages/" + data.equip_id + "/EQUIP", {}, function(data) {
                           $("#img_results").html(data);
                       });
@@ -486,7 +486,7 @@
                       eID.value = data.equip_id;
                       var eRpt = document.getElementById("hdnReportName");
                       eRpt.value = "EquipOneRpt";
-                      //                      $("#rpt_dialog").data("title.dialog", "Summary Report for ID: " + data.equip_id)
+                      //                      $("#rpt_dialog").dialog('option', 'title', "Summary Report for ID: " + data.equip_id)
                       $("#rpt_dialog").dialog('option', 'title', "Summary Report for ID: " + data.equip_id);
 
                       jQuery('#rpt_dialog').dialog('open');
@@ -924,7 +924,7 @@
                       eID.value = data.service_id;
                       var eRpt = document.getElementById("hdnReportName");
                       eRpt.value = "EquipOneSvcRpt";
-                      //                      $("#rpt_dialog").data("title.dialog", "Service Report for ID: " + data.equip_id)
+                      //                      $("#rpt_dialog").dialog('option', 'title', "Service Report for ID: " + data.equip_id)
                       $("#rpt_dialog").dialog('option', 'title', "Service Report for ID: " + data.equip_id);
 
                       jQuery('#rpt_dialog').dialog('open');
@@ -1157,7 +1157,7 @@
                       bID.value = data.assign_id;
                       var aID = document.getElementById("hdnEquipAssignAfterIDInit");
                       aID.value = data.assign_id;
-                      //                      $("#img_dialog_assign").data("title.dialog", "Assignment Images for ID: " + data.equip_id)
+                      //                      $("#img_dialog_assign").dialog('option', 'title', "Assignment Images for ID: " + data.equip_id)
                       $("#img_dialog_assign").dialog('option', 'title', "Assignment Images for ID: " + data.equip_id);
                       $.get("/EquipTrack/GetEquipImages/" + data.assign_id + "/EQUIP_ASSIGN_B", {}, function(data) {
                           $("#img_assign_before_results").html(data);
@@ -1499,20 +1499,19 @@
 
                 if (uData.searchVal == '') {
                     strCap = 'Inventory for ' + curDiv +
+                    '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
             '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
             '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-            '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-            '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-            'ID Color Key: assigned, <font color="green">available</font>, <font color="purple">on loan</font>,&nbsp<div style="background-color:#FFFFCC;width: 55px;float:right">has photo</div>';
+            '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+             'ID Color Key: assigned, <font color="green">available</font>, <font color="purple">on loan</font>,&nbsp<div style="background-color:#FFFFCC;width: 55px;float:right;padding-right:20px">has photo</div>';
                 }
                 else {
 
                     strCap = 'Inventory for ' + curDiv +
             '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-            '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
             '<font color="red">FILTER ON:</font>' + '&nbsp;&nbsp;&nbsp;' + uData.searchVal +
             '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-            'ID Color Key: assigned, <font color="green">available</font>, <font color="purple">on loan</font>,&nbsp<div style="background-color:#FFFFCC;width: 55px;float:right">has photo</div>';
+            'ID Color Key: assigned, <font color="green">available</font>, <font color="purple">on loan</font>,&nbsp<div style="background-color:#FFFFCC;float:right">has photos</div>';
                     if (uData.searchElectrical != '') {
                         alert(uData.searchVal + " is not available.\n Registered By: " + uData.searchRegBy + "\n Stolen: " + uData.searchStolen + "\n Unknown: " + uData.searchUnknown + "\n Sold: " + uData.searchSold + "\n Electrical: " + uData.searchElectrical + "\n In Repair: " + uData.searchInRepair + "\n Totaled: " + uData.searchTotaled + "\n ID: " + uData.searchId + "\n To Be Sold: " + uData.searchToBeSold);
                     }
@@ -1552,8 +1551,9 @@
              return ajaxData;
          }
      }, // del options
-            {odata: ['equals', 'not equal', 'less', 'less or equal', 'greater', 'greater or equal', 'begins with', 'does not begin with', 'is in', 'is not in', 'ends with', 'does not end with', 'contains', 'does not contain'],
-            //         {odata: ['equals','begins with'],
+		{odata: [{ oper: 'eq', text: 'equal' }, { oper: 'ne', text: 'not equal' }, { oper: 'lt', text: 'less' }, { oper: 'le', text: 'less or equal' }, { oper: 'gt', text: 'greater' }, { oper: 'ge', text: 'greater or equal' }, { oper: 'bw', text: 'begins with' }, { oper: 'bn', text: 'does not begin with' }, { oper: 'in', text: 'is in' }, { oper: 'ni', text: 'is not in' }, { oper: 'ew', text: 'ends with' }, { oper: 'en', text: 'does not end with' }, { oper: 'cn', text: 'contains' }, { oper: 'nc', text: 'does not contain' }, { oper: 'nu', text: 'is null' }, { oper: 'nn', text: 'is not null'}],
+		//            {odata: ['equals', 'not equal', 'less', 'less or equal', 'greater', 'greater or equal', 'begins with', 'does not begin with', 'is in', 'is not in', 'ends with', 'does not end with', 'contains', 'does not contain'],
+		//         {odata: ['equals','begins with'],
             closeAfterSearch: true, closeOnEscape: true
         }, // search options
          {} // view options
@@ -1570,7 +1570,7 @@
                       iID.value = "TOOL";
                       var eID = document.getElementById("hdnEquipIDInit");
                       eID.value = data.tool_id;
-                      //                      $("#img_dialog").data("title.dialog", "Images for ID: " + data.tool_id)
+                      //                      $("#img_dialog").dialog('option', 'title', "Images for ID: " + data.tool_id)
                       $("#img_dialog").dialog('option', 'title', "Images for ID: " + data.tool_id);
                       $.get("/EquipTrack/GetEquipImages/" + data.tool_id + "/TOOL", {}, function(data) {
                           $("#img_results").html(data);
@@ -1597,7 +1597,7 @@
                       eID.value = data.tool_id;
                       var eRpt = document.getElementById("hdnReportName");
                       eRpt.value = "ToolOneRpt";
-                      //                      $("#rpt_dialog").data("title.dialog", "Summary Report for ID: " + data.tool_id)
+                      //                      $("#rpt_dialog").dialog('option', 'title', "Summary Report for ID: " + data.tool_id)
                       $("#rpt_dialog").dialog('option', 'title', "Summary Report for ID: " + data.tool_id);
 
                       jQuery('#rpt_dialog').dialog('open');
@@ -1910,7 +1910,7 @@
                       eID.value = data.service_id;
                       var eRpt = document.getElementById("hdnReportName");
                       eRpt.value = "ToolOneSvcRpt";
-                      //                      $("#rpt_dialog").data("title.dialog", "Service Report for ID: " + data.tool_id)
+                      //                      $("#rpt_dialog").dialog('option', 'title', "Service Report for ID: " + data.tool_id)
                       $("#rpt_dialog").dialog('option', 'title', "Service Report for ID: " + data.tool_id);
 
                       jQuery('#rpt_dialog').dialog('open');
@@ -2120,7 +2120,7 @@
                       bID.value = data.assign_id;
                       var aID = document.getElementById("hdnEquipAssignAfterIDInit");
                       aID.value = data.assign_id;
-                      //                      $("#img_dialog_assign").data("title.dialog", "Assignment Images for ID: " + data.tool_id)
+                      //                      $("#img_dialog_assign").dialog('option', 'title', "Assignment Images for ID: " + data.tool_id)
                       $("#img_dialog_assign").dialog('option', 'title', "Assignment Images for ID:  " + data.tool_id);
                       $.get("/EquipTrack/GetEquipImages/" + data.assign_id + "/TOOL_ASSIGN_B", {}, function(data) {
                           $("#img_assign_before_results").html(data);
@@ -2346,14 +2346,12 @@
             '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
             '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
             '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-            '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
             '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-             'Item Color Key: Out of Shop, <font color="green">In Shop</font>, <font color="purple">On Loan</font>';
+             'Item Color Key: Out of Shop, <font color="green">In Shop</font>, <font color="purple" style="padding-right:20px">On Loan</font>';
                 }
                 else {
 
                     strCap = 'Inventory for ' + curDiv +
-            '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
             '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
             '<font color="red">FILTER ON:</font>' + '&nbsp;&nbsp;&nbsp;' + uData.searchVal +
             '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
@@ -2383,7 +2381,8 @@
              }
          }
      }, // del options
-            {odata: ['equals', 'not equal', 'less', 'less or equal', 'greater', 'greater or equal', 'begins with', 'does not begin with', 'is in', 'is not in', 'ends with', 'does not end with', 'contains', 'does not contain'],
+		{odata: [{ oper:'eq', text:'equal'},{ oper:'ne', text:'not equal'},{ oper:'lt', text:'less'},{ oper:'le', text:'less or equal'},{ oper:'gt', text:'greater'},{ oper:'ge', text:'greater or equal'},{ oper:'bw', text:'begins with'},{ oper:'bn', text:'does not begin with'},{ oper:'in', text:'is in'},{ oper:'ni', text:'is not in'},{ oper:'ew', text:'ends with'},{ oper:'en', text:'does not end with'},{ oper:'cn', text:'contains'},{ oper:'nc', text:'does not contain'},{ oper:'nu', text:'is null'},{ oper:'nn', text:'is not null'}],
+//            {odata: ['equals', 'not equal', 'less', 'less or equal', 'greater', 'greater or equal', 'begins with', 'does not begin with', 'is in', 'is not in', 'ends with', 'does not end with', 'contains', 'does not contain'],
             //         {odata: ['equals','begins with'],
             closeAfterSearch: true, closeOnEscape: true
         }, // search options
@@ -2690,6 +2689,17 @@
                 bgiframe: true,
                 width: 650,
                 height: 325,
+                modal: true,
+                autoOpen: false,
+                resizable: false
+            })
+        });
+
+        $(function() {
+            $("#admin_xfer_assignments").dialog({
+                bgiframe: true,
+                width: 1050,
+                height: 625,
                 modal: true,
                 autoOpen: false,
                 resizable: false
@@ -3364,6 +3374,30 @@
 
         });
 
+        $('#xfer_assignments_form').ajaxForm(function(data) {
+
+            if (data == "Success") {
+
+                jQuery("#adminxferassignments").trigger("reloadGrid");
+                jQuery("#adminxfertoolassigns").trigger("reloadGrid");
+                jQuery("#adminxfersmalltoolassigns").trigger("reloadGrid");
+
+                $('.cbox').trigger('click').removeAttr('checked');
+
+                jQuery("#xfrer_assign_success").show();
+                jQuery("#xfrer_assign_success").html("Successfully Transferred Assignments.");
+                jQuery("#xfrer_assign_success").fadeOut(6000);
+
+            }
+            else {
+                jQuery("#xfrer_assign_success").show();
+                jQuery("#xfrer_assign_success").html("Error Transferring Assignments.");
+                jQuery("#xfrer_assign_success").fadeOut(6000);
+
+            }
+
+        });
+
 
         $('#adminlocform').ajaxForm(function(data) {
             if (data == "Success") {
@@ -3497,7 +3531,6 @@
             });
         });
 
-
     });
     
     function DeleteImage(id) {
@@ -3583,7 +3616,7 @@
 
         $("#equip_svc_success").hide();
         $("#equip_svc_loading").hide();
-//        $("#equip_svc_edit_dlg").data("title.dialog", oper + " Equipment Service")
+//        $("#equip_svc_edit_dlg").dialog('option', 'title', oper + " Equipment Service")
         $("#equip_svc_edit_dlg").dialog('option', 'title', oper + " Equipment Service");
 
         $('#txtEquipSvcID').val(dta.equip_id);
@@ -3619,7 +3652,7 @@
 
         $("#tool_svc_success").hide();
         $("#tool_svc_loading").hide();
-//        $("#tool_svc_edit_dlg").data("title.dialog", oper + " Tool Service")
+//        $("#tool_svc_edit_dlg").dialog('option', 'title', oper + " Tool Service")
         $("#tool_svc_edit_dlg").dialog('option', 'title', oper + " Tool Service");
 
         $('#txtToolSvcID').val(dta.tool_id);
@@ -3653,7 +3686,7 @@
         
         $("#equip_asgn_success").hide();
         $("#equip_asgn_loading").hide();
-//        $("#equip_asgn_edit_dlg").data("title.dialog", oper + " Equipment Assigment")
+//        $("#equip_asgn_edit_dlg").dialog('option', 'title', oper + " Equipment Assigment")
         $("#equip_asgn_edit_dlg").dialog('option', 'title', oper + " Equipment Assigment");
 
         $('#txtEquipAsgnID').val(dta.equip_id);
@@ -3691,7 +3724,7 @@
 
         $("#tool_asgn_success").hide();
         $("#tool_asgn_loading").hide();
-//        $("#tool_asgn_edit_dlg").data("title.dialog", oper + " Tool Assigment")
+//        $("#tool_asgn_edit_dlg").dialog('option', 'title', oper + " Tool Assigment")
         $("#tool_asgn_edit_dlg").dialog('option', 'title', oper + " Tool Assigment");
 
         $('#txtToolAsgnID').val(dta.tool_id);
@@ -3723,7 +3756,7 @@
         $("#equip_success").hide();
         $("#equip_loading").hide();
         
-//        $("#equip_edit_dlg").data("title.dialog", oper + " Equipment")
+//        $("#equip_edit_dlg").dialog('option', 'title', oper + " Equipment")
         $("#equip_edit_dlg").dialog('option', 'title', oper + " Equipment");
 
         if (oper == "Edit") {
@@ -3801,7 +3834,7 @@
         $("#tool_dlg_success").hide();
         $("#tool_loading").hide();
 
-//        $("#tool_edit_dlg").data("title.dialog", oper + " Tool")
+//        $("#tool_edit_dlg").dialog('option', 'title', oper + " Tool")
         $("#tool_edit_dlg").dialog('option', 'title', oper + " Tool");
 
 
@@ -3854,7 +3887,7 @@
         $("#smalltool_dlg_success").hide();
         $("#smalltool_loading").hide();
 
-//        $("#smalltool_edit_dlg").data("title.dialog", oper + " Small Tool")
+//        $("#smalltool_edit_dlg").dialog('option', 'title', oper + " Small Tool")
         $("#smalltool_edit_dlg").dialog('option', 'title', oper + " Small Tool");
 
         jQuery('#smalltool_edit_dlg').dialog('open');

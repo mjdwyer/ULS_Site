@@ -8,20 +8,20 @@
 
 	<%if (Convert.ToString(ViewData["default_division"]) == "ULS-PA")
    { %>
-    <script type="text/javascript" src="/Content/javascript/EquipTracker.js?64"></script>
+    <script type="text/javascript" src="/Scripts/EquipTracker.js?66"></script> 
     <%}%>
 	<%else if (Convert.ToString(ViewData["default_division"]) == "ULS-PA-RO")
    { %>
-    <script type="text/javascript" src="/Content/javascript/EquipTrackerRO2.js?59"></script>
+    <script type="text/javascript" src="/Scripts/EquipTrackerRO2.js?59"></script>
     <%}%>
    <%else { %>7
-    <script type="text/javascript" src="/Content/javascript/EquipTrackerRO.js?59"></script>
+    <script type="text/javascript" src="/Scripts/EquipTrackerRO.js?59"></script>
    <% }%>
-    <script type="text/javascript" src="/Content/javascript/EquipTrackerFuncs.js?38"></script>
-    <script type="text/javascript" src="/Content/javascript/hoverIntent.js"></script>
-    <script type="text/javascript" src="/Content/javascript/superfish.js"></script>
-    <script type="text/javascript" src="/Content/javascript/supersubs.js"></script>
-    <script type="text/javascript" src="/Content/javascript/jquery.alphanumeric.js"></script> 
+    <script type="text/javascript" src="/Scripts/EquipTrackerFuncs.js?40"></script>
+    <script type="text/javascript" src="/Scripts/hoverIntent.js"></script>
+    <script type="text/javascript" src="/Scripts/superfish.js"></script>
+    <script type="text/javascript" src="/Scripts/supersubs.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.alphanumeric.js"></script> 
 	<script type="text/javascript">
 
 		    // initialise plugins - 
@@ -100,6 +100,9 @@
 					</li>
 					<li>
 						<a href="#" onclick="AdminUsers()">User Administration</a>
+					</li>
+					<li>
+						<a href="#" onclick="AdminXferAssignments()">Transfer Employee Assignments</a>
 					</li>
 				</ul>
 			</li>
@@ -1406,6 +1409,54 @@
         </td>
         </tr>
         </table>
+    </div>
+
+    <div id="admin_xfer_assignments" title="">
+        <form id="xfer_assignments_form"  action="/EquipTrack/SaveAdminXferAssignments" method="post">
+        <div style="float:left;padding-right:10px"> 
+        <img src="/Content/images/help3.gif" alt=" " width="32" height="32" onclick="ShowHelp()" style="cursor:pointer; float:right" /> 
+        <div id="fromEmployee"></div>
+        <br />
+        <div>Equipment</div>
+        <table id="adminxferassignments" cellpadding="0" cellspacing="0" /></table>
+        <br /> 
+        <div>Tools</div>
+         <table id="adminxfertoolassigns" cellpadding="0" cellspacing="0" /></table> 
+         <br />
+        <div>Small Tools</div>
+         <table id="adminxfersmalltoolassigns" cellpadding="0" cellspacing="0" /></table> 
+        </div>
+        <div style="float:right;padding-right:10px">
+        <table style="float:left">
+        <tr>
+        <td >
+        <br/><br/>
+        <input type="submit" value="Save" id="btnSaveAssignXfer" style="float:left;padding-right:10px" onclick= "clickSaveXfer()" /> 
+       <input type="button" onclick="CloseAdminXferAssignments()" value="Close" id="CloseXfer" style="float:left;padding-right:10px"/>
+       <br/><br/> 
+        <input type="hidden"  id="hdnEquipXferIds" name="hdnEquipXferIds" value=""/>
+        <input type="hidden"  id="hdnEquipXferRetCond" name="hdnEquipXferRetCond" value=""/>
+        <input type="hidden"  id="hdnEquipXferRetMiles" name="hdnEquipXferRetMiles" value=""/>
+        <input type="hidden"  id="hdnEquipXferRetHours" name="hdnEquipXferRetHours" value=""/>
+        <input type="hidden"  id="hdnEquipXferAssignIds" name="hdnEquipXferAssignIds" value=""/>
+        <input type="hidden"  id="hdnToolXferIds" name="hdnToolXferIds" value=""/>
+        <input type="hidden"  id="hdnToolXferAssignIds" name="hdnToolXferAssignIds" value=""/>
+        <input type="hidden"  id="hdnToolXferRetConds" name="hdnToolXferRetConds" value=""/>
+        <input type="hidden"  id="hdnSmallToolXferIds" name="hdnSmallToolXferIds" value=""/>
+        <input type="hidden"  id="hdnSmallToolConds" name="hdnSmallToolConds" value=""/>
+        </td>
+        </tr>        
+        </table>
+        </div>
+        <table>
+        <tr>
+        <td>
+        </td>
+        </tr>
+        </table>
+        </form>
+        <br />
+        <div id="xfrer_assign_success" style="color:green; padding-left:340px"></div>
     </div>
 
     <div id="admin_assignto_dlg" title="">

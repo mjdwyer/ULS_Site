@@ -6,10 +6,10 @@
 
     <link rel="stylesheet" type="text/css" media="screen" href="../../Content/superfish.css" />
 
-    <script type="text/javascript" src="/Content/javascript/SvcAdmin.js"></script>
-    <script type="text/javascript" src="/Content/javascript/superfish.js"></script>
-    <script type="text/javascript" src="/Content/javascript/supersubs.js"></script>
-    <script type="text/javascript" src="/Content/javascript/superfish-navbar.js"></script>
+    <script type="text/javascript" src="/Scripts/SvcAdmin.js"></script>
+    <script type="text/javascript" src="/Scripts/superfish.js"></script>
+    <script type="text/javascript" src="/Scripts/supersubs.js"></script>
+    <script type="text/javascript" src="/Scripts/superfish-navbar.js"></script>
 	<script type="text/javascript">
 
 		    // initialise plugins

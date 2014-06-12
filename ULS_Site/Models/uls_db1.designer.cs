@@ -664,6 +664,22 @@ namespace ULS_Site.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<vw_EquipAssignXferGrid> vw_EquipAssignXferGrids
+		{
+			get
+			{
+				return this.GetTable<vw_EquipAssignXferGrid>();
+			}
+		}
+		
+		public System.Data.Linq.Table<vw_ToolsAssignXferGrid> vw_ToolsAssignXferGrids
+		{
+			get
+			{
+				return this.GetTable<vw_ToolsAssignXferGrid>();
+			}
+		}
+		
 		[Function(Name="dbo.UpdateObsoleteId")]
 		public int UpdateObsoleteId([Parameter(DbType="VarChar(30)")] string id)
 		{
@@ -14044,6 +14060,492 @@ namespace ULS_Site.Models
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.vw_EquipAssignXferGrid")]
+	public partial class vw_EquipAssignXferGrid
+	{
+		
+		private string _equip_id;
+		
+		private System.Nullable<System.DateTime> _return_dt;
+		
+		private System.DateTime _assigned_dt;
+		
+		private string _asgn_cond_descr;
+		
+		private string _ret_cond_descr;
+		
+		private System.Nullable<float> _asgn_miles;
+		
+		private System.Nullable<float> _asgn_hours;
+		
+		private System.Nullable<float> _ret_miles;
+		
+		private System.Nullable<float> _ret_hours;
+		
+		private int _assign_id;
+		
+		private string _type_desc;
+		
+		private string _make_descr;
+		
+		private string _model_descr;
+		
+		private string _equip_year;
+		
+		private string _assigned_to;
+		
+		public vw_EquipAssignXferGrid()
+		{
+		}
+		
+		[Column(Storage="_equip_id", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
+		public string equip_id
+		{
+			get
+			{
+				return this._equip_id;
+			}
+			set
+			{
+				if ((this._equip_id != value))
+				{
+					this._equip_id = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_return_dt", DbType="DateTime")]
+		public System.Nullable<System.DateTime> return_dt
+		{
+			get
+			{
+				return this._return_dt;
+			}
+			set
+			{
+				if ((this._return_dt != value))
+				{
+					this._return_dt = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_assigned_dt", DbType="DateTime NOT NULL")]
+		public System.DateTime assigned_dt
+		{
+			get
+			{
+				return this._assigned_dt;
+			}
+			set
+			{
+				if ((this._assigned_dt != value))
+				{
+					this._assigned_dt = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_asgn_cond_descr", DbType="NVarChar(15)")]
+		public string asgn_cond_descr
+		{
+			get
+			{
+				return this._asgn_cond_descr;
+			}
+			set
+			{
+				if ((this._asgn_cond_descr != value))
+				{
+					this._asgn_cond_descr = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_ret_cond_descr", DbType="NVarChar(15)")]
+		public string ret_cond_descr
+		{
+			get
+			{
+				return this._ret_cond_descr;
+			}
+			set
+			{
+				if ((this._ret_cond_descr != value))
+				{
+					this._ret_cond_descr = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_asgn_miles", DbType="Real")]
+		public System.Nullable<float> asgn_miles
+		{
+			get
+			{
+				return this._asgn_miles;
+			}
+			set
+			{
+				if ((this._asgn_miles != value))
+				{
+					this._asgn_miles = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_asgn_hours", DbType="Real")]
+		public System.Nullable<float> asgn_hours
+		{
+			get
+			{
+				return this._asgn_hours;
+			}
+			set
+			{
+				if ((this._asgn_hours != value))
+				{
+					this._asgn_hours = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_ret_miles", DbType="Real")]
+		public System.Nullable<float> ret_miles
+		{
+			get
+			{
+				return this._ret_miles;
+			}
+			set
+			{
+				if ((this._ret_miles != value))
+				{
+					this._ret_miles = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_ret_hours", DbType="Real")]
+		public System.Nullable<float> ret_hours
+		{
+			get
+			{
+				return this._ret_hours;
+			}
+			set
+			{
+				if ((this._ret_hours != value))
+				{
+					this._ret_hours = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_assign_id", DbType="Int NOT NULL")]
+		public int assign_id
+		{
+			get
+			{
+				return this._assign_id;
+			}
+			set
+			{
+				if ((this._assign_id != value))
+				{
+					this._assign_id = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_type_desc", DbType="NVarChar(50)")]
+		public string type_desc
+		{
+			get
+			{
+				return this._type_desc;
+			}
+			set
+			{
+				if ((this._type_desc != value))
+				{
+					this._type_desc = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_make_descr", DbType="NVarChar(25)")]
+		public string make_descr
+		{
+			get
+			{
+				return this._make_descr;
+			}
+			set
+			{
+				if ((this._make_descr != value))
+				{
+					this._make_descr = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_model_descr", DbType="NVarChar(25)")]
+		public string model_descr
+		{
+			get
+			{
+				return this._model_descr;
+			}
+			set
+			{
+				if ((this._model_descr != value))
+				{
+					this._model_descr = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_equip_year", DbType="NVarChar(4)")]
+		public string equip_year
+		{
+			get
+			{
+				return this._equip_year;
+			}
+			set
+			{
+				if ((this._equip_year != value))
+				{
+					this._equip_year = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_assigned_to", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string assigned_to
+		{
+			get
+			{
+				return this._assigned_to;
+			}
+			set
+			{
+				if ((this._assigned_to != value))
+				{
+					this._assigned_to = value;
+				}
+			}
+		}
+	}
+	
+	[Table(Name="dbo.vw_ToolsAssignXferGrid")]
+	public partial class vw_ToolsAssignXferGrid
+	{
+		
+		private string _tool_id;
+		
+		private string _assigned_to;
+		
+		private System.Nullable<System.DateTime> _assigned_dt;
+		
+		private System.Nullable<System.DateTime> _return_dt;
+		
+		private string _asgn_cond_descr;
+		
+		private string _ret_cond_descr;
+		
+		private int _assign_id;
+		
+		private string _tools_type_descr;
+		
+		private string _tools_descr_descr;
+		
+		private string _size_descr;
+		
+		private string _tool_mfg_descr;
+		
+		public vw_ToolsAssignXferGrid()
+		{
+		}
+		
+		[Column(Storage="_tool_id", DbType="NVarChar(50)")]
+		public string tool_id
+		{
+			get
+			{
+				return this._tool_id;
+			}
+			set
+			{
+				if ((this._tool_id != value))
+				{
+					this._tool_id = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_assigned_to", DbType="NVarChar(50)")]
+		public string assigned_to
+		{
+			get
+			{
+				return this._assigned_to;
+			}
+			set
+			{
+				if ((this._assigned_to != value))
+				{
+					this._assigned_to = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_assigned_dt", DbType="DateTime")]
+		public System.Nullable<System.DateTime> assigned_dt
+		{
+			get
+			{
+				return this._assigned_dt;
+			}
+			set
+			{
+				if ((this._assigned_dt != value))
+				{
+					this._assigned_dt = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_return_dt", DbType="DateTime")]
+		public System.Nullable<System.DateTime> return_dt
+		{
+			get
+			{
+				return this._return_dt;
+			}
+			set
+			{
+				if ((this._return_dt != value))
+				{
+					this._return_dt = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_asgn_cond_descr", DbType="NVarChar(15)")]
+		public string asgn_cond_descr
+		{
+			get
+			{
+				return this._asgn_cond_descr;
+			}
+			set
+			{
+				if ((this._asgn_cond_descr != value))
+				{
+					this._asgn_cond_descr = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_ret_cond_descr", DbType="NVarChar(15)")]
+		public string ret_cond_descr
+		{
+			get
+			{
+				return this._ret_cond_descr;
+			}
+			set
+			{
+				if ((this._ret_cond_descr != value))
+				{
+					this._ret_cond_descr = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_assign_id", DbType="Int NOT NULL")]
+		public int assign_id
+		{
+			get
+			{
+				return this._assign_id;
+			}
+			set
+			{
+				if ((this._assign_id != value))
+				{
+					this._assign_id = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_tools_type_descr", DbType="NVarChar(25)")]
+		public string tools_type_descr
+		{
+			get
+			{
+				return this._tools_type_descr;
+			}
+			set
+			{
+				if ((this._tools_type_descr != value))
+				{
+					this._tools_type_descr = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_tools_descr_descr", DbType="NVarChar(50)")]
+		public string tools_descr_descr
+		{
+			get
+			{
+				return this._tools_descr_descr;
+			}
+			set
+			{
+				if ((this._tools_descr_descr != value))
+				{
+					this._tools_descr_descr = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_size_descr", DbType="NVarChar(50)")]
+		public string size_descr
+		{
+			get
+			{
+				return this._size_descr;
+			}
+			set
+			{
+				if ((this._size_descr != value))
+				{
+					this._size_descr = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_tool_mfg_descr", DbType="NVarChar(50)")]
+		public string tool_mfg_descr
+		{
+			get
+			{
+				return this._tool_mfg_descr;
+			}
+			set
+			{
+				if ((this._tool_mfg_descr != value))
+				{
+					this._tool_mfg_descr = value;
+				}
 			}
 		}
 	}

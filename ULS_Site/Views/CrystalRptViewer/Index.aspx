@@ -9,19 +9,19 @@
 
 	<%if (Convert.ToString(ViewData["default_division"]) == "ULS-PA")
    { %>
-    <script type="text/javascript" src="/Content/javascript/EquipTracker.js"></script>
+    <script type="text/javascript" src="/Scripts/EquipTracker.js"></script>
     <%}%>
 	<%else if (Convert.ToString(ViewData["default_division"]) == "ULS-PA-RO")
    { %>
-    <script type="text/javascript" src="/Content/javascript/EquipTrackerRO2.js"></script>
+    <script type="text/javascript" src="/Scripts/EquipTrackerRO2.js"></script>
     <%}%>
    <%else { %>
-    <script type="text/javascript" src="/Content/javascript/EquipTrackerRO.js"></script>
+    <script type="text/javascript" src="/Scripts/EquipTrackerRO.js"></script>
    <% }%>
-    <script type="text/javascript" src="/Content/javascript/EquipTrackerFuncs.js"></script>
-    <script type="text/javascript" src="/Content/javascript/superfish.js"></script>
-    <script type="text/javascript" src="/Content/javascript/supersubs.js"></script>
-    <script type="text/javascript" src="/Content/javascript/superfish-navbar.js"></script>
+    <script type="text/javascript" src="/Scripts/EquipTrackerFuncs.js"></script>
+    <script type="text/javascript" src="/Scripts/superfish.js"></script>
+    <script type="text/javascript" src="/Scripts/supersubs.js"></script>
+    <script type="text/javascript" src="/Scripts/superfish-navbar.js"></script>
 	<script type="text/javascript">
 
 		    // initialise plugins

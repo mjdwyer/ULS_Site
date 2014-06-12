@@ -25,6 +25,11 @@ namespace ULS_Site.Controllers
             return View();
         }
 
+        public ActionResult EquipTest()
+        {
+            return View();
+        }
+
 
         [SessionExpireFilter]
         public ActionResult EquipTrack(string div)
@@ -557,6 +562,44 @@ namespace ULS_Site.Controllers
         }
 
         [SessionExpireFilter]
+        public ActionResult GetAssignFromGridData(string id, string sidx, string sord, int page, int rows)
+        {
+
+            EquipTrak eqt = new EquipTrak();
+
+            var assigns = eqt.GetGridEquipmentAssignFrom(sidx, sord, id);
+
+            var dataJson = new
+            {
+
+                total =
+                page = 1,
+                records = 10000,
+                rows = (from a in assigns
+                        select new
+                        {
+                            id = a.assign_id,
+                            cell = new string[] {
+                    a.equip_id,
+                    a.type_desc,
+                    a.make_descr,
+                    a.model_descr,
+                    a.equip_year,
+                    a.asgn_cond_descr != null ?  a.asgn_cond_descr.TrimEnd().TrimStart() :  null,
+                    a.asgn_cond_descr != null ?  a.asgn_cond_descr.TrimEnd().TrimStart() :  null,
+//                    a.ret_cond_descr != null ?  a.ret_cond_descr.TrimEnd().TrimStart() :  null,
+                    Convert.ToString(a.asgn_miles),
+                    Convert.ToString(a.ret_miles),
+                    Convert.ToString(a.asgn_hours),
+                    Convert.ToString(a.ret_hours),
+                    Convert.ToString(a.assign_id)
+                }
+                        }).ToArray()
+            };
+            return Json(dataJson);
+        }
+
+        [SessionExpireFilter]
         public ActionResult GetToolAssignGridData(string id, string sidx, string sord, int page, int rows)
         {
 
@@ -584,6 +627,73 @@ namespace ULS_Site.Controllers
                     a.comment_txt,
                     Convert.ToString(a.assign_id),
                     a.img_cnt > 0 ?  "HAS_PHOTOS" :  "NO_PHOTOS"
+                }
+                        }).ToArray()
+            };
+            return Json(dataJson);
+        }
+
+        [SessionExpireFilter]
+        public ActionResult GetToolAssignXferGridData(string id, string sidx, string sord, int page, int rows)
+        {
+
+            EquipTrak eqt = new EquipTrak();
+
+            var assigns = eqt.GetGridToolAssignXfer(sidx, sord, id);
+
+            var dataJson = new
+            {
+
+                total =
+                page = 1,
+                records = 10000,
+                rows = (from a in assigns
+                        select new
+                        {
+                            id = a.assign_id,
+                            cell = new string[] {
+                    a.tool_id,
+                    a.tools_type_descr,
+                    a.tools_descr_descr,
+                    a.tool_mfg_descr,
+                    a.size_descr,
+                    a.asgn_cond_descr != null ?  a.asgn_cond_descr.TrimEnd().TrimStart() :  null,
+                    a.asgn_cond_descr != null ?  a.asgn_cond_descr.TrimEnd().TrimStart() :  null,
+                    Convert.ToString(a.assign_id)
+                }
+                        }).ToArray()
+            };
+            return Json(dataJson);
+        }
+
+        [SessionExpireFilter]
+        public ActionResult GetSmallToolAssignXferGridData(string id, string sidx, string sord, int page, int rows)
+        {
+
+            EquipTrak eqt = new EquipTrak();
+
+            var assigns = eqt.GetGridSmallToolAssignXfer(sidx, sord, id);
+
+            var dataJson = new
+            {
+
+                total =
+                page = 1,
+                records = 10000,
+                rows = (from a in assigns
+                        select new
+                        {
+                            id = a.stID,
+                            cell = new string[] {
+                    Convert.ToString(a.stID),
+                    a.item,
+                    a.description,
+                    a.size,
+                    a.MFG,
+                    a.Model,
+                    a.SerNum,
+                    a.ID,
+                    a.condition_descr != null ?  a.condition_descr.TrimEnd().TrimStart() :  null
                 }
                         }).ToArray()
             };
@@ -2435,6 +2545,18 @@ namespace ULS_Site.Controllers
             return PartialView("RptAssignTo", ViewData);
         }
 
+        public ActionResult GetXferAssignLsts()
+        {
+
+            EquipTrak eqt = new EquipTrak();
+
+            var list = eqt.GetAssignToRptDlg();
+
+            ViewData["AssignToList"] = list;
+
+            return PartialView("XferAssignDlg", ViewData);
+        }
+
         public ActionResult GetRptDlgEquipInvByTypeAndLoc()
         {
 
@@ -2996,8 +3118,11 @@ namespace ULS_Site.Controllers
                     case "ToolsTotalInvRegBy":
                         strQueryString = "ToolsTotalInvRegBy,GetTotalToolsInvReportRegBy," + Session["division"];
                         break;
-                    case "ToolsLojackInv": 
+                    case "ToolsLojackInv":
                         strQueryString = "ToolsLojackInv,GetToolsInvLojackReport," + Session["division"];
+                        break;
+                    case "EquipLojackInv":
+                        strQueryString = "EquipLojackInv,GetLojackInventory," + Session["division"];
                         break;
                     case "ToolsToBeSold":
                         strQueryString = "ToolsToBeSold,GetToolsToBeSoldInventory," + Session["division"];
@@ -4963,5 +5088,232 @@ namespace ULS_Site.Controllers
             return Content(strRet);
         }
 
+        [SessionExpireFilter]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult SaveAdminXferAssignments()
+        {
+            string strRet;
+            uls_dbDataContext db = new uls_dbDataContext();
+
+            string strIDs = Request.Form["hdnEquipXferAssignIds"];
+            string strEquipIDs = Request.Form["hdnEquipXferIds"];
+            string strRetConds = Request.Form["hdnEquipXferRetCond"];
+            string strRetMiles = Request.Form["hdnEquipXferRetMiles"];
+            string strRetHours = Request.Form["hdnEquipXferRetHours"];
+            string strType = Request.Form["lstFromAssign"];
+            string strToAssign = Request.Form["lstToAssign"];
+            bool bHasHours = false;
+            bool bHasMiles = false;
+            float f_miles_hours = 0;
+
+            string strToolAssignIDs = Request.Form["hdnToolXferAssignIds"];
+            string strToolIDs = Request.Form["hdnToolXferIds"];
+            string strToolRetConds = Request.Form["hdnToolXferRetConds"];
+
+            string strSmallToolIDs = Request.Form["hdnSmallToolXferIds"];
+            string strSmallToolRetConds = Request.Form["hdnSmallToolConds"];
+
+            try
+            {
+                assignment asgn;
+                tools_assign toolassgn;
+                smalltool smalltool;
+
+                string[] arrAssignIds = {};
+                string[] arrEquipIds = {};
+                string[] arrRetConds = {};
+                string[] arrRetHours = {};
+                string[] arrRetMiles = {};
+
+                string[] arrToolAssignIds = {};
+                string[] arrToolIds = {};
+                string[] arrToolRetConds = {};
+
+                string[] arrSmallToolIds = {};
+                string[] arrSmallToolRetConds = {};
+
+                
+                if (strToolAssignIDs.Length > 0)
+                {
+                    arrToolAssignIds = strToolAssignIDs.Split(',');
+                }
+                if (strToolIDs.Length > 0)
+                {
+                    arrToolIds = strToolIDs.Split(',');
+                }
+                if (strToolRetConds.Length > 0)
+                {
+                    arrToolRetConds = strToolRetConds.Split(',');
+                }
+                if (strEquipIDs.Length > 0)
+                {
+                    arrEquipIds = strEquipIDs.Split(',');
+                }
+                if (strRetConds.Length > 0)
+                {
+                    arrRetConds = strRetConds.Split(',');
+                }
+                if (strIDs.Length > 0)
+                {
+                    arrAssignIds = strIDs.Split(',');
+                }
+                arrRetHours = strRetHours.Split(',');
+                arrRetMiles = strRetMiles.Split(',');
+
+                if (strSmallToolIDs.Length > 0)
+                {
+                    arrSmallToolIds = strSmallToolIDs.Split(',');
+                }
+                if (strSmallToolRetConds.Length > 0)
+                {
+                    arrSmallToolRetConds = strSmallToolRetConds.Split(',');
+                }
+                int i = 0;
+                //equipment
+                foreach (string strAssignId in arrAssignIds)
+                {
+                    asgn = db.assignments.Single(a => a.assign_id == Convert.ToInt32(strAssignId));
+
+                    equipment equip = db.equipments.Single(a => a.equip_id == asgn.equip_id);
+
+                    asgn.return_dt = DateTime.Now;
+                    double v;
+                    if (Double.TryParse(arrRetHours[i].Trim(), out v))
+                    {
+                        asgn.ret_hours = (float)Convert.ToDouble(arrRetHours[i]);
+
+                        bHasHours = true;
+                    }
+
+                    if (Double.TryParse(arrRetMiles[i].Trim(), out v))
+                    {
+                        asgn.ret_miles = (float)Convert.ToDouble(arrRetMiles[i]);
+
+                        bHasMiles = true;
+                    }
+
+                    asgn.ret_condition_id = Convert.ToInt16(arrRetConds[i]);
+
+                    if (bHasHours && bHasMiles)
+                    {
+                        if (asgn.ret_hours > asgn.ret_miles)
+                        {
+                            f_miles_hours = (float)asgn.ret_hours;
+                        }
+                        else
+                        {
+                            f_miles_hours = (float)asgn.ret_miles;
+                        }
+                    }
+                    else if (bHasHours)
+                    {
+                        f_miles_hours = (float)asgn.ret_hours;
+                    }
+                    else if (bHasMiles)
+                    {
+                        f_miles_hours = (float)asgn.ret_miles;
+                    }
+
+                    if (f_miles_hours > equip.miles_hours)
+                    {
+                        equip.miles_hours = f_miles_hours;
+                        equip.miles_dt = asgn.return_dt;
+                    }
+
+                    if (strToAssign != "UNASSIGNED")
+                    {
+                        assignment newAssignment = new assignment();
+
+                        newAssignment.equip_id = arrEquipIds[i];
+                        newAssignment.assigned_dt = DateTime.Now;
+                        newAssignment.assigned_to = strToAssign;
+                        newAssignment.asgn_condition_id = asgn.ret_condition_id;
+                        newAssignment.asgn_hours = asgn.ret_hours;
+                        newAssignment.asgn_miles = asgn.ret_miles;
+
+                        db.assignments.InsertOnSubmit(newAssignment);
+
+                        equip.assigned = true;
+                    }
+                    else
+                    {
+                        equip.assigned = false;
+                    }
+
+                    i++;
+
+                }
+
+                int j = 0;
+                //tool
+                foreach (string strToolAssignId in arrToolAssignIds)
+                {
+                    toolassgn = db.tools_assigns.Single(a => a.assign_id == Convert.ToInt32(strToolAssignId));
+                    tool toool = db.tools.Single(a => a.tool_id == toolassgn.tool_id);
+                   
+                    toolassgn.return_dt = DateTime.Now;
+                    toolassgn.ret_condition_id = Convert.ToInt16(arrToolRetConds[j]);
+
+                    tools_assign newta = new tools_assign();
+
+                    if (strToAssign != "UNASSIGNED")
+                    {
+                        newta.tool_id = arrToolIds[j];
+                        newta.assigned_dt = DateTime.Now;
+                        newta.assigned_to = strToAssign;
+                        newta.asgn_condition_id = toolassgn.ret_condition_id;
+
+                        db.tools_assigns.InsertOnSubmit(newta);
+
+                        toool.assigned = true;
+                    }
+                    else
+                    {
+                        toool.assigned = false;
+                    }
+
+                    j++;
+                }
+
+                int k = 0;
+                //smalltool
+                foreach (string strSmallToolId in arrSmallToolIds)
+                {
+                    smalltool = db.smalltools.Single(a => a.stID == Convert.ToInt32(strSmallToolId));
+                    if (strToAssign == "UNASSIGNED")
+                    {
+                        smalltool.returned_dt = DateTime.Now;
+                    }
+                    else
+                    {
+                        smalltool.Assigned_to = strToAssign;
+                        smalltool.Assigned_dt = DateTime.Now;
+                        smalltool.returned_dt = null;
+                    }
+
+                    smalltool.ConditionId = Convert.ToInt16(arrSmallToolRetConds[k]);
+
+                    k++;
+                }
+
+                db.SubmitChanges();
+
+                strRet = "Success";
+
+            }
+            catch (Exception ex)
+            {
+                string msg = ex.Message;
+
+                strRet = msg;
+            }
+            finally
+            {
+                db.Dispose();
+            }
+
+            return Content(strRet);
+
+        }
     }
 }

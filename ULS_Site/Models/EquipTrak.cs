@@ -736,6 +736,23 @@ namespace ULS_Site.Models
             }
         }
 
+        public IQueryable<vw_EquipAssignXferGrid> GetGridEquipmentAssignFrom(string sidx, string sord, string id)
+        {
+
+            try
+            {
+                return
+                    ulsDB.vw_EquipAssignXferGrids
+                        .Where("assigned_to = @0 && return_dt == null", id)
+                        .OrderBy(sidx + " " + sord);
+            }
+            catch (Exception ex)
+            {
+                string strErr = ex.Message;
+                return null;
+            }
+        }
+
         public IQueryable<vw_ToolsAssignGrid> GetGridToolAssign(string sidx, string sord, string id)
         {
 
@@ -753,6 +770,40 @@ namespace ULS_Site.Models
             }
         }
 
+
+        public IQueryable<vw_ToolsAssignXferGrid> GetGridToolAssignXfer(string sidx, string sord, string id)
+        {
+
+            try
+            {
+                return
+                    ulsDB.vw_ToolsAssignXferGrids
+                        .Where("assigned_to = @0 && return_dt == null", id)
+                        .OrderBy(sidx + " " + sord);
+            }
+            catch (Exception ex)
+            {
+                string strErr = ex.Message;
+                return null;
+            }
+        }
+
+        public IQueryable<vw_SmallToolsGrid> GetGridSmallToolAssignXfer(string sidx, string sord, string id)
+        {
+
+            try
+            {
+                return
+                    ulsDB.vw_SmallToolsGrids
+                        .Where("assigned_to = @0", id)
+                        .OrderBy(sidx + " " + sord);
+            }
+            catch (Exception ex)
+            {
+                string strErr = ex.Message;
+                return null;
+            }
+        }
 
         public IQueryable<DropDownData> GetToolTypes()
         {

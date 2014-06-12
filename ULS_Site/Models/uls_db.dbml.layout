@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 68.375" name="uls_db">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 71.875" name="uls_db">
   <DataContextMoniker Name="/uls_dbDataContext" />
   <nestedChildShapes>
     <classShape Id="d25944da-215f-4997-a80b-08ff1dcdad7f" absoluteBounds="5, 0.5, 2, 1.3862939453125">
@@ -192,7 +192,7 @@
         <classShapeMoniker Id="e699b13c-8cd3-4b19-aa1e-061bd8c05c93" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.625 : 5.69074525651042); (1.5625 : 5.69074525651042); (1.5625 : 5.25649251302083); (2.5625 : 5.25649251302083); (2.5625 : 9.0625); (3.9375 : 9.0625); (3.9375 : 14.8125); (5.6875 : 14.8125); (5.6875 : 19.1875); (4.4375 : 19.1875); (4.4375 : 23.9375); (5.3125 : 23.9375); (5.3125 : 34.65625); (4.875 : 34.65625); (4.875 : 34.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.625 : 5.69074525651042); (1.5625 : 5.69074525651042); (1.5625 : 5.25649251302083); (2.5625 : 5.25649251302083); (2.5625 : 9.0625); (3.9375 : 9.0625); (3.9375 : 14.8125); (5.6875 : 14.8125); (5.6875 : 19.1875); (4.4375 : 19.1875); (4.4375 : 23.9375); (5.3125 : 23.9375); (5.3125 : 34.65625); (4.875 : 34.65625); (4.875 : 34.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/uls_dbDataContext/aspnet_User/aspnet_User_aspnet_UsersInRole" />
       <nodes>
         <classShapeMoniker Id="d1d6d349-d6ab-4abc-b10b-5e83ac4be747" />
@@ -390,6 +390,18 @@
       <DataClassMoniker Name="/uls_dbDataContext/employee" />
       <nestedChildShapes>
         <elementListCompartment Id="82cb7364-9d5b-497e-a77b-cc48fd0c54c7" absoluteBounds="4.515, 58.585, 1.9700000000000002, 6.7876383463541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7b49a252-e481-4e64-ab3b-5a328c9835e1" absoluteBounds="4.25, 67.875, 2, 3.6939111328124996">
+      <DataClassMoniker Name="/uls_dbDataContext/vw_EquipAssignXferGrid" />
+      <nestedChildShapes>
+        <elementListCompartment Id="978334c5-f93e-4ddf-8286-81e96dcf06d3" absoluteBounds="4.265, 68.335, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b0be9e68-a838-4b58-a7e2-415a5a7ab7b7" absoluteBounds="1.25, 68.75, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/uls_dbDataContext/vw_ToolsAssignXferGrid" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d4e35e71-2c07-431e-a443-67ca9a8fe521" absoluteBounds="1.2650000000000001, 69.21, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
