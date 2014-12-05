@@ -21,16 +21,16 @@ namespace ULS_Site.Reports {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("EquipInvByType")]
+    [global::System.Xml.Serialization.XmlRootAttribute("InventoryByTypeDS")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class EquipInvByType : global::System.Data.DataSet {
+    public partial class InventoryByTypeDS : global::System.Data.DataSet {
         
         private GetInvByTypeReportDataTable tableGetInvByTypeReport;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public EquipInvByType() {
+        public InventoryByTypeDS() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -40,7 +40,7 @@ namespace ULS_Site.Reports {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        protected EquipInvByType(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected InventoryByTypeDS(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -120,7 +120,7 @@ namespace ULS_Site.Reports {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public override global::System.Data.DataSet Clone() {
-            EquipInvByType cln = ((EquipInvByType)(base.Clone()));
+            InventoryByTypeDS cln = ((InventoryByTypeDS)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -185,9 +185,9 @@ namespace ULS_Site.Reports {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void InitClass() {
-            this.DataSetName = "EquipInvByType";
+            this.DataSetName = "InventoryByTypeDS";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/EquipInvByType.xsd";
+            this.Namespace = "http://tempuri.org/InventoryByTypeDS.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableGetInvByTypeReport = new GetInvByTypeReportDataTable();
@@ -208,7 +208,7 @@ namespace ULS_Site.Reports {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            EquipInvByType ds = new EquipInvByType();
+            InventoryByTypeDS ds = new InventoryByTypeDS();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -275,6 +275,8 @@ namespace ULS_Site.Reports {
             private global::System.Data.DataColumn columnregistered_by;
             
             private global::System.Data.DataColumn columnwork_loc;
+            
+            private global::System.Data.DataColumn columnassigned_to;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public GetInvByTypeReportDataTable() {
@@ -356,6 +358,13 @@ namespace ULS_Site.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn assigned_toColumn {
+                get {
+                    return this.columnassigned_to;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -384,7 +393,7 @@ namespace ULS_Site.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public GetInvByTypeReportRow AddGetInvByTypeReportRow(string equip_id, string type_desc, string make_descr, string model_descr, string equip_year, string registered_by, string work_loc) {
+            public GetInvByTypeReportRow AddGetInvByTypeReportRow(string equip_id, string type_desc, string make_descr, string model_descr, string equip_year, string registered_by, string work_loc, string assigned_to) {
                 GetInvByTypeReportRow rowGetInvByTypeReportRow = ((GetInvByTypeReportRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         equip_id,
@@ -393,7 +402,8 @@ namespace ULS_Site.Reports {
                         model_descr,
                         equip_year,
                         registered_by,
-                        work_loc};
+                        work_loc,
+                        assigned_to};
                 rowGetInvByTypeReportRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowGetInvByTypeReportRow);
                 return rowGetInvByTypeReportRow;
@@ -426,6 +436,7 @@ namespace ULS_Site.Reports {
                 this.columnequip_year = base.Columns["equip_year"];
                 this.columnregistered_by = base.Columns["registered_by"];
                 this.columnwork_loc = base.Columns["work_loc"];
+                this.columnassigned_to = base.Columns["assigned_to"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -444,17 +455,20 @@ namespace ULS_Site.Reports {
                 base.Columns.Add(this.columnregistered_by);
                 this.columnwork_loc = new global::System.Data.DataColumn("work_loc", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnwork_loc);
+                this.columnassigned_to = new global::System.Data.DataColumn("assigned_to", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnassigned_to);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnequip_id}, true));
                 this.columnequip_id.AllowDBNull = false;
                 this.columnequip_id.Unique = true;
-                this.columnequip_id.MaxLength = 15;
+                this.columnequip_id.MaxLength = 30;
                 this.columntype_desc.MaxLength = 50;
                 this.columnmake_descr.MaxLength = 25;
                 this.columnmodel_descr.MaxLength = 25;
                 this.columnequip_year.MaxLength = 4;
                 this.columnregistered_by.MaxLength = 50;
                 this.columnwork_loc.MaxLength = 50;
+                this.columnassigned_to.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -513,7 +527,7 @@ namespace ULS_Site.Reports {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                EquipInvByType ds = new EquipInvByType();
+                InventoryByTypeDS ds = new InventoryByTypeDS();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -687,6 +701,21 @@ namespace ULS_Site.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string assigned_to {
+                get {
+                    try {
+                        return ((string)(this[this.tableGetInvByTypeReport.assigned_toColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'assigned_to\' in table \'GetInvByTypeReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableGetInvByTypeReport.assigned_toColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool Istype_descNull() {
                 return this.IsNull(this.tableGetInvByTypeReport.type_descColumn);
             }
@@ -745,6 +774,16 @@ namespace ULS_Site.Reports {
             public void Setwork_locNull() {
                 this[this.tableGetInvByTypeReport.work_locColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isassigned_toNull() {
+                return this.IsNull(this.tableGetInvByTypeReport.assigned_toColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setassigned_toNull() {
+                this[this.tableGetInvByTypeReport.assigned_toColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -779,7 +818,7 @@ namespace ULS_Site.Reports {
         }
     }
 }
-namespace ULS_Site.Reports.EquipInvByTypeTableAdapters {
+namespace ULS_Site.Reports.InventoryByTypeDSTableAdapters {
     
     
     /// <summary>
@@ -904,13 +943,14 @@ namespace ULS_Site.Reports.EquipInvByTypeTableAdapters {
             tableMapping.ColumnMappings.Add("equip_year", "equip_year");
             tableMapping.ColumnMappings.Add("registered_by", "registered_by");
             tableMapping.ColumnMappings.Add("work_loc", "work_loc");
+            tableMapping.ColumnMappings.Add("assigned_to", "assigned_to");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ULS_db1ConnectionString"].ConnectionString;
+            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ULS_db1ConnectionString2"].ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -928,7 +968,7 @@ namespace ULS_Site.Reports.EquipInvByTypeTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(EquipInvByType.GetInvByTypeReportDataTable dataTable, string regBy, global::System.Nullable<int> type_id) {
+        public virtual int Fill(InventoryByTypeDS.GetInvByTypeReportDataTable dataTable, string regBy, global::System.Nullable<int> type_id) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((regBy == null)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -952,7 +992,7 @@ namespace ULS_Site.Reports.EquipInvByTypeTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual EquipInvByType.GetInvByTypeReportDataTable GetData(string regBy, global::System.Nullable<int> type_id) {
+        public virtual InventoryByTypeDS.GetInvByTypeReportDataTable GetData(string regBy, global::System.Nullable<int> type_id) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((regBy == null)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -966,7 +1006,7 @@ namespace ULS_Site.Reports.EquipInvByTypeTableAdapters {
             else {
                 this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            EquipInvByType.GetInvByTypeReportDataTable dataTable = new EquipInvByType.GetInvByTypeReportDataTable();
+            InventoryByTypeDS.GetInvByTypeReportDataTable dataTable = new InventoryByTypeDS.GetInvByTypeReportDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1036,7 +1076,7 @@ namespace ULS_Site.Reports.EquipInvByTypeTableAdapters {
         ///Update rows in top-down order.
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private int UpdateUpdatedRows(EquipInvByType dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(InventoryByTypeDS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1045,7 +1085,7 @@ namespace ULS_Site.Reports.EquipInvByTypeTableAdapters {
         ///Insert rows in top-down order.
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private int UpdateInsertedRows(EquipInvByType dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(InventoryByTypeDS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1054,7 +1094,7 @@ namespace ULS_Site.Reports.EquipInvByTypeTableAdapters {
         ///Delete rows in bottom-up order.
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private int UpdateDeletedRows(EquipInvByType dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(InventoryByTypeDS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             return result;
         }
@@ -1086,7 +1126,7 @@ namespace ULS_Site.Reports.EquipInvByTypeTableAdapters {
         ///Update all changes to the dataset.
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public virtual int UpdateAll(EquipInvByType dataSet) {
+        public virtual int UpdateAll(InventoryByTypeDS dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

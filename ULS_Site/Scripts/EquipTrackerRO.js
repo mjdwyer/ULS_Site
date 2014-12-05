@@ -34,7 +34,7 @@ jQuery(document).ready(function() {
         height: 255,
         width: 740,
         rowNum: 5000,
-        colNames: ['ID', 'Type', 'Make', 'Model', 'Year', 'Location', 'Insp Due', 'Serv Due', 'Miles/Hrs', 'Milage Dt', 'Reg By', 'Mngd By', 'Mngd By Dt', 'Tag Exp', '', '', '', '', 'Vin Num', 'Title Num', 'GVW', 'Unlaiden Wt', 'Tag Num', 'Tag State', 'Fuel', 'Cost', 'Inspect Rmndr(wks)', 'Tag Rmndr(wks)', 'Stolen', 'Sold', 'Lojack', 'In Repair', 'Totaled', 'Hut Sticker', 'Apportioned', 'IFTA Sticker', 'GPS', 'Comment', '', 'Unknown', 'Current Value', 'ImgCnt', 'Leased', 'GCW', '', '', '', '', '', 'To Be Sold',''],
+        colNames: ['ID', 'Type', 'Make', 'Model', 'Year', 'Location', 'Insp Due', 'Serv Due', 'Miles/Hrs', 'Milage Dt', 'Reg By', 'Mngd By', 'Mngd By Dt', 'Tag Exp', '', '', '', '', 'Vin Num', 'Title Num', 'GVW', 'Unlaiden Wt', 'Tag Num', 'Tag State', 'Fuel', 'Cost', 'Inspect Rmndr(wks)', 'Tag Rmndr(wks)', 'Stolen', 'Sold', 'Lojack', 'In Repair', 'Totaled', 'Hut Sticker', 'Apportioned', 'IFTA Sticker', 'GPS', 'Comment', '', 'Unknown', 'Current Value', 'ImgCnt', 'Leased', 'GCW', '', '', '', '', '', 'To Be Sold', '', '', ''],
         colModel: [
    		        { name: 'equip_id', index: 'equip_id', width: 65, editable: true, search: true, searchoptions: { sopt: ['eq', 'bw', 'ew']} },
   		        { name: 'type_desc', index: 'type_desc', width: 130, editable: true, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/GetTypesSearch'} },
@@ -74,39 +74,41 @@ jQuery(document).ready(function() {
    		        { name: 'service_warn', hidden: true, search: false },
    		        { name: 'tag_warn', hidden: true, search: false },
    		        { name: 'equip_color', hidden: true, search: false },
-   		        { name: 'vin_num', hidden: true, editable: true, editrules: { edithidden: true }, searchoptions: { sopt: ['eq', 'bw', 'ew']} },
-   		        { name: 'title_num', hidden: true, editable: true, editrules: { edithidden: true }, searchoptions: { sopt: ['eq', 'bw', 'ew']} },
+   		        { name: 'vin_num', hidden: true, editable: true, editrules: { edithidden: true }, searchoptions: { sopt: ['eq', 'bw', 'ew'], searchhidden: true} },
+   		        { name: 'title_num', hidden: true, editable: true, editrules: { edithidden: true }, searchoptions: { sopt: ['eq', 'bw', 'ew'], searchhidden: true} },
                 { name: 'gross_v_wt', hidden: true, editable: true, editrules: { edithidden: true }, search: false },
             { name: 'unlaiden_wt', hidden: true, editable: true, editrules: { edithidden: true }, search: false },
-            { name: 'tag_num', hidden: true, editable: true, editrules: { edithidden: true }, searchoptions: { sopt: ['eq', 'bw', 'ew']} },
+            { name: 'tag_num', hidden: true, editable: true, editrules: { edithidden: true }, searchoptions: { sopt: ['eq', 'bw', 'ew'], searchhidden: true} },
             { name: 'tag_state', hidden: true, editable: true, editrules: { edithidden: true }, search: false },
 		    { name: 'fuel_descr', hidden: true, editable: true, editrules: { edithidden: true }, search: false },
             { name: 'cost', hidden: true, editable: true, editrules: { edithidden: true }, search: false },
    		    { name: 'insp_rmdr_wks', hidden: true, editable: true, edittype: "select", editoptions: { value: ":;1:1;2:2;3:3;4:4;5:5;6:6;7:7;8:8;9:9;10:10;11:11;12:12;13:13;14:14;15:15;16:16;17:17;18:18;19:19;20:20;21:21;22:22;23:23;24:24" }, editrules: { edithidden: true }, search: false },
             { name: 'tag_expire_rmdr_wks', editable: true, hidden: true, edittype: "select", editoptions: { value: ":;1:1;2:2;3:3;4:4;5:5;6:6;7:7;8:8;9:9;10:10;11:11;12:12;13:13;14:14;15:15;16:16;17:17;18:18;19:19;20:20;21:21;22:22;23:23;24:24" }, editrules: { edithidden: true }, search: false },
-            { name: 'stolen', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/TrueFalseDropdownData'} },
-            { name: 'sold', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/TrueFalseDropdownData'} },
-            { name: 'lojack', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/TrueFalseDropdownData'} },
-            { name: 'in_repair', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/TrueFalseDropdownData'} },
-            { name: 'totaled', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/TrueFalseDropdownData'} },
-            { name: 'hut_sticker', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/TrueFalseDropdownData'} },
-            { name: 'apportioned', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/TrueFalseDropdownData'} },
-            { name: 'ifta_sticker', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/TrueFalseDropdownData'} },
-            { name: 'gps', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/TrueFalseDropdownData'} },
+            { name: 'stolen', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], value: "True:Yes;False:No", searchhidden: true} },
+            { name: 'sold', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], value: "True:Yes;False:No", searchhidden: true} },
+            { name: 'lojack', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], value: "True:Yes;False:No", searchhidden: true} },
+            { name: 'in_repair', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], value: "True:Yes;False:No", searchhidden: true} },
+            { name: 'totaled', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], value: "True:Yes;False:No", searchhidden: true} },
+            { name: 'hut_sticker', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], value: "True:Yes;False:No", searchhidden: true} },
+            { name: 'apportioned', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], value: "True:Yes;False:No", searchhidden: true} },
+            { name: 'ifta_sticker', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], value: "True:Yes;False:No", searchhidden: true} },
+            { name: 'gps', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], value: "True:Yes;False:No", searchhidden: true} },
             { name: 'comment', hidden: true, editable: true, editrules: { edithidden: true }, edittype: "textarea", editoptions: { rows: "2", cols: "27" }, search: false },
    		    { name: 'equip_assign_color', hidden: true, search: false },
-            { name: 'unknown', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/TrueFalseDropdownData'} },
+            { name: 'unknown', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], value: "True:Yes;False:No", searchhidden: true} },
             { name: 'current_value', hidden: true, editable: true, editrules: { edithidden: true }, search: false },
    		    { name: 'img_cnt', hidden: true, search: false },
-            { name: 'leased', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/TrueFalseDropdownData'} },
+            { name: 'leased', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], value: "True:Yes;False:No", searchhidden: true} },
             { name: 'gross_c_wt', hidden: true, editable: true, editrules: { edithidden: true }, search: false },
             { name: 'gps_num', hidden: true, editable: true, editrules: { edithidden: true }, search: false },
             { name: 'ezpass', hidden: true, editable: true, editrules: { edithidden: true }, search: false },
             { name: 'ezpass_num', hidden: true, editable: true, editrules: { edithidden: true }, search: false },
             { name: 'fuelcard', hidden: true, editable: true, editrules: { edithidden: true }, search: false },
             { name: 'fuelcard_num', hidden: true, editable: true, editrules: { edithidden: true }, search: false },
-            { name: 'to_be_sold', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/TrueFalseDropdownData'} },
-            { name: 'fuel_card_loc', hidden: true, editable: true, editrules: { edithidden: true }, search: false }
+            { name: 'to_be_sold', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], value: "True:Yes;False:No", searchhidden: true} },
+            { name: 'fuel_card_loc', hidden: true, editable: true, editrules: { edithidden: true }, search: false },
+            { name: 'other_antitheft', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], value: "True:Yes;False:No", searchhidden: true} },
+            { name: 'other_antitheft_type', hidden: true, editable: true, editrules: { edithidden: true }, search: false }
             ],
         sortname: 'equip_id',
         sortorder: "asc",
@@ -174,24 +176,28 @@ jQuery(document).ready(function() {
                 $("#ddlInspRmndr").val('');
                 $("#ddlTagRmndr").val('');
                 $("#txtEquipComment").val('');
-                $('#chkEquipSold').attr('checked', false);
-                $('#chkEquipToBeSold').attr('checked', false);
-                $('#chkEquipStolen').attr('checked', false);
-                $('#chkEquipLojack').attr('checked', false);
-                $('#chkEquipUnknown').attr('checked', false);
-                $('#chkEquipLeased').attr('checked', false);
-                $('#chkEquipInRepair').attr('checked', false);
-                $('#chkEquipTotaled').attr('checked', false);
-                $('#chkHUTSticker').attr('checked', false);
-                $('#chkEquipApportioned').attr('checked', false);
-                $('#chkIFTASticker').attr('checked', false);
-                $('#chkEquipGPS').attr('checked', false);
-                $('#chkEquipFuelCard').attr('checked', false);
-                $('#chkEquipEZPASS').attr('checked', false);
+                $('#chkEquipSold').prop('checked', false);
+                $('#chkEquipToBeSold').prop('checked', false);
+                $('#chkEquipStolen').prop('checked', false);
+                $('#chkEquipLojack').prop('checked', false);
+                $('#chkEquipUnknown').prop('checked', false);
+                $('#chkEquipLeased').prop('checked', false);
+                $('#chkEquipInRepair').prop('checked', false);
+                $('#chkEquipTotaled').prop('checked', false);
+                $('#chkHUTSticker').prop('checked', false);
+                $('#chkEquipApportioned').prop('checked', false);
+                $('#chkIFTASticker').prop('checked', false);
+                $('#chkEquipGPS').prop('checked', false);
+                $('#chkEquipFuelCard').prop('checked', false);
+                $('#chkEquipEZPASS').prop('checked', false);
                 $("#txtGPSNum").val('');
                 $("#txtEZPASSNum").val('');
                 $("#txtFuelCardNum").val('');
                 $("#ddlFuelCardLoc").val('');
+                
+                $('#chkOtherAntiTheft').prop('checked', false);
+                $('#hdnOtherAntiTheft').val('');
+                $("#ddlOtherAntiTheftTypes").val('');
 
                 $('#hdnEquipApportioned').val('');
                 $('#hdnEquipInRepair').val('');
@@ -225,7 +231,7 @@ jQuery(document).ready(function() {
                 $("#txtEquipUnlaidenWt").val(data.unlaiden_wt);
                 $("#ddlTagSt").val(data.tag_state);
                 if (data.fuel_descr.length > 0)
-                    $("#ddlFuel option:econtains(" + data.fuel_descr + ")").attr('selected', 'selected');
+                    $("#ddlFuel option:econtains(" + data.fuel_descr + ")").prop('selected', 'selected');
                 $("#txtCost").val(data.cost);
                 $("#txtCurrentValue").val(data.current_value);
                 $("#ddlInspRmndr").val(data.insp_rmdr_wks);
@@ -235,117 +241,127 @@ jQuery(document).ready(function() {
                 $("#txtEZPASSNum").val(data.ezpass_num);
                 $("#txtFuelCardNum").val(data.fuelcard_num);
                 $("#ddlFuelCardLoc").val(data.fuel_card_loc);
+                $("#ddlOtherAntiTheftTypes").val(data.other_antitheft_type);
+
+                if (data.other_antitheft == 'True') {
+                    $('#chkOtherAntiTheft').prop('checked', true);
+                    $('#hdnOtherAntiTheft').val('on');
+                }
+                else {
+                    $('#chkOtherAntiTheft').prop('checked', false);
+                    $('#hdnOtherAntiTheft').val('off');
+                }
 
                 if (data.lojack == 'True') {
-                    $('#chkEquipLojack').attr('checked', true);
+                    $('#chkEquipLojack').prop('checked', true);
                     $('#hdnEquipLojack').val('on');
                 }
                 else {
-                    $('#chkEquipLojack').attr('checked', false);
+                    $('#chkEquipLojack').prop('checked', false);
                     $('#hdnEquipLojack').val('off');
                 }
                 if (data.unknown == 'True') {
-                    $('#chkEquipUnknown').attr('checked', true);
+                    $('#chkEquipUnknown').prop('checked', true);
                     $('#hdnEquipUnknown').val('on');
                 }
                 else {
-                    $('#chkEquipUnknown').attr('checked', false);
+                    $('#chkEquipUnknown').prop('checked', false);
                     $('#hdnEquipUnknown').val('off');
                 }
                 if (data.leased == 'True') {
-                    $('#chkEquipLeased').attr('checked', true);
+                    $('#chkEquipLeased').prop('checked', true);
                     $('#hdnEquipLeased').val('on');
                 }
                 else {
-                    $('#chkEquipLeased').attr('checked', false);
+                    $('#chkEquipLeased').prop('checked', false);
                     $('#hdnEquipLeased').val('off');
                 }
                 if (data.sold == 'True') {
-                    $('#chkEquipSold').attr('checked', true);
+                    $('#chkEquipSold').prop('checked', true);
                     $('#hdnEquipSold').val('on');
                 }
                 else {
-                    $('#chkEquipSold').attr('checked', false);
+                    $('#chkEquipSold').prop('checked', false);
                     $('#hdnEquipSold').val('off');
                 }
                 if (data.to_be_sold == 'True') {
-                    $('#chkEquipToBeSold').attr('checked', true);
+                    $('#chkEquipToBeSold').prop('checked', true);
                     $('#hdnEquipToBeSold').val('on');
                 }
                 else {
-                    $('#chkEquipToBeSold').attr('checked', false);
+                    $('#chkEquipToBeSold').prop('checked', false);
                     $('#hdnEquipToBeSold').val('off');
                 }
                 if (data.stolen == 'True') {
-                    $('#chkEquipStolen').attr('checked', true);
+                    $('#chkEquipStolen').prop('checked', true);
                     $('#hdnEquipStolen').val('on');
                 }
                 else {
-                    $('#chkEquipStolen').attr('checked', false);
+                    $('#chkEquipStolen').prop('checked', false);
                     $('#hdnEquipStolen').val('off');
                 }
                 if (data.in_repair == 'True') {
-                    $('#chkEquipInRepair').attr('checked', true);
+                    $('#chkEquipInRepair').prop('checked', true);
                     $('#hdnEquipInRepair').val('on');
                 }
                 else {
-                    $('#chkEquipInRepair').attr('checked', false);
+                    $('#chkEquipInRepair').prop('checked', false);
                     $('#hdnEquipInRepair').val('off');
                 }
                 if (data.totaled == 'True') {
-                    $('#chkEquipTotaled').attr('checked', true);
+                    $('#chkEquipTotaled').prop('checked', true);
                     $('#hdnEquipTotaled').val('on');
                 }
                 else {
-                    $('#chkEquipTotaled').attr('checked', false);
+                    $('#chkEquipTotaled').prop('checked', false);
                     $('#hdnEquipTotaled').val('off');
                 }
                 if (data.hut_sticker == 'True') {
-                    $('#chkHUTSticker').attr('checked', true);
+                    $('#chkHUTSticker').prop('checked', true);
                     $('#hdnHUTSticker').val('on');
                 }
                 else {
-                    $('#chkHUTSticker').attr('checked', false);
+                    $('#chkHUTSticker').prop('checked', false);
                     $('#hdnHUTSticker').val('off');
                 }
                 if (data.apportioned == 'True') {
-                    $('#chkEquipApportioned').attr('checked', true);
+                    $('#chkEquipApportioned').prop('checked', true);
                     $('#hdnEquipApportioned').val('on');
                 }
                 else {
-                    $('#chkEquipApportioned').attr('checked', false);
+                    $('#chkEquipApportioned').prop('checked', false);
                     $('#hdnEquipApportioned').val('off');
                 }
                 if (data.ifta_sticker == 'True') {
-                    $('#chkIFTASticker').attr('checked', true);
+                    $('#chkIFTASticker').prop('checked', true);
                     $('#hdnIFTASticker').val('on');
                 }
                 else {
-                    $('#chkIFTASticker').attr('checked', false);
+                    $('#chkIFTASticker').prop('checked', false);
                     $('#hdnIFTASticker').val('off');
                 }
                 if (data.gps == 'True') {
-                    $('#chkEquipGPS').attr('checked', true);
+                    $('#chkEquipGPS').prop('checked', true);
                     $('#hdnEquipGPS').val('on');
                 }
                 else {
-                    $('#chkEquipGPS').attr('checked', false);
+                    $('#chkEquipGPS').prop('checked', false);
                     $('#hdnEquipGPS').val('off');
                 }
                 if (data.ezpass == 'True') {
-                    $('#chkEquipEZPASS').attr('checked', true);
+                    $('#chkEquipEZPASS').prop('checked', true);
                     $('#hdnEquipEZPASS').val('on');
                 }
                 else {
-                    $('#chkEquipEZPASS').attr('checked', false);
+                    $('#chkEquipEZPASS').prop('checked', false);
                     $('#hdnEquipEZPASS').val('off');
                 }
                 if (data.fuelcard == 'True') {
-                    $('#chkEquipFuelCard').attr('checked', true);
+                    $('#chkEquipFuelCard').prop('checked', true);
                     $('#hdnEquipFuelCard').val('on');
                 }
                 else {
-                    $('#chkEquipFuelCard').attr('checked', false);
+                    $('#chkEquipFuelCard').prop('checked', false);
                     $('#hdnEquipFuelCard').val('off');
                 }
 
@@ -404,8 +420,7 @@ jQuery(document).ready(function() {
          {}, // del options
 		{odata: [{ oper: 'eq', text: 'equal' }, { oper: 'ne', text: 'not equal' }, { oper: 'lt', text: 'less' }, { oper: 'le', text: 'less or equal' }, { oper: 'gt', text: 'greater' }, { oper: 'ge', text: 'greater or equal' }, { oper: 'bw', text: 'begins with' }, { oper: 'bn', text: 'does not begin with' }, { oper: 'in', text: 'is in' }, { oper: 'ni', text: 'is not in' }, { oper: 'ew', text: 'ends with' }, { oper: 'en', text: 'does not end with' }, { oper: 'cn', text: 'contains' }, { oper: 'nc', text: 'does not contain' }, { oper: 'nu', text: 'is null' }, { oper: 'nn', text: 'is not null'}],
 		//            {odata: ['equals', 'not equal', 'less', 'less or equal', 'greater', 'greater or equal', 'begins with', 'does not begin with', 'is in', 'is not in', 'ends with', 'does not end with', 'contains', 'does not contain'],
-		//         {odata: ['equals','begins with'],
-            closeAfterSearch: true, closeOnEscape: true
+		closeAfterSearch: true, closeOnEscape: true
         }, // search options
          {} // view options
           ).navButtonAdd('#equipgridp', {
@@ -495,24 +510,29 @@ jQuery(document).ready(function() {
                       $("#ddlInspRmndr").val('');
                       $("#ddlTagRmndr").val('');
                       $("#txtEquipComment").val('');
-                      $('#chkEquipSold').attr('checked', false);
-                      $('#chkEquipToBeSold').attr('checked', false);
-                      $('#chkEquipStolen').attr('checked', false);
-                      $('#chkEquipLojack').attr('checked', false);
-                      $('#chkEquipUnknown').attr('checked', false);
-                      $('#chkEquipLeased').attr('checked', false);
-                      $('#chkEquipInRepair').attr('checked', false);
-                      $('#chkEquipTotaled').attr('checked', false);
-                      $('#chkHUTSticker').attr('checked', false);
-                      $('#chkEquipApportioned').attr('checked', false);
-                      $('#chkIFTASticker').attr('checked', false);
-                      $('#chkEquipGPS').attr('checked', false);
-                      $('#chkEquipEZPASS').attr('checked', false);
-                      $('#chkEquipFuelCard').attr('checked', false);
+                      $('#chkEquipSold').prop('checked', false);
+                      $('#chkEquipToBeSold').prop('checked', false);
+                      $('#chkEquipStolen').prop('checked', false);
+                      $('#chkEquipLojack').prop('checked', false);
+                      $('#chkEquipUnknown').prop('checked', false);
+                      $('#chkEquipLeased').prop('checked', false);
+                      $('#chkEquipInRepair').prop('checked', false);
+                      $('#chkEquipTotaled').prop('checked', false);
+                      $('#chkHUTSticker').prop('checked', false);
+                      $('#chkEquipApportioned').prop('checked', false);
+                      $('#chkIFTASticker').prop('checked', false);
+                      $('#chkEquipGPS').prop('checked', false);
+                      $('#chkEquipEZPASS').prop('checked', false);
+                      $('#chkEquipFuelCard').prop('checked', false);
                       $("#txtGPSNum").val('');
                       $("#txtEZPassNum").val('');
                       $("#txtFuelCardNum").val('');
                       $("#ddlFuelCardLoc").val('');
+                      
+                      $('#chkOtherAntiTheft').prop('checked', false);
+                      $('#hdnOtherAntiTheft').val('');
+                      $("#ddlOtherAntiTheftTypes").val('');
+
 
                       $('#hdnEquipApportioned').val('');
                       $('#hdnEquipInRepair').val('');
@@ -545,7 +565,7 @@ jQuery(document).ready(function() {
                       $("#txtEquipUnlaidenWt").val(data.unlaiden_wt);
                       $("#ddlTagSt").val(data.tag_state);
                       if (data.fuel_descr.length > 0)
-                          $("#ddlFuel option:econtains(" + data.fuel_descr + ")").attr('selected', 'selected');
+                          $("#ddlFuel option:econtains(" + data.fuel_descr + ")").prop('selected', 'selected');
                       $("#txtCost").val(data.cost);
                       $("#txtCurrentValue").val(data.current_value);
                       $("#ddlInspRmndr").val(data.insp_rmdr_wks);
@@ -555,119 +575,130 @@ jQuery(document).ready(function() {
                       $("#txtEZPassNum").val(data.ezpass_num);
                       $("#txtFuelCardNum").val(data.fuelcard_num);
                       $("#ddlFuelCardLoc").val(data.fuel_card_loc);
+                      $("#ddlOtherAntiTheftTypes").val(data.other_antitheft_type);
+
+                      if (data.other_antitheft == 'True') {
+                          $('#chkOtherAntiTheft').prop('checked', true);
+                          $('#hdnOtherAntiTheft').val('on');
+                      }
+                      else {
+                          $('#chkOtherAntiTheft').prop('checked', false);
+                          $('#hdnOtherAntiTheft').val('off');
+                      }
+                    
                       
                       if (data.lojack == 'True') {
-                          $('#chkEquipLojack').attr('checked', true);
+                          $('#chkEquipLojack').prop('checked', true);
                           $('#hdnEquipLojack').val('on');
                       }
                       else {
-                          $('#chkEquipLojack').attr('checked', false);
+                          $('#chkEquipLojack').prop('checked', false);
                           $('#hdnEquipLojack').val('off');
                       }
                       if (data.unknown == 'True') {
-                          $('#chkEquipUnknown').attr('checked', true);
+                          $('#chkEquipUnknown').prop('checked', true);
                           $('#hdnEquipUnknown').val('on');
                       }
                       else {
-                          $('#chkEquipUnknown').attr('checked', false);
+                          $('#chkEquipUnknown').prop('checked', false);
                           $('#hdnEquipUnknown').val('off');
                       }
                       if (data.leased == 'True') {
-                          $('#chkEquipLeased').attr('checked', true);
+                          $('#chkEquipLeased').prop('checked', true);
                           $('#hdnEquipLeased').val('on');
                       }
                       else {
-                          $('#chkEquipLeased').attr('checked', false);
+                          $('#chkEquipLeased').prop('checked', false);
                           $('#hdnEquipLeased').val('off');
                       }
                       if (data.sold == 'True') {
-                          $('#chkEquipSold').attr('checked', true);
+                          $('#chkEquipSold').prop('checked', true);
                           $('#hdnEquipSold').val('on');
                       }
                       else {
-                          $('#chkEquipSold').attr('checked', false);
+                          $('#chkEquipSold').prop('checked', false);
                           $('#hdnEquipSold').val('off');
                       }
                       if (data.to_be_sold == 'True') {
-                          $('#chkEquipToBeSold').attr('checked', true);
+                          $('#chkEquipToBeSold').prop('checked', true);
                           $('#hdnEquipToBeSold').val('on');
                       }
                       else {
-                          $('#chkEquipToBeSold').attr('checked', false);
+                          $('#chkEquipToBeSold').prop('checked', false);
                           $('#hdnEquipToBeSold').val('off');
                       }
                       if (data.stolen == 'True') {
-                          $('#chkEquipStolen').attr('checked', true);
+                          $('#chkEquipStolen').prop('checked', true);
                           $('#hdnEquipStolen').val('on');
                       }
                       else {
-                          $('#chkEquipStolen').attr('checked', false);
+                          $('#chkEquipStolen').prop('checked', false);
                           $('#hdnEquipStolen').val('off');
                       }
                       if (data.in_repair == 'True') {
-                          $('#chkEquipInRepair').attr('checked', true);
+                          $('#chkEquipInRepair').prop('checked', true);
                           $('#hdnEquipInRepair').val('on');
                       }
                       else {
-                          $('#chkEquipInRepair').attr('checked', false);
+                          $('#chkEquipInRepair').prop('checked', false);
                           $('#hdnEquipInRepair').val('off');
                       }
                       if (data.totaled == 'True') {
-                          $('#chkEquipTotaled').attr('checked', true);
+                          $('#chkEquipTotaled').prop('checked', true);
                           $('#hdnEquipTotaled').val('on');
                       }
                       else {
-                          $('#chkEquipTotaled').attr('checked', false);
+                          $('#chkEquipTotaled').prop('checked', false);
                           $('#hdnEquipTotaled').val('off');
                       }
                       if (data.hut_sticker == 'True') {
-                          $('#chkHUTSticker').attr('checked', true);
+                          $('#chkHUTSticker').prop('checked', true);
                           $('#hdnHUTSticker').val('on');
                       }
                       else {
-                          $('#chkHUTSticker').attr('checked', false);
+                          $('#chkHUTSticker').prop('checked', false);
                           $('#hdnHUTSticker').val('off');
                       }
                       if (data.apportioned == 'True') {
-                          $('#chkEquipApportioned').attr('checked', true);
+                          $('#chkEquipApportioned').prop('checked', true);
                           $('#hdnEquipApportioned').val('on');
                       }
                       else {
-                          $('#chkEquipApportioned').attr('checked', false);
+                          $('#chkEquipApportioned').prop('checked', false);
                           $('#hdnEquipApportioned').val('off');
                       }
                       if (data.ifta_sticker == 'True') {
-                          $('#chkIFTASticker').attr('checked', true);
+                          $('#chkIFTASticker').prop('checked', true);
                           $('#hdnIFTASticker').val('on');
                       }
                       else {
-                          $('#chkIFTASticker').attr('checked', false);
+                          $('#chkIFTASticker').prop('checked', false);
                           $('#hdnIFTASticker').val('off');
                       }
                       if (data.gps == 'True') {
-                          $('#chkEquipGPS').attr('checked', true);
+                          $('#chkEquipGPS').prop('checked', true);
                           $('#hdnEquipGPS').val('on');
                       }
                       else {
-                          $('#chkEquipGPS').attr('checked', false);
+                          $('#chkEquipGPS').prop('checked', false);
                           $('#hdnEquipGPS').val('off');
                       }
 
                       if (data.ezpass == 'True') {
-                          $('#chkEquipEZPASS').attr('checked', true);
+                          $('#chkEquipEZPASS').prop('checked', true);
                           $('#hdnEquipEZPASS').val('on');
                       }
                       else {
-                          $('#chkEquipEZPASS').attr('checked', false);
+                          $('#chkEquipEZPASS').prop('checked', false);
                           $('#hdnEquipEZPASS').val('off');
                       }
 
                       if (data.fuelcard == 'True') {
-                          $('#chkEquipFuelCard').attr('checked', true);
+                          $('#chkEquipFuelCard').prop('checked', true);
                           $('#hdnEquipFuelCard').val('on');
                       }
                       else {
-                          $('#chkEquipFuelCard').attr('checked', false);
+                          $('#chkEquipFuelCard').prop('checked', false);
                           $('#hdnEquipFuelCard').val('off');
                       }
 
@@ -966,10 +997,10 @@ jQuery(document).ready(function() {
                 $('#dtEquipRetDt').text(data.return_dt);
 
                 if (data.asgn_condition_id.length > 0)
-                    $("#ddlAsgnCond option:econtains(" + data.asgn_condition_id + ")").attr('selected', 'selected');
+                    $("#ddlAsgnCond option:econtains(" + data.asgn_condition_id + ")").prop('selected', 'selected');
 
                 if (data.ret_condition_id.length > 0)
-                    $("#ddlRetCond option:econtains(" + data.ret_condition_id + ")").attr('selected', 'selected');
+                    $("#ddlRetCond option:econtains(" + data.ret_condition_id + ")").prop('selected', 'selected');
 
                 $('#txtEquipAsgnMiles').val(data.asgn_miles);
                 $('#txtEquipAsgnHours').val(data.asgn_hours);
@@ -1066,10 +1097,10 @@ jQuery(document).ready(function() {
                       $('#dtEquipRetDt').text(data.return_dt);
 
                       if (data.asgn_condition_id.length > 0)
-                          $("#ddlAsgnCond option:econtains(" + data.asgn_condition_id + ")").attr('selected', 'selected');
+                          $("#ddlAsgnCond option:econtains(" + data.asgn_condition_id + ")").prop('selected', 'selected');
 
                       if (data.ret_condition_id.length > 0)
-                          $("#ddlRetCond option:econtains(" + data.ret_condition_id + ")").attr('selected', 'selected');
+                          $("#ddlRetCond option:econtains(" + data.ret_condition_id + ")").prop('selected', 'selected');
 
                       $('#txtEquipAsgnMiles').val(data.asgn_miles);
                       $('#txtEquipAsgnHours').val(data.asgn_hours);
@@ -1157,22 +1188,22 @@ jQuery(document).ready(function() {
    		            }
    		            }
    		        },
-   		    { name: 'model_num', hidden: true, editable: true, editrules: { edithidden: true }, searchoptions: { sopt: ['eq', 'bw', 'ew']} },
-   		    { name: 'serial_num', hidden: true, editable: true, editrules: { edithidden: true }, searchoptions: { sopt: ['eq', 'bw', 'ew']} },
+   		    { name: 'model_num', hidden: true, editable: true, editrules: { edithidden: true }, searchoptions: { sopt: ['eq', 'bw', 'ew'], searchhidden: true} },
+   		    { name: 'serial_num', hidden: true, editable: true, editrules: { edithidden: true }, searchoptions: { sopt: ['eq', 'bw', 'ew'], searchhidden: true} },
    		    { name: 'year_pur', hidden: true, search: false, editable: true, editrules: { edithidden: true} },
             { name: 'cost', hidden: true, editable: true, editrules: { edithidden: true }, search: false },
-            { name: 'stolen', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/TrueFalseDropdownData'} },
-            { name: 'sold', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/TrueFalseDropdownData'} },
-            { name: 'electrical', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/TrueFalseDropdownData'} },
-            { name: 'lojack', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/TrueFalseDropdownData'} },
-            { name: 'in_repair', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/TrueFalseDropdownData'} },
-            { name: 'totaled', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/TrueFalseDropdownData'} },
+            { name: 'stolen', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], value: "True:Yes;False:No", searchhidden: true} },
+            { name: 'sold', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], value: "True:Yes;False:No", searchhidden: true} },
+            { name: 'electrical', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], value: "True:Yes;False:No", searchhidden: true} },
+            { name: 'lojack', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], value: "True:Yes;False:No", searchhidden: true} },
+            { name: 'in_repair', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], value: "True:Yes;False:No", searchhidden: true} },
+            { name: 'totaled', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], value: "True:Yes;False:No", searchhidden: true} },
             { name: 'comment', hidden: true, editable: true, editrules: { edithidden: true }, edittype: "textarea", editoptions: { rows: "2", cols: "27" }, search: false },
    		    { name: 'tool_color', hidden: true, search: false },
    		    { name: 'tool_assign_color', hidden: true, search: false },
-            { name: 'unknown', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/TrueFalseDropdownData'} },
+            { name: 'unknown', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], value: "True:Yes;False:No", searchhidden: true} },
    		    { name: 'img_cnt', hidden: true, search: false },
-            { name: 'to_be_sold', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], dataUrl: '/EquipTrack/TrueFalseDropdownData'} }
+            { name: 'to_be_sold', hidden: true, editable: true, edittype: "checkbox", editoptions: { value: "True:False" }, editrules: { edithidden: true }, search: true, stype: "select", searchoptions: { sopt: ['eq'], value: "True:Yes;False:No", searchhidden: true} }
             ],
         sortname: 'tool_id',
         sortorder: "asc",
@@ -1217,14 +1248,14 @@ jQuery(document).ready(function() {
                 $("#txtToolSerialNum").val('');
                 $("#txtToolModelNum").val('');
                 $("#txtToolComment").val('');
-                $('#chkToolStolen').attr('checked', false);
-                $('#chkToolSold').attr('checked', false);
-                $('#chkToolToBeSold').attr('checked', false);
-                $('#chkToolElectrical').attr('checked', false);
-                $('#chkToolLojack').attr('checked', false);
-                $('#chkToolUnknown').attr('checked', false);
-                $('#chkToolInRepair').attr('checked', false);
-                $('#chkToolTotaled').attr('checked', false);
+                $('#chkToolStolen').prop('checked', false);
+                $('#chkToolSold').prop('checked', false);
+                $('#chkToolToBeSold').prop('checked', false);
+                $('#chkToolElectrical').prop('checked', false);
+                $('#chkToolLojack').prop('checked', false);
+                $('#chkToolUnknown').prop('checked', false);
+                $('#chkToolInRepair').prop('checked', false);
+                $('#chkToolTotaled').prop('checked', false);
                 
                 $("#hdnToolStolen").val('');
                 $("#hdnToolSold").val('');
@@ -1253,71 +1284,71 @@ jQuery(document).ready(function() {
                 $("#txtToolModelNum").val(data.model_num);
                 $("#txtToolComment").val(data.comment);
                 if (data.electrical == 'True') {
-                    $('#chkToolElectrical').attr('checked', true);
+                    $('#chkToolElectrical').prop('checked', true);
                     $('#hdnToolElectrical').val('on');
 
                 }
                 else {
-                    $('#chkToolElectrical').attr('checked', false);
+                    $('#chkToolElectrical').prop('checked', false);
                     $('#hdnToolElectrical').val('off');
                 }
 
                 if (data.lojack == 'True') {
-                    $('#chkToolLojack').attr('checked', true);
+                    $('#chkToolLojack').prop('checked', true);
                     $('#hdnToolLojack').val('on');
                 }
                 else {
-                    $('#chkToolLojack').attr('checked', false);
+                    $('#chkToolLojack').prop('checked', false);
                     $('#hdnToolLojack').val('off');
                 }
 
                 if (data.unknown == 'True') {
-                    $('#chkToolUnknown').attr('checked', true);
+                    $('#chkToolUnknown').prop('checked', true);
                     $('#hdnToolUnknown').val('on');
                 }
                 else {
-                    $('#chkToolUnknown').attr('checked', false);
+                    $('#chkToolUnknown').prop('checked', false);
                     $('#hdnToolUnknown').val('off');
                 }
 
                 if (data.sold == 'True') {
-                    $('#chkToolSold').attr('checked', true);
+                    $('#chkToolSold').prop('checked', true);
                     $('#hdnToolSold').val('on');
                 }
                 else {
-                    $('#chkToolSold').attr('checked', false);
+                    $('#chkToolSold').prop('checked', false);
                     $('#hdnToolSold').val('off');
                 }
                 if (data.to_be_sold == 'True') {
-                    $('#chkToolToBeSold').attr('checked', true);
+                    $('#chkToolToBeSold').prop('checked', true);
                     $('#hdnToolToBeSold').val('on');
                 }
                 else {
-                    $('#chkToolToBeSold').attr('checked', false);
+                    $('#chkToolToBeSold').prop('checked', false);
                     $('#hdnToolToBeSold').val('off');
                 }
                 if (data.stolen == 'True') {
-                    $('#chkToolStolen').attr('checked', true);
+                    $('#chkToolStolen').prop('checked', true);
                     $('#hdnToolStolen').val('on');
                 }
                 else {
-                    $('#chkToolStolen').attr('checked', false);
+                    $('#chkToolStolen').prop('checked', false);
                     $('#hdnToolStolen').val('off');
                 }
                 if (data.in_repair == 'True') {
-                    $('#chkToolInRepair').attr('checked', true);
+                    $('#chkToolInRepair').prop('checked', true);
                     $('#hdnToolInRepair').val('on');
                 }
                 else {
-                    $('#chkToolInRepair').attr('checked', false);
+                    $('#chkToolInRepair').prop('checked', false);
                     $('#hdnToolInRepair').val('off');
                 }
                 if (data.totaled == 'True') {
-                    $('#chkToolTotaled').attr('checked', true);
+                    $('#chkToolTotaled').prop('checked', true);
                     $('#hdnToolTotaled').val('on');
                 }
                 else {
-                    $('#chkToolTotaled').attr('checked', false);
+                    $('#chkToolTotaled').prop('checked', false);
                     $('#hdnToolTotaled').val('off');
                 }
                 
@@ -1465,14 +1496,14 @@ jQuery(document).ready(function() {
                       $("#txtToolSerialNum").val('');
                       $("#txtToolModelNum").val('');
                       $("#txtToolComment").val('');
-                      $('#chkToolStolen').attr('checked', false);
-                      $('#chkToolSold').attr('checked', false);
-                      $('#chkToolToBeSold').attr('checked', false);
-                      $('#chkToolElectrical').attr('checked', false);
-                      $('#chkToolLojack').attr('checked', false);
-                      $('#chkToolUnknown').attr('checked', false);
-                      $('#chkToolInRepair').attr('checked', false);
-                      $('#chkToolTotaled').attr('checked', false);
+                      $('#chkToolStolen').prop('checked', false);
+                      $('#chkToolSold').prop('checked', false);
+                      $('#chkToolToBeSold').prop('checked', false);
+                      $('#chkToolElectrical').prop('checked', false);
+                      $('#chkToolLojack').prop('checked', false);
+                      $('#chkToolUnknown').prop('checked', false);
+                      $('#chkToolInRepair').prop('checked', false);
+                      $('#chkToolTotaled').prop('checked', false);
 
                       $("#hdnToolStolen").val('');
                       $("#hdnToolSold").val('');
@@ -1500,71 +1531,71 @@ jQuery(document).ready(function() {
                       $("#txtToolModelNum").val(data.model_num);
                       $("#txtToolComment").val(data.comment);
                       if (data.electrical == 'True') {
-                          $('#chkToolElectrical').attr('checked', true);
+                          $('#chkToolElectrical').prop('checked', true);
                           $('#hdnToolElectrical').val('on');
 
                       }
                       else {
-                          $('#chkToolElectrical').attr('checked', false);
+                          $('#chkToolElectrical').prop('checked', false);
                           $('#hdnToolElectrical').val('off');
                       }
 
                       if (data.lojack == 'True') {
-                          $('#chkToolLojack').attr('checked', true);
+                          $('#chkToolLojack').prop('checked', true);
                           $('#hdnToolLojack').val('on');
                       }
                       else {
-                          $('#chkToolLojack').attr('checked', false);
+                          $('#chkToolLojack').prop('checked', false);
                           $('#hdnToolLojack').val('off');
                       }
 
                       if (data.unknown == 'True') {
-                          $('#chkToolUnknown').attr('checked', true);
+                          $('#chkToolUnknown').prop('checked', true);
                           $('#hdnToolUnknown').val('on');
                       }
                       else {
-                          $('#chkToolUnknown').attr('checked', false);
+                          $('#chkToolUnknown').prop('checked', false);
                           $('#hdnToolUnknown').val('off');
                       }
 
                       if (data.sold == 'True') {
-                          $('#chkToolSold').attr('checked', true);
+                          $('#chkToolSold').prop('checked', true);
                           $('#hdnToolSold').val('on');
                       }
                       else {
-                          $('#chkToolSold').attr('checked', false);
+                          $('#chkToolSold').prop('checked', false);
                           $('#hdnToolSold').val('off');
                       }
                       if (data.to_be_sold == 'True') {
-                          $('#chkToolToBeSold').attr('checked', true);
+                          $('#chkToolToBeSold').prop('checked', true);
                           $('#hdnToolToBeSold').val('on');
                       }
                       else {
-                          $('#chkToolToBeSold').attr('checked', false);
+                          $('#chkToolToBeSold').prop('checked', false);
                           $('#hdnToolToBeSold').val('off');
                       }
                       if (data.stolen == 'True') {
-                          $('#chkToolStolen').attr('checked', true);
+                          $('#chkToolStolen').prop('checked', true);
                           $('#hdnToolStolen').val('on');
                       }
                       else {
-                          $('#chkToolStolen').attr('checked', false);
+                          $('#chkToolStolen').prop('checked', false);
                           $('#hdnToolStolen').val('off');
                       }
                       if (data.in_repair == 'True') {
-                          $('#chkToolInRepair').attr('checked', true);
+                          $('#chkToolInRepair').prop('checked', true);
                           $('#hdnToolInRepair').val('on');
                       }
                       else {
-                          $('#chkToolInRepair').attr('checked', false);
+                          $('#chkToolInRepair').prop('checked', false);
                           $('#hdnToolInRepair').val('off');
                       }
                       if (data.totaled == 'True') {
-                          $('#chkToolTotaled').attr('checked', true);
+                          $('#chkToolTotaled').prop('checked', true);
                           $('#hdnToolTotaled').val('on');
                       }
                       else {
-                          $('#chkToolTotaled').attr('checked', false);
+                          $('#chkToolTotaled').prop('checked', false);
                           $('#hdnToolTotaled').val('off');
                       }
 
@@ -1818,10 +1849,10 @@ jQuery(document).ready(function() {
                 $('#dtToolRetDt').text(data.return_dt);
 
                 if (data.asgn_condition_id.length > 0)
-                    $("#ddlToolAsgnCond option:econtains(" + data.asgn_condition_id + ")").attr('selected', 'selected');
+                    $("#ddlToolAsgnCond option:econtains(" + data.asgn_condition_id + ")").prop('selected', 'selected');
 
                 if (data.ret_condition_id.length > 0)
-                    $("#ddlToolRetCond option:econtains(" + data.ret_condition_id + ")").attr('selected', 'selected');
+                    $("#ddlToolRetCond option:econtains(" + data.ret_condition_id + ")").prop('selected', 'selected');
 
                 $('#txtToolAsgnComments').val(data.comments);
 
@@ -1908,10 +1939,10 @@ jQuery(document).ready(function() {
                       $('#dtToolRetDt').text(data.return_dt);
 
                       if (data.asgn_condition_id.length > 0)
-                          $("#ddlToolAsgnCond option:econtains(" + data.asgn_condition_id + ")").attr('selected', 'selected');
+                          $("#ddlToolAsgnCond option:econtains(" + data.asgn_condition_id + ")").prop('selected', 'selected');
 
                       if (data.ret_condition_id.length > 0)
-                          $("#ddlToolRetCond option:econtains(" + data.ret_condition_id + ")").attr('selected', 'selected');
+                          $("#ddlToolRetCond option:econtains(" + data.ret_condition_id + ")").prop('selected', 'selected');
 
                       $('#txtToolAsgnComments').val(data.comments);
 
@@ -2211,6 +2242,48 @@ jQuery(document).ready(function() {
             resizable: false
         })
     });
+    
+    $(function() {
+        $("#delete_tool_dlg").dialog({
+            bgiframe: true,
+            width: 340,
+            modal: true,
+            autoOpen: false,
+            resizable: false
+        })
+    });
+
+    $(function() {
+        $("#delete_smalltool_dlg").dialog({
+            bgiframe: true,
+            width: 340,
+            modal: true,
+            autoOpen: false,
+            resizable: false
+        })
+    });
+
+    $(function() {
+        $("#delete_equip_dlg").dialog({
+            bgiframe: true,
+            width: 340,
+            modal: true,
+            autoOpen: false,
+            resizable: false
+        })
+    });
+    
+    $(function() {
+        $("#admin_xfer_assignments").dialog({
+            bgiframe: true,
+            width: 1050,
+            height: 625,
+            modal: true,
+            autoOpen: false,
+            resizable: false
+        })
+    });
+
 
     $(function() {
         $("#img_dialog_assign").dialog({
@@ -2414,7 +2487,7 @@ jQuery(document).ready(function() {
             jQuery("#equipgrid").setRowData(curRow, { miles_hours: respArray[1], miles_dt: respArray[2] });
 
 
-            if ($('#chkEquipSvcDue').attr('checked') == 'checked') {
+            if ($('#chkEquipSvcDue').prop('checked') == true) {
                 jQuery("#equipgrid").setRowData(curRow, { service_due_num: respArray[3] });
                 jQuery("#equipgrid").setCell(curRow, 'service_due_num', '', { color: 'black' })
 
@@ -2511,12 +2584,12 @@ jQuery(document).ready(function() {
             jQuery("#equip_success").show();
 
             var equipID = $('#txtEquipID').val();
-            var equipMake = $("#ddlEquipMake option:selected").text()
-            var equipModel = $("#ddlEquipModel option:selected").text()
-            var equipType = $("#ddlEquipType option:selected").text()
-            var equipRegBy = $("#ddlEquipRegBy option:selected").text()
-            var equipMngBy = $("#ddlEquipMngBy option:selected").text()
-            var equipLoc = $("#ddlEquipLoc option:selected").text()
+            var equipMake = $("#ddlEquipMake option:selected").text();
+            var equipModel = $("#ddlEquipModel option:selected").text();
+            var equipType = $("#ddlEquipType option:selected").text();
+            var equipRegBy = $("#ddlEquipRegBy option:selected").text();
+            var equipMngBy = $("#ddlEquipMngBy option:selected").text();
+            var equipLoc = $("#ddlEquipLoc option:selected").text();
             var txtEquipYear = $("#txtEquipYear").val();
             var dtEquipInspDue = $("#dtEquipInspDue").val();
             var dtEquipMngByDt = $("#dtEquipMngByDt").val();
@@ -2531,98 +2604,103 @@ jQuery(document).ready(function() {
             var txtEquipGCW = $("#txtEquipGCW").val();
             var txtEquipUnlaidenWt = $("#txtEquipUnlaidenWt").val();
             var ddlTagSt = $("#ddlTagSt").val();
-            var ddlFuel = $("#ddlFuel option:selected").text()
+            var ddlFuel = $("#ddlFuel option:selected").text();
             var txtCost = $("#txtCost").val();
             var txtCurrentValue = $("#txtCurrentValue").val();
             var ddlInspRmndr = $("#ddlInspRmndr").val();
             var ddlTagRmndr = $("#ddlTagRmndr").val();
             var txtEquipComment = $("#txtEquipComment").val();
+
+            var ddlOtherAntiTheftTypes = $("#ddlOtherAntiTheftTypes option:selected").text();
+
+            var chkOtherAntiTheft;
+            if ($('#chkOtherAntiTheft').prop('checked') == true) {
+                chkOtherAntiTheft = "True";
+            }
+            else {
+                chkOtherAntiTheft = "False";
+            }
+                
+            
             var chkEquipSold;
-            if ($('#chkEquipSold').attr('checked') == 'checked') {
+            if ($('#chkEquipSold').prop('checked') == true) {
                 chkEquipSold = "True";
             }
             else {
                 chkEquipSold = "False";
             }
             var chkEquipToBeSold;
-            if ($('#chkEquipToBeSold').attr('checked') == 'checked') {
+            if ($('#chkEquipToBeSold').prop('checked') == true) {
                 chkEquipToBeSold = "True";
             }
             else {
                 chkEquipToBeSold = "False";
             }
-            var chkEquipStolen;
-            if ($('#chkEquipStolen').attr('checked') == 'checked') {
-                chkEquipStolen = "True";
-            }
-            else {
-                chkEquipStolen = "False";
-            }
             var chkEquipLojack;
-            if ($('#chkEquipLojack').attr('checked') == 'checked') {
+            if ($('#chkEquipLojack').prop('checked') == true) {
                 chkEquipLojack = "True";
             }
             else {
                 chkEquipLojack = "False";
             }
             var chkEquipUnknown;
-            if ($('#chkEquipUnknown').attr('checked') == 'checked') {
+            if ($('#chkEquipUnknown').prop('checked') == true) {
                 chkEquipUnknown = "True";
             }
             else {
                 chkEquipUnknown = "False";
             }
             var chkEquipLeased;
-            if ($('#chkEquipLeased').attr('checked') == 'checked') {
+            if ($('#chkEquipLeased').prop('checked') == true) {
                 chkEquipLeased = "True";
             }
             else {
                 chkEquipLeased = "False";
             }
             var chkEquipInRepair;
-            if ($('#chkEquipInRepair').attr('checked') == 'checked') {
+            if ($('#chkEquipInRepair').prop('checked') == true) {
                 chkEquipInRepair = "True";
             }
             else {
                 chkEquipInRepair = "False";
             }
             var chkEquipStolen;
-            if ($('#chkEquipStolen').attr('checked') == 'checked') {
+            if ($('#chkEquipStolen').prop('checked') == true) {
                 chkEquipStolen = "True";
             }
             else {
                 chkEquipStolen = "False";
             }
             var chkEquipTotaled;
-            if ($('#chkEquipTotaled').attr('checked') == 'checked') {
+            if ($('#chkEquipTotaled').prop('checked') == true) {
                 chkEquipTotaled = "True";
             }
             else {
                 chkEquipTotaled = "False";
             }
             var chkHUTSticker;
-            if ($('#chkHUTSticker').attr('checked') == 'checked') {
+            if ($('#chkHUTSticker').prop('checked') == true) {
                 chkHUTSticker = "True";
             }
             else {
                 chkHUTSticker = "False";
             }
             var chkApportioned;
-            if ($('#chkEquipApportioned').attr('checked') == 'checked') {
+            if ($('#chkEquipApportioned').prop('checked') == true) {
                 chkApportioned = "True";
             }
             else {
                 chkApportioned = "False";
             }
             var chkIFTASticker;
-            if ($('#chkIFTASticker').attr('checked') == 'checked') {
+            if ($('#chkIFTASticker').prop('checked') == true) {
                 chkIFTASticker = "True";
             }
             else {
                 chkIFTASticker = "False";
             }
             var chkEquipGPS;
-            if ($('#chkEquipGPS').attr('checked') == 'checked') {
+            if ($('#chkEquipGPS').prop('checked') == true) {
                 chkEquipGPS = "True";
             }
             else {
@@ -2630,7 +2708,7 @@ jQuery(document).ready(function() {
             }
 
             var chkEquipEZPASS;
-            if ($('#chkEquipEZPASS').attr('checked') == 'checked') {
+            if ($('#chkEquipEZPASS').prop('checked') == true) {
                 chkEquipEZPASS = "True";
             }
             else {
@@ -2638,7 +2716,7 @@ jQuery(document).ready(function() {
             }
 
             var chkEquipFuelCard;
-            if ($('#chkEquipFuelCard').attr('checked') == 'checked') {
+            if ($('#chkEquipFuelCard').prop('checked') == true) {
                 chkEquipFuelCard = "True";
             }
             else {
@@ -2660,7 +2738,6 @@ jQuery(document).ready(function() {
                 miles_hours: txtEquipMilesHours,
                 miles_dt: dtEquipMilesDt,
                 registered_by: equipRegBy,
-                tag_expire_dt: equipMngBy,
                 managed_by: equipMngBy,
                 managed_by_dt: dtEquipMngByDt,
                 tag_expire_dt: dtEquipTagExp,
@@ -2693,7 +2770,9 @@ jQuery(document).ready(function() {
                 ezpass_num: txtEZPASSNum,
                 fuelcard: chkEquipFuelCard,
                 fuelcard_num: txtFuelCardNum,
-                to_be_sold: chkEquipToBeSold
+                to_be_sold: chkEquipToBeSold,
+                other_antitheft: chkOtherAntiTheft,
+                other_antitheft_type: ddlOtherAntiTheftTypes
             };
 
             var oper = $('#hdnEditOper').val();
@@ -2759,56 +2838,56 @@ jQuery(document).ready(function() {
             var txtToolModelNum = $("#txtToolModelNum").val();
             var txtToolComment = $("#txtToolComment").val();
             var chkToolSold;
-            if ($('#chkToolSold').attr('checked') == 'checked') {
+            if ($('#chkToolSold').prop('checked') == true) {
                 chkToolSold = "True";
             }
             else {
                 chkToolSold = "False";
             }
             var chkToolToBeSold;
-            if ($('#chkToolToBeSold').attr('checked') == 'checked') {
+            if ($('#chkToolToBeSold').prop('checked') == true) {
                 chkToolToBeSold = "True";
             }
             else {
                 chkToolToBeSold = "False";
             }
             var chkToolElectrical;
-            if ($('#chkToolElectrical').attr('checked') == 'checked') {
+            if ($('#chkToolElectrical').prop('checked') == true) {
                 chkToolElectrical = "True";
             }
             else {
                 chkToolElectrical = "False";
             }
             var chkToolLojack;
-            if ($('#chkToolLojack').attr('checked') == 'checked') {
+            if ($('#chkToolLojack').prop('checked') == true) {
                 chkToolLojack = "True";
             }
             else {
                 chkToolLojack = "False";
             }
             var chkToolUnknown;
-            if ($('#chkToolUnknown').attr('checked') == 'checked') {
+            if ($('#chkToolUnknown').prop('checked') == true) {
                 chkToolUnknown = "True";
             }
             else {
                 chkToolUnknown = "False";
             }
             var chkToolInRepair;
-            if ($('#chkToolInRepair').attr('checked') == 'checked') {
+            if ($('#chkToolInRepair').prop('checked') == true) {
                 chkToolInRepair = "True";
             }
             else {
                 chkToolInRepair = "False";
             }
             var chkToolStolen;
-            if ($('#chkToolStolen').attr('checked') == 'checked') {
+            if ($('#chkToolStolen').prop('checked') == true) {
                 chkToolStolen = "True";
             }
             else {
                 chkToolStolen = "False";
             }
             var chkToolTotaled;
-            if ($('#chkToolTotaled').attr('checked') == 'checked') {
+            if ($('#chkToolTotaled').prop('checked') == true) {
                 chkToolTotaled = "True";
             }
             else {
@@ -3230,7 +3309,7 @@ function OpenEquipEditSvcDlg(dta) {
 
     $.get("/EquipTrack/GetEquipSvcEditDlg/", {}, function(data) {
         $("#equip_svc_results").html(data);
-        $("#lstEquipSvcTypes option:econtains(" + dta.serv_descr + ")").attr('selected', 'selected');
+        $("#lstEquipSvcTypes option:econtains(" + dta.serv_descr + ")").prop('selected', 'selected');
     });
 
 }
@@ -3263,7 +3342,7 @@ function OpenToolSvcDlg(dta) {
 
     $.get("/EquipTrack/GetToolSvcEditDlg/", {}, function(data) {
         $("#tool_svc_results").html(data);
-        $("#lstToolSvcTypes option:econtains(" + dta.serv_descr + ")").attr('selected', 'selected');
+        $("#lstToolSvcTypes option:econtains(" + dta.serv_descr + ")").prop('selected', 'selected');
     });
 }
 
@@ -3412,11 +3491,11 @@ function OpenEquipEditDlg(dta) {
         $("#equip_results").html(data);
         if (oper == "Edit") {
             if (dta.make_descr.length != 0)
-                $("#ddlEquipMake option:econtains(" + dta.make_descr + ")").attr('selected', 'selected');
+                $("#ddlEquipMake option:econtains(" + dta.make_descr + ")").prop('selected', 'selected');
             if (dta.model_descr.length != 0)
-                $("#ddlEquipModel option:econtains(" + dta.model_descr + ")").attr('selected', 'selected');
+                $("#ddlEquipModel option:econtains(" + dta.model_descr + ")").prop('selected', 'selected');
             if (dta.type_desc.length != 0)
-                $("#ddlEquipType option:econtains(" + dta.type_desc + ")").attr('selected', 'selected');
+                $("#ddlEquipType option:econtains(" + dta.type_desc + ")").prop('selected', 'selected');
             $('#ddlEquipLoc').val(dta.work_loc);
             $('#ddlEquipRegBy').val(dta.registered_by);
             $('#hdnEquipRegBy').val(dta.registered_by);
@@ -3485,13 +3564,13 @@ function OpenToolEditDlg(dta) {
         $("#tool_dlg_results").html(data);
         if (oper == "Edit") {
             if (dta.tool_mfg_descr.length != 0)
-                $("#ddlToolMfg option:econtains(" + dta.tool_mfg_descr + ")").attr('selected', 'selected');
+                $("#ddlToolMfg option:econtains(" + dta.tool_mfg_descr + ")").prop('selected', 'selected');
             if (dta.tools_type_descr.length != 0)
-                $("#ddlToolType option:econtains(" + dta.tools_type_descr + ")").attr('selected', 'selected');
+                $("#ddlToolType option:econtains(" + dta.tools_type_descr + ")").prop('selected', 'selected');
             if (dta.tools_descr_descr.length != 0)
-                $("#ddlToolDesc option:econtains(" + dta.tools_descr_descr + ")").attr('selected', 'selected');
+                $("#ddlToolDesc option:econtains(" + dta.tools_descr_descr + ")").prop('selected', 'selected');
             if (dta.size_descr.length != 0)
-                $("#ddlToolSize option:econtains(" + dta.size_descr + ")").attr('selected', 'selected');
+                $("#ddlToolSize option:econtains(" + dta.size_descr + ")").prop('selected', 'selected');
             $('#ddlToolLoc').val(dta.work_loc);
             $('#ddlToolRegBy').val(dta.registered_by);
             $('#ddlToolMngBy').val(dta.managed_by);

@@ -192,9 +192,7 @@ jQuery(document).ready(function() {
     }).navGrid('#electronicsgridp', { deltext: "Delete", searchtext: "Find", refreshtext: "Reload", edit: false, add: false, del: true, search: true, refresh: true }, //options
          {}, // edit options
          {}, // add options
-        {mtype: "POST", reloadAfterSubmit: true, serializeDelData: function(postdata) {
-            return ""; // the body MUST be empty in DELETE HTTP requests
-        }, onclickSubmit: function(params) {
+        {mtype: "POST", reloadAfterSubmit: true, onclickSubmit: function(params) {
             var ajaxData = {};
 
             var rowData = $("#electronicsgrid").getRowData(curRow);
@@ -402,10 +400,10 @@ jQuery(document).ready(function() {
                 $('#dtElectronicsRetDt').text(data.return_dt);
 
                 if (data.asgn_condition_id.length > 0)
-                    $("#ddlAsgnCond option:econtains(" + data.asgn_condition_id + ")").attr('selected', 'selected');
+                    $("#ddlAsgnCond option:econtains(" + data.asgn_condition_id + ")").prop('selected', 'selected');
 
                 if (data.ret_condition_id.length > 0)
-                    $("#ddlRetCond option:econtains(" + data.ret_condition_id + ")").attr('selected', 'selected');
+                    $("#ddlRetCond option:econtains(" + data.ret_condition_id + ")").prop('selected', 'selected');
 
                 $('#txtElectronicsAsgnComments').val(data.comments);
 
@@ -470,10 +468,10 @@ jQuery(document).ready(function() {
                       $('#dtElectronicsRetDt').text(data.return_dt);
 
                       if (data.asgn_condition_id.length > 0)
-                          $("#ddlAsgnCond option:econtains(" + data.asgn_condition_id + ")").attr('selected', 'selected');
+                          $("#ddlAsgnCond option:econtains(" + data.asgn_condition_id + ")").prop('selected', 'selected');
 
                       if (data.ret_condition_id.length > 0)
-                          $("#ddlRetCond option:econtains(" + data.ret_condition_id + ")").attr('selected', 'selected');
+                          $("#ddlRetCond option:econtains(" + data.ret_condition_id + ")").prop('selected', 'selected');
 
                       $('#txtElectronicsAsgnComments').val(data.comments);
 
@@ -710,35 +708,35 @@ jQuery(document).ready(function() {
             var txtElectronicsCost = $("#txtElectronicsCost").val();
             var txtElectronicsComment = $("#txtElectronicsComment").val();
             var chkElectronicsStolen;
-            if ($('#chkElectronicsStolen').attr('checked') == 'checked') {
+            if ($('#chkElectronicsStolen').prop('checked') == true) {
                 chkElectronicsStolen = "True";
             }
             else {
                 chkElectronicsStolen = "False";
             }
             var chkElectronicsUnknown;
-            if ($('#chkElectronicsUnknown').attr('checked') == 'checked') {
+            if ($('#chkElectronicsUnknown').prop('checked') == true) {
                 chkElectronicsUnknown = "True";
             }
             else {
                 chkElectronicsUnknown = "False";
             }
             var chkElectronicsInRepair;
-            if ($('#chkElectronicsInRepair').attr('checked') == 'checked') {
+            if ($('#chkElectronicsInRepair').prop('checked') == true) {
                 chkElectronicsInRepair = "True";
             }
             else {
                 chkElectronicsInRepair = "False";
             }
             var chkElectronicsStolen;
-            if ($('#chkElectronicsStolen').attr('checked') == 'checked') {
+            if ($('#chkElectronicsStolen').prop('checked') == true) {
                 chkElectronicsStolen = "True";
             }
             else {
                 chkElectronicsStolen = "False";
             }
             var chkElectronicsTotaled;
-            if ($('#chkElectronicsTotaled').attr('checked') == 'checked') {
+            if ($('#chkElectronicsTotaled').prop('checked') == true) {
                 chkElectronicsTotaled = "True";
             }
             else {
@@ -925,7 +923,7 @@ function OpenElectronicsEditAsgnDlg(dta) {
 
     $.get("/Electronics/GetElectronicsAsgnEditDlg/", {}, function(data) {
         $("#electronics_asgn_results").html(data);
-        //            $("#ddlAssignedTo option:econtains(" + dta.assigned_to + ")").attr('selected', 'selected');
+        //            $("#ddlAssignedTo option:econtains(" + dta.assigned_to + ")").prop('selected', 'selected');
         $('#ddlAssignedTo').val(dta.assigned_to);
     });
 
@@ -958,11 +956,11 @@ function OpenElectronicsEditDlg(dta) {
         $("#electronics_results").html(data);
         if (oper == "Edit") {
             if (dta.make_descr.length > 0)
-                $("#ddlElectronicsMake option:econtains(" + dta.make_descr + ")").attr('selected', 'selected');
+                $("#ddlElectronicsMake option:econtains(" + dta.make_descr + ")").prop('selected', 'selected');
             if (dta.model_desc.length > 0)
-                $("#ddlElectronicsModel option:econtains(" + dta.model_desc + ")").attr('selected', 'selected');
+                $("#ddlElectronicsModel option:econtains(" + dta.model_desc + ")").prop('selected', 'selected');
             if (dta.type_desc.length > 0)
-                $("#ddlElectronicsType option:econtains(" + dta.type_desc + ")").attr('selected', 'selected');
+                $("#ddlElectronicsType option:econtains(" + dta.type_desc + ")").prop('selected', 'selected');
             $('#ddlElectronicsLoc').val(dta.location);
             $('#ddlElectronicsRegBy').val(dta.registered_by);
             $('#ddlElectronicsMngBy').val(dta.managed_by);

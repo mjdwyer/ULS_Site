@@ -246,9 +246,17 @@
 
                         break;
 
-                    case "EquipLojackInv": 
+                    case "EquipLojackInv":
 
                         strReportPath = Server.MapPath("~/Reports/EquipLojackInventory.rpt");
+                        comand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@div", System.Data.SqlDbType.VarChar, 50));
+                        comand.Parameters["@div"].Value = strParm1;
+
+                        break;
+
+                    case "EquipOtherAntiTheftInv":
+
+                        strReportPath = Server.MapPath("~/Reports/EquipOtherAntiTheftInventory.rpt");
                         comand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@div", System.Data.SqlDbType.VarChar, 50));
                         comand.Parameters["@div"].Value = strParm1;
 

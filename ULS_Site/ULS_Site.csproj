@@ -340,11 +340,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EquipInvByLocDS.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Reports\EquipInvByType.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EquipInvByType.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Reports\EquipInvByTypeAndLoc.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -433,6 +428,17 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EquipOnLoan.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipOtherAntiTheftDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipOtherAntiTheftDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EquipOtherAntiTheftInventory.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipOtherAntiTheftInventory.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\EquipSvcCostHist.cs">
       <AutoGen>True</AutoGen>
@@ -547,6 +553,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GetToolChangeLogHistDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\InventoryByTypeDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InventoryByTypeDS.xsd</DependentUpon>
     </Compile>
     <Compile Include="Reports\QEmpLstByCertDS.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -947,9 +958,6 @@
     <Content Include="Content\jqGrid\images\ui-bg_fine-grain_65_654b24_60x60.png" />
     <Content Include="Content\jqGrid\images\ui-bg_fine-grain_68_b83400_60x60.png" />
     <Content Include="Content\jqGrid\jquery.searchFilter.css" />
-    <Content Include="Content\MicrosoftAjax.debug.js" />
-    <Content Include="Content\MicrosoftAjax.js" />
-    <Content Include="Content\MicrosoftMvcAjax.debug.js" />
     <Content Include="Content\superfish-navbar.css" />
     <Content Include="Content\superfish-vertical.css" />
     <Content Include="Content\superfish.css" />
@@ -1350,17 +1358,6 @@
     <None Include="Reports\EquipInvByLocDS.xss">
       <DependentUpon>EquipInvByLocDS.xsd</DependentUpon>
     </None>
-    <None Include="Reports\EquipInvByType.xsc">
-      <DependentUpon>EquipInvByType.xsd</DependentUpon>
-    </None>
-    <None Include="Reports\EquipInvByType.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>EquipInvByType.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Reports\EquipInvByType.xss">
-      <DependentUpon>EquipInvByType.xsd</DependentUpon>
-    </None>
     <None Include="Reports\EquipInvByTypeandLocDS.xsc">
       <DependentUpon>EquipInvByTypeandLocDS.xsd</DependentUpon>
     </None>
@@ -1437,6 +1434,17 @@
     </None>
     <None Include="Reports\EquipOnLoan.xss">
       <DependentUpon>EquipOnLoan.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipOtherAntiTheftDS.xsc">
+      <DependentUpon>EquipOtherAntiTheftDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EquipOtherAntiTheftDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipOtherAntiTheftDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\EquipOtherAntiTheftDS.xss">
+      <DependentUpon>EquipOtherAntiTheftDS.xsd</DependentUpon>
     </None>
     <None Include="Reports\EquipSvcCostHistAllDS.xsc">
       <DependentUpon>EquipSvcCostHistAllDS.xsd</DependentUpon>
@@ -1569,6 +1577,17 @@
     </None>
     <None Include="Reports\GetToolChangeLogHistDS.xss">
       <DependentUpon>GetToolChangeLogHistDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\InventoryByTypeDS.xsc">
+      <DependentUpon>InventoryByTypeDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\InventoryByTypeDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>InventoryByTypeDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\InventoryByTypeDS.xss">
+      <DependentUpon>InventoryByTypeDS.xsd</DependentUpon>
     </None>
     <None Include="Reports\QEmpLstByCertDS.xsc">
       <DependentUpon>QEmpLstByCertDS.xsd</DependentUpon>
@@ -1956,6 +1975,10 @@
     <EmbeddedResource Include="Reports\EquipOneSvcReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>EquipOneSvcReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EquipOtherAntiTheftInventory.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipOtherAntiTheftInventory.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\EquipSvcCostHist.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

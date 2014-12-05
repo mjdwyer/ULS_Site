@@ -636,6 +636,46 @@ namespace ULS_Site.Controllers
 
         [SessionExpireFilter]
         [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult EditAssign(Nullable<int> id, FormCollection formValues)
+        {
+            // this method used just for delete now
+            uls_dbDataContext db = new uls_dbDataContext();
+            electronics_assgn elecA = new electronics_assgn();
+
+            try
+            {
+
+                string strOper = formValues.GetValues("oper")[0];
+
+
+                string strElectID = formValues.GetValues("id")[0];
+//                string strQualID = formValues.GetValues("strQualID")[0];
+
+                if (strOper == "del")
+                {
+
+                    elecA = db.electronics_assgns.Single(e => e.assign_id == Convert.ToInt32(strElectID));
+
+                    db.electronics_assgns.DeleteOnSubmit(elecA);
+
+
+                    db.SubmitChanges();
+                }
+
+                return Content("Success");
+
+            }
+            catch (Exception ex)
+            {
+
+                string strErr = ex.Message;
+                return Content(strErr);
+            }
+        }
+
+
+        [SessionExpireFilter]
+        [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult EditElectronicsAsgn()
         {
 

@@ -71,6 +71,21 @@ function CloseReportDialog() {
 
 };
 
+function CloseDeleteToolDialog() {
+    jQuery('#delete_tool_dlg').dialog('close');
+
+};
+
+function CloseDeleteSmallToolDialog() {
+    jQuery('#delete_smalltool_dlg').dialog('close');
+
+};
+
+function CloseDeleteEquipDialog() {
+    jQuery('#delete_equip_dlg').dialog('close');
+
+};
+
 function CloseExportDialog() {
     jQuery('#export_dlg').dialog('close');
 
@@ -223,13 +238,13 @@ function ShowToolAsgnFormWait() {
 
 function EquipTotalInvReport() {
 
-    $("#help_popup").dialog('option', 'title', "Equipment Total Inventory Help")
+    $("#help_popup").dialog('option', 'title', "Equipment Total Inventory Help");
     $.get("/EquipTrack/GetHelpMsg/" + "TotalEquipInv", {}, function(data) {
     $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Equipment Total Inventory")
+    $("#rpt_dialog").dialog('option', 'title', "Equipment Total Inventory");
     var eID = document.getElementById("hdnReportName");
     eID.value = "EquipTotalInv";
     $("#rpt_dlg_results").html('');
@@ -237,13 +252,13 @@ function EquipTotalInvReport() {
 }
 
 function EquipTotalInvReportRegBy() {
-    $("#help_popup").dialog('option', 'title', "Equipment Inventory - Registered To Help")
+    $("#help_popup").dialog('option', 'title', "Equipment Inventory - Registered To Help");
     $.get("/EquipTrack/GetHelpMsg/" + "TotalEquipInvRegBy", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Equipment Inventory - Registered To")
+    $("#rpt_dialog").dialog('option', 'title', "Equipment Inventory - Registered To");
     var eID = document.getElementById("hdnReportName");
     eID.value = "EquipTotalInvRegBy";
     $("#rpt_dlg_results").html('');
@@ -251,13 +266,13 @@ function EquipTotalInvReportRegBy() {
 }
 
 function ToolsTotalInvReport() {
-    $("#help_popup").dialog('option', 'title', "Tools Total Inventory Help")
+    $("#help_popup").dialog('option', 'title', "Tools Total Inventory Help");
     $.get("/EquipTrack/GetHelpMsg/" + "TotalToolInv", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Tools Inventory")
+    $("#rpt_dialog").dialog('option', 'title', "Tools Inventory");
     var eID = document.getElementById("hdnReportName");
     eID.value = "ToolsTotalInv";
     $("#rpt_dlg_results").html('');
@@ -265,13 +280,13 @@ function ToolsTotalInvReport() {
 }
 
 function ToolsTotalInvReportRegBy() {
-    $("#help_popup").dialog('option', 'title', "Tools Total Inventory - Registered To Help")
+    $("#help_popup").dialog('option', 'title', "Tools Total Inventory - Registered To Help");
     $.get("/EquipTrack/GetHelpMsg/" + "TotalToolInvRegTo", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Tools Inventory - Registered To")
+    $("#rpt_dialog").dialog('option', 'title', "Tools Inventory - Registered To");
     var eID = document.getElementById("hdnReportName");
     eID.value = "ToolsTotalInvRegBy";
     $("#rpt_dlg_results").html('');
@@ -279,13 +294,13 @@ function ToolsTotalInvReportRegBy() {
 }
 
 function ToolsLojackInvReport() {
-    $("#help_popup").dialog('option', 'title', "Tools Lojack Inventory Help")
+    $("#help_popup").dialog('option', 'title', "Tools Lojack Inventory Help");
     $.get("/EquipTrack/GetHelpMsg/" + "ToolInvLojack", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Tools Lojack Inventory")
+    $("#rpt_dialog").dialog('option', 'title', "Tools Lojack Inventory");
     var eID = document.getElementById("hdnReportName");
     eID.value = "ToolsLojackInv";
     $("#rpt_dlg_results").html('');
@@ -293,13 +308,13 @@ function ToolsLojackInvReport() {
 }
 
 function ToolsToBeSoldReport() {
-    $("#help_popup").dialog('option', 'title', "Tools To Be Sold Inventory Help")
+    $("#help_popup").dialog('option', 'title', "Tools To Be Sold Inventory Help");
     $.get("/EquipTrack/GetHelpMsg/" + "ToolInvToBeSold", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Tools To Be Sold Inventory")
+    $("#rpt_dialog").dialog('option', 'title', "Tools To Be Sold Inventory");
     var eID = document.getElementById("hdnReportName");
     eID.value = "ToolsToBeSold";
     $("#rpt_dlg_results").html('');
@@ -307,13 +322,13 @@ function ToolsToBeSoldReport() {
 }
 
 function ToolsUnknownInvReport() {
-    $("#help_popup").dialog('option', 'title', "Tools Unknown Inventory Help")
+    $("#help_popup").dialog('option', 'title', "Tools Unknown Inventory Help");
     $.get("/EquipTrack/GetHelpMsg/" + "ToolInvUnknown", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Tools Unknown Inventory")
+    $("#rpt_dialog").dialog('option', 'title', "Tools Unknown Inventory");
     var eID = document.getElementById("hdnReportName");
     eID.value = "ToolsUnknownInv";
     $("#rpt_dlg_results").html('');
@@ -321,13 +336,13 @@ function ToolsUnknownInvReport() {
 }
 
 function EquipHUTReport() {
-    $("#help_popup").dialog('option', 'title', "Equipment HUT Sticker Inventory Help")
+    $("#help_popup").dialog('option', 'title', "Equipment HUT Sticker Inventory Help");
     $.get("/EquipTrack/GetHelpMsg/" + "HUTStickerInv", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "HUT Sticker Inventory")
+    $("#rpt_dialog").dialog('option', 'title', "HUT Sticker Inventory");
     var eID = document.getElementById("hdnReportName");
     eID.value = "EquipHUTInv";
     $("#rpt_dlg_results").html('');
@@ -335,13 +350,13 @@ function EquipHUTReport() {
 }
 
 function EquipApportionedReport() {
-    $("#help_popup").dialog('option', 'title', "Equipment Apportioned Inventory Help")
+    $("#help_popup").dialog('option', 'title', "Equipment Apportioned Inventory Help");
     $.get("/EquipTrack/GetHelpMsg/" + "ApportionedInv", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Apportioned Equipment Inventory")
+    $("#rpt_dialog").dialog('option', 'title', "Apportioned Equipment Inventory");
     var eID = document.getElementById("hdnReportName");
     eID.value = "EquipApportionedInv";
     $("#rpt_dlg_results").html('');
@@ -349,27 +364,41 @@ function EquipApportionedReport() {
 }
 
 function EquipLojackReport() {
-    $("#help_popup").dialog('option', 'title', "Equipment Lojack Inventory Help")
+    $("#help_popup").dialog('option', 'title', "Equipment Lojack Inventory Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipLojackInv", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Lojack Equipment Inventory")
+    $("#rpt_dialog").dialog('option', 'title', "Lojack Equipment Inventory");
     var eID = document.getElementById("hdnReportName");
     eID.value = "EquipLojackInv";
     $("#rpt_dlg_results").html('');
     jQuery('#rpt_dialog').dialog('open');
 }
 
+function EquipOtherAntiTheftReport() {
+    $("#help_popup").dialog('option', 'title', "Equipment Other Anti-theft Inventory Help");
+    $.get("/EquipTrack/GetHelpMsg/" + "EquipOtherAntiTheftInv", {}, function(data) {
+        $("#help_results").html(data);
+    });
+
+    $("#rpt_loading").hide();
+    $("#rpt_dialog").dialog('option', 'title', "Other Anti-theft Equipment Inventory");
+    var eID = document.getElementById("hdnReportName");
+    eID.value = "EquipOtherAntiTheftInv";
+    $("#rpt_dlg_results").html('');
+    jQuery('#rpt_dialog').dialog('open');
+}
+
 function EquipToBeSold() {
-    $("#help_popup").dialog('option', 'title', "Equipment To Be Sold Inventory Help")
+    $("#help_popup").dialog('option', 'title', "Equipment To Be Sold Inventory Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipToBeSoldInv", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "To Be Sold Equipment Inventory")
+    $("#rpt_dialog").dialog('option', 'title', "To Be Sold Equipment Inventory");
     var eID = document.getElementById("hdnReportName");
     eID.value = "EquipToBeSoldInv";
     $("#rpt_dlg_results").html('');
@@ -378,13 +407,13 @@ function EquipToBeSold() {
 
 function EquipLeasedReport() {
 
-    $("#help_popup").dialog('option', 'title', "Leased Equipment Inventory Help")
+    $("#help_popup").dialog('option', 'title', "Leased Equipment Inventory Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipLeasedInv", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Leased Equipment Inventory")
+    $("#rpt_dialog").dialog('option', 'title', "Leased Equipment Inventory");
     var eID = document.getElementById("hdnReportName");
     eID.value = "EquipLeasedInv";
     $("#rpt_dlg_results").html('');
@@ -392,13 +421,13 @@ function EquipLeasedReport() {
 }
 
 function EquipFuelCardReport() {
-    $("#help_popup").dialog('option', 'title', "Equipment Fuel Card Inventory Help")
+    $("#help_popup").dialog('option', 'title', "Equipment Fuel Card Inventory Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipFuelCardInv", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Fuel Card Equipment Inventory")
+    $("#rpt_dialog").dialog('option', 'title', "Fuel Card Equipment Inventory");
     var eID = document.getElementById("hdnReportName");
     eID.value = "EquipFuelCardInv";
     $("#rpt_dlg_results").html('');
@@ -406,12 +435,12 @@ function EquipFuelCardReport() {
 }
 
 function EquipFuelCardDivReport() {
-    $("#help_popup").dialog('option', 'title', "Equipment Fuel Card Division Inventory Help")
+    $("#help_popup").dialog('option', 'title', "Equipment Fuel Card Division Inventory Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipFuelCardDivInv", {}, function(data) {
         $("#help_results").html(data);
     });
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Inventory By Fuel Card Division ")
+    $("#rpt_dialog").dialog('option', 'title', "Inventory By Fuel Card Division ");
     $.get("/EquipTrack/GetRptDlgFuelDivs/", {}, function(data) {
         $("#rpt_dlg_results").html(data);
     });
@@ -421,13 +450,13 @@ function EquipFuelCardDivReport() {
 }
 
 function EquipGPSReport() {
-    $("#help_popup").dialog('option', 'title', "Equipment GPS Inventory Help")
+    $("#help_popup").dialog('option', 'title', "Equipment GPS Inventory Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipGPSInv", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "GPS Equipment Inventory")
+    $("#rpt_dialog").dialog('option', 'title', "GPS Equipment Inventory");
     var eID = document.getElementById("hdnReportName");
     eID.value = "EquipGPSInv";
     $("#rpt_dlg_results").html('');
@@ -435,13 +464,13 @@ function EquipGPSReport() {
 }
 
 function EquipEZPASSReport() {
-    $("#help_popup").dialog('option', 'title', "Equipment EZPASS Inventory Help")
+    $("#help_popup").dialog('option', 'title', "Equipment EZPASS Inventory Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipEZPASSInv", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "EZPASS Equipment Inventory")
+    $("#rpt_dialog").dialog('option', 'title', "EZPASS Equipment Inventory");
     var eID = document.getElementById("hdnReportName");
     eID.value = "EquipEZPASSInv";
     $("#rpt_dlg_results").html('');
@@ -449,13 +478,13 @@ function EquipEZPASSReport() {
 }
 
 function EquipUnknownReport() {
-    $("#help_popup").dialog('option', 'title', "Equipment Unknown Inventory Help")
+    $("#help_popup").dialog('option', 'title', "Equipment Unknown Inventory Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipUnknownInv", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Unknown Equipment Inventory")
+    $("#rpt_dialog").dialog('option', 'title', "Unknown Equipment Inventory");
     var eID = document.getElementById("hdnReportName");
     eID.value = "EquipUnknownInv";
     $("#rpt_dlg_results").html('');
@@ -463,13 +492,13 @@ function EquipUnknownReport() {
 }
 
 function EquipIFTAReport() {
-    $("#help_popup").dialog('option', 'title', "Equipment IFTA Inventory Help")
+    $("#help_popup").dialog('option', 'title', "Equipment IFTA Inventory Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipIFTAInv", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "IFTA Sticker Inventory")
+    $("#rpt_dialog").dialog('option', 'title', "IFTA Sticker Inventory");
     var eID = document.getElementById("hdnReportName");
     eID.value = "EquipIFTAInv";
     $("#rpt_dlg_results").html('');
@@ -477,13 +506,13 @@ function EquipIFTAReport() {
 }
 
 function AssignedToReport() {
-    $("#help_popup").dialog('option', 'title', "Equipment Assigned To Help")
+    $("#help_popup").dialog('option', 'title', "Equipment Assigned To Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipAsgnToInv", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Equipment Assigned To")
+    $("#rpt_dialog").dialog('option', 'title', "Equipment Assigned To");
     $.get("/EquipTrack/GetRptDlgAssignTo/", {}, function(data) {
         $("#rpt_dlg_results").html(data);
     });
@@ -497,13 +526,13 @@ function AssignedToReport() {
 
 function EquipInvByTypeandLocReport() {
 
-    $("#help_popup").dialog('option', 'title', "Equipment Inventory Type and Loc Help")
+    $("#help_popup").dialog('option', 'title', "Equipment Inventory Type and Loc Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipTypeLocInv", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Equipment Inventory By Type and Location Across All Divisions")
+    $("#rpt_dialog").dialog('option', 'title', "Equipment Inventory By Type and Location Across All Divisions");
     $.get("/EquipTrack/GetRptDlgEquipInvByTypeAndLoc/", {}, function(data) {
         $("#rpt_dlg_results").html(data);
     });
@@ -517,13 +546,13 @@ function EquipInvByTypeandLocReport() {
 
 function EquipTotalInvWithCost() {
 
-    $("#help_popup").dialog('option', 'title', "Equipment Inventory With Cost Help")
+    $("#help_popup").dialog('option', 'title', "Equipment Inventory With Cost Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipCostInv", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Equipment Total Inventory With Cost")
+    $("#rpt_dialog").dialog('option', 'title', "Equipment Total Inventory With Cost");
     $.get("/EquipTrack/GetRptDlgEquipInvTotalWithCost/", {}, function(data) {
         $("#rpt_dlg_results").html(data);
     });
@@ -538,13 +567,13 @@ function EquipTotalInvWithCost() {
 
 function EquipTotalInvByGVW() {
 
-    $("#help_popup").dialog('option', 'title', "Equipment Inventory By GVW")
+    $("#help_popup").dialog('option', 'title', "Equipment Inventory By GVW");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipGVWInv", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Equipment Total Inventory By GVW")
+    $("#rpt_dialog").dialog('option', 'title', "Equipment Total Inventory By GVW");
     $.get("/EquipTrack/GetRptDlgEquipInvTotalByGVW/", {}, function(data) {
         $("#rpt_dlg_results").html(data);
     });
@@ -561,7 +590,7 @@ function EquipTotalInvByGVW() {
 function EquipSvcCostHistoryAllTypesDivs() {
 
 
-    $("#help_popup").dialog('option', 'title', "Equipment Service Cost Hist By Types and Divs Help")
+    $("#help_popup").dialog('option', 'title', "Equipment Service Cost Hist By Types and Divs Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipSvcCostAllTypesDivs", {}, function(data) {
         $("#help_results").html(data);
     });
@@ -569,7 +598,7 @@ function EquipSvcCostHistoryAllTypesDivs() {
     $("#rpt_dlg_hist_results").html('');
     $("#rpthist_loading").hide();
 
-    $("#rpt_dialog_hist").dialog('option', 'title', "Equipment Service Cost History")
+    $("#rpt_dialog_hist").dialog('option', 'title', "Equipment Service Cost History");
     $.get("/EquipTrack/GetRptDlgEquipSvcCostAllTypesDivs/", {}, function(data) {
         $("#rpt_dlg_hist_results").html(data);
     });
@@ -590,7 +619,7 @@ function EquipSvcCostHistoryAllTypesDivs() {
 }
 
 function EquipChangeLogHist() {
-    $("#help_popup").dialog('option', 'title', "Equipment Change Log History Help")
+    $("#help_popup").dialog('option', 'title', "Equipment Change Log History Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipChangeLogHist", {}, function(data) {
         $("#help_results").html(data);
     });
@@ -598,8 +627,7 @@ function EquipChangeLogHist() {
     $("#rpt_dlg_hist_results").html('');
     $("#rpthist_loading").hide();
 
-    $("#rpt_dialog_hist").dialog('option', 'title', "Equipment Change Log History")
-
+    $("#rpt_dialog_hist").dialog('option', 'title', "Equipment Change Log History");
     var eID = document.getElementById("hdnReportNameHist");
     eID.value = "EquipChangeLogHist";
 
@@ -616,7 +644,7 @@ function EquipChangeLogHist() {
 }
 
 function EquipMngByHist() {
-    $("#help_popup").dialog('option', 'title', "Equipment Manage By History")
+    $("#help_popup").dialog('option', 'title', "Equipment Manage By History");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipMngByHist", {}, function(data) {
         $("#help_results").html(data);
     });
@@ -624,7 +652,7 @@ function EquipMngByHist() {
     $("#rpt_dlg_hist_results").html('');
     $("#rpthist_loading").hide();
 
-    $("#rpt_dialog_hist").dialog('option', 'title', "Equipment Manage By History")
+    $("#rpt_dialog_hist").dialog('option', 'title', "Equipment Manage By History");
     $.get("/EquipTrack/GetRptDlgEquipMngByHist/", {}, function(data) {
         $("#rpt_dlg_hist_results").html(data);
     });
@@ -645,7 +673,7 @@ function EquipMngByHist() {
 }
 
 function ToolsChangeLogHist() {
-    $("#help_popup").dialog('option', 'title', "Tools Change Log History Help")
+    $("#help_popup").dialog('option', 'title', "Tools Change Log History Help");
     $.get("/EquipTrack/GetHelpMsg/" + "ToolsChangeLogHist", {}, function(data) {
         $("#help_results").html(data);
     });
@@ -653,8 +681,7 @@ function ToolsChangeLogHist() {
     $("#rpt_dlg_hist_results").html('');
     $("#rpthist_loading").hide();
 
-    $("#rpt_dialog_hist").dialog('option', 'title', "Tools Change Log History")
-
+    $("#rpt_dialog_hist").dialog('option', 'title', "Tools Change Log History");
     var eID = document.getElementById("hdnReportNameHist");
     eID.value = "ToolsChangeLogHist";
 
@@ -672,13 +699,13 @@ function ToolsChangeLogHist() {
 
 
 function ToolAssignedToReport() {
-    $("#help_popup").dialog('option', 'title', "Tools Assigned To Help")
+    $("#help_popup").dialog('option', 'title', "Tools Assigned To Help");
     $.get("/EquipTrack/GetHelpMsg/" + "ToolsAssignedTo", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Tools Assigned To")
+    $("#rpt_dialog").dialog('option', 'title', "Tools Assigned To");
     $.get("/EquipTrack/GetRptDlgAssignTo/", {}, function(data) {
         $("#rpt_dlg_results").html(data);
     });
@@ -691,13 +718,13 @@ function ToolAssignedToReport() {
 }
 
 function SmallToolAssignedToReport() {
-    $("#help_popup").dialog('option', 'title', "Small Tools Assigned To Help")
+    $("#help_popup").dialog('option', 'title', "Small Tools Assigned To Help");
     $.get("/EquipTrack/GetHelpMsg/" + "SmallToolsAssignedTo", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Small Tools Assigned To")
+    $("#rpt_dialog").dialog('option', 'title', "Small Tools Assigned To");
     $.get("/EquipTrack/GetRptDlgAssignTo/", {}, function(data) {
         $("#rpt_dlg_results").html(data);
     });
@@ -710,13 +737,13 @@ function SmallToolAssignedToReport() {
 }
 
 function EquipOnLoanReport() {
-    $("#help_popup").dialog('option', 'title', "Equipment On Loan Help")
+    $("#help_popup").dialog('option', 'title', "Equipment On Loan Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipOnLoan", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Equipment On Loan")
+    $("#rpt_dialog").dialog('option', 'title', "Equipment On Loan");
     $.get("/EquipTrack/GetRptDlgOnLoanTo/", {}, function(data) {
         $("#rpt_dlg_results").html(data);
     });
@@ -729,13 +756,13 @@ function EquipOnLoanReport() {
 }
 
 function ToolsChangeLogByID() {
-    $("#help_popup").dialog('option', 'title', "Tools Change Log Help")
+    $("#help_popup").dialog('option', 'title', "Tools Change Log Help");
     $.get("/EquipTrack/GetHelpMsg/" + "ToolsChangeLogByID", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Tools Change Log")
+    $("#rpt_dialog").dialog('option', 'title', "Tools Change Log");
     $.get("/EquipTrack/GetRptDlgToolIds/", {}, function(data) {
         $("#rpt_dlg_results").html(data);
     });
@@ -748,13 +775,13 @@ function ToolsChangeLogByID() {
 }
 
 function EquipChangeLogByID() {
-    $("#help_popup").dialog('option', 'title', "Equipment Change Log Help")
+    $("#help_popup").dialog('option', 'title', "Equipment Change Log Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipChangeLogByID", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Equipment Change Log")
+    $("#rpt_dialog").dialog('option', 'title', "Equipment Change Log");
     $.get("/EquipTrack/GetRptDlgEquipIds/", {}, function(data) {
         $("#rpt_dlg_results").html(data);
     });
@@ -767,13 +794,13 @@ function EquipChangeLogByID() {
 }
 
 function ToolsOnLoanReport() {
-    $("#help_popup").dialog('option', 'title', "Tools On Loan Help")
+    $("#help_popup").dialog('option', 'title', "Tools On Loan Help");
     $.get("/EquipTrack/GetHelpMsg/" + "ToolsOnLoan", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Tools On Loan")
+    $("#rpt_dialog").dialog('option', 'title', "Tools On Loan");
     $.get("/EquipTrack/GetRptDlgOnLoanTo/", {}, function(data) {
         $("#rpt_dlg_results").html(data);
     });
@@ -786,13 +813,13 @@ function ToolsOnLoanReport() {
 }
 
 function EquipInspectionsDueReport() {
-    $("#help_popup").dialog('option', 'title', "Inspections Due Help")
+    $("#help_popup").dialog('option', 'title', "Inspections Due Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipInspectionDue", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Inspections Due")
+    $("#rpt_dialog").dialog('option', 'title', "Inspections Due");
     $.get("/EquipTrack/GetRptInspectionDates/", {}, function(data) {
         $("#rpt_dlg_results").html(data);
     });
@@ -805,13 +832,13 @@ function EquipInspectionsDueReport() {
 }
 
 function EquipInspectionsDueReportMngBy() {
-    $("#help_popup").dialog('option', 'title', "Inspections Due Help")
+    $("#help_popup").dialog('option', 'title', "Inspections Due Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipInspectionDue", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Inspections Due")
+    $("#rpt_dialog").dialog('option', 'title', "Inspections Due");
     $.get("/EquipTrack/GetRptInspectionDates/", {}, function(data) {
         $("#rpt_dlg_results").html(data);
     });
@@ -824,13 +851,13 @@ function EquipInspectionsDueReportMngBy() {
 }
 
 function ToolsInvByLocReport() {
-    $("#help_popup").dialog('option', 'title', "Tools Inventory By Location Help")
+    $("#help_popup").dialog('option', 'title', "Tools Inventory By Location Help");
     $.get("/EquipTrack/GetHelpMsg/" + "ToolsInvByLoc", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Tools Inventory By Location")
+    $("#rpt_dialog").dialog('option', 'title', "Tools Inventory By Location");
     $.get("/EquipTrack/GetRptDlgLocs/", {}, function(data) {
         $("#rpt_dlg_results").html(data);
     });
@@ -843,13 +870,13 @@ function ToolsInvByLocReport() {
 }
 
 function EquipInvByLocReport() {
-    $("#help_popup").dialog('option', 'title', "Equipment Inventory By Location Help")
+    $("#help_popup").dialog('option', 'title', "Equipment Inventory By Location Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipInvByLoc", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Equipment Inventory By Location")
+    $("#rpt_dialog").dialog('option', 'title', "Equipment Inventory By Location");
     $.get("/EquipTrack/GetRptDlgLocs/", {}, function(data) {
         $("#rpt_dlg_results").html(data);
     });
@@ -862,13 +889,13 @@ function EquipInvByLocReport() {
 }
 
 function EquipInvByTypeReport() {
-    $("#help_popup").dialog('option', 'title', "Equipment Inventory By Type Help")
+    $("#help_popup").dialog('option', 'title', "Equipment Inventory By Type Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipInvByType", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Equipment Inventory By Type")
+    $("#rpt_dialog").dialog('option', 'title', "Equipment Inventory By Type");
     $.get("/EquipTrack/GetRptDlgTypes/", {}, function(data) {
         $("#rpt_dlg_results").html(data);
     });
@@ -881,13 +908,13 @@ function EquipInvByTypeReport() {
 }
 
 function ToolsInvByTypeReport() {
-    $("#help_popup").dialog('option', 'title', "Tools Inventory By Type Help")
+    $("#help_popup").dialog('option', 'title', "Tools Inventory By Type Help");
     $.get("/EquipTrack/GetHelpMsg/" + "ToolsInvByLoc", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_loading").hide();
-    $("#rpt_dialog").dialog('option', 'title', "Tools Inventory By Type")
+    $("#rpt_dialog").dialog('option', 'title', "Tools Inventory By Type");
     $.get("/EquipTrack/GetRptDlgToolTypes/", {}, function(data) {
         $("#rpt_dlg_results").html(data);
     });
@@ -900,14 +927,14 @@ function ToolsInvByTypeReport() {
 }
 
 function EquipSvcCostHistoryReport() {
-    $("#help_popup").dialog('option', 'title', "Equipment Service Cost History Help")
+    $("#help_popup").dialog('option', 'title', "Equipment Service Cost History Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipSvcCostHist", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_dlg_hist_results").html('');
     $("#rpthist_loading").hide();
-    $("#rpt_dialog_hist").dialog('option', 'title', "Equipment Service Cost History")
+    $("#rpt_dialog_hist").dialog('option', 'title', "Equipment Service Cost History");
     $.get("/EquipTrack/GetRptDlgEquipSvcCostHist/", {}, function(data) {
         $("#rpt_dlg_hist_results").html(data);
     });
@@ -927,7 +954,7 @@ function EquipSvcCostHistoryReport() {
 }
 
 function EquipSvcCostHistoryByTypeReport() {
-    $("#help_popup").dialog('option', 'title', "Equipment Service Cost History By Type Help")
+    $("#help_popup").dialog('option', 'title', "Equipment Service Cost History By Type Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipSvcCostHistByType", {}, function(data) {
         $("#help_results").html(data);
     });
@@ -935,7 +962,7 @@ function EquipSvcCostHistoryByTypeReport() {
     $("#rpt_dlg_hist_results").html('');
 
     $("#rpthist_loading").hide();
-    $("#rpt_dialog_hist").dialog('option', 'title', "Equipment Service Cost History By Type")
+    $("#rpt_dialog_hist").dialog('option', 'title', "Equipment Service Cost History By Type");
     $.get("/EquipTrack/GetRptDlgEquipSvcCostHistTypes/", {}, function(data) {
         $("#rpt_dlg_hist_results").html(data);
     });
@@ -955,7 +982,7 @@ function EquipSvcCostHistoryByTypeReport() {
 }
 
 function EquipSvcCostHistoryByServiceType() {
-    $("#help_popup").dialog('option', 'title', "Equipment Service Cost History By Service Type Help")
+    $("#help_popup").dialog('option', 'title', "Equipment Service Cost History By Service Type Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipSvcCostHistBySvcType", {}, function(data) {
         $("#help_results").html(data);
     });
@@ -963,7 +990,7 @@ function EquipSvcCostHistoryByServiceType() {
     $("#rpt_dlg_hist_results").html('');
 
     $("#rpthist_loading").hide();
-    $("#rpt_dialog_hist").dialog('option', 'title', "Equipment Service Cost History By Service Type")
+    $("#rpt_dialog_hist").dialog('option', 'title', "Equipment Service Cost History By Service Type");
     $.get("/EquipTrack/GetRptDlgEquipSvcCostHistSvcTypes/", {}, function(data) {
         $("#rpt_dlg_hist_results").html(data);
     });
@@ -983,7 +1010,7 @@ function EquipSvcCostHistoryByServiceType() {
 }
 
 function ToolSvcCostHistoryByServiceType() {
-    $("#help_popup").dialog('option', 'title', "Tool Service Cost History By Service Type Help")
+    $("#help_popup").dialog('option', 'title', "Tool Service Cost History By Service Type Help");
     $.get("/EquipTrack/GetHelpMsg/" + "ToolSvcCostHistBySvcType", {}, function(data) {
         $("#help_results").html(data);
     });
@@ -991,7 +1018,7 @@ function ToolSvcCostHistoryByServiceType() {
     $("#rpt_dlg_hist_results").html('');
 
     $("#rpthist_loading").hide();
-    $("#rpt_dialog_hist").dialog('option', 'title', "Tool Service Cost History By Service Type")
+    $("#rpt_dialog_hist").dialog('option', 'title', "Tool Service Cost History By Service Type");
     $.get("/EquipTrack/GetRptDlgToolSvcCostHistSvcTypes/", {}, function(data) {
         $("#rpt_dlg_hist_results").html(data);
     });
@@ -1011,14 +1038,14 @@ function ToolSvcCostHistoryByServiceType() {
 }
 
 function ToolSvcCostHistoryByTypeReport() {
-    $("#help_popup").dialog('option', 'title', "Tool Service Cost History By Type Help")
+    $("#help_popup").dialog('option', 'title', "Tool Service Cost History By Type Help");
     $.get("/EquipTrack/GetHelpMsg/" + "ToolSvcCostHistByType", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_dlg_hist_results").html('');
     $("#rpthist_loading").hide();
-    $("#rpt_dialog_hist").dialog('option', 'title', "Tool Service Cost History By Type")
+    $("#rpt_dialog_hist").dialog('option', 'title', "Tool Service Cost History By Type");
     $.get("/EquipTrack/GetRptDlgToolSvcCostHistTypes/", {}, function(data) {
         $("#rpt_dlg_hist_results").html(data);
     });
@@ -1038,7 +1065,7 @@ function ToolSvcCostHistoryByTypeReport() {
 }
 
 function EquipSvcCostHistoryAllReport() {
-    $("#help_popup").dialog('option', 'title', "Equipment Service Cost History (All) Help")
+    $("#help_popup").dialog('option', 'title', "Equipment Service Cost History (All) Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipSvcCostHistAll", {}, function(data) {
         $("#help_results").html(data);
     });
@@ -1046,8 +1073,7 @@ function EquipSvcCostHistoryAllReport() {
     $("#rpt_dlg_hist_results").html('');
 
     $("#rpthist_loading").hide();
-    $("#rpt_dialog_hist").dialog('option', 'title', "Equipment Service Cost History (All)")
-
+    $("#rpt_dialog_hist").dialog('option', 'title', "Equipment Service Cost History (All)");
     var eID = document.getElementById("hdnReportNameHist");
     eID.value = "EquipSvcCostHistAll";
 
@@ -1063,15 +1089,14 @@ function EquipSvcCostHistoryAllReport() {
 }
 
 function ToolSvcCostHistoryAllReport() {
-    $("#help_popup").dialog('option', 'title', "Tool Service Cost History (All) Help")
+    $("#help_popup").dialog('option', 'title', "Tool Service Cost History (All) Help");
     $.get("/EquipTrack/GetHelpMsg/" + "ToolSvcCostHistAll", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_dlg_hist_results").html('');
     $("#rpthist_loading").hide();
-    $("#rpt_dialog_hist").dialog('option', 'title', "Tool Service Cost History (All)")
-
+    $("#rpt_dialog_hist").dialog('option', 'title', "Tool Service Cost History (All)");
     var eID = document.getElementById("hdnReportNameHist");
     eID.value = "ToolSvcCostHistAll";
 
@@ -1087,14 +1112,14 @@ function ToolSvcCostHistoryAllReport() {
 }
 
 function ToolSvcCostHistoryReport() {
-    $("#help_popup").dialog('option', 'title', "Tool Service Cost History Help")
+    $("#help_popup").dialog('option', 'title', "Tool Service Cost History Help");
     $.get("/EquipTrack/GetHelpMsg/" + "ToolSvcCostHist", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpt_dlg_hist_results").html('');
     $("#rpthist_loading").hide();
-    $("#rpt_dialog_hist").dialog('option', 'title', "Tool Service Cost History")
+    $("#rpt_dialog_hist").dialog('option', 'title', "Tool Service Cost History");
     $.get("/EquipTrack/GetRptDlgToolSvcCostHist/", {}, function(data) {
         $("#rpt_dlg_hist_results").html(data);
     });
@@ -1115,13 +1140,13 @@ function ToolSvcCostHistoryReport() {
 
 function AssignedToHistReport() {
 
-    $("#help_popup").dialog('option', 'title', "Equipment Assigned To History Help")
+    $("#help_popup").dialog('option', 'title', "Equipment Assigned To History Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipAssignedToHist", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpthist_loading").hide();
-    $("#rpt_dialog_hist").dialog('option', 'title', "Equipment Assigned To History")
+    $("#rpt_dialog_hist").dialog('option', 'title', "Equipment Assigned To History");
     $.get("/EquipTrack/GetRptDlgAssignToHist/", {}, function(data) {
         $("#rpt_dlg_hist_results").html(data);
     });
@@ -1141,13 +1166,13 @@ function AssignedToHistReport() {
 }
 
 function ToolsAssignedToHistReport() {
-    $("#help_popup").dialog('option', 'title', "Tools Assigned To History Help")
+    $("#help_popup").dialog('option', 'title', "Tools Assigned To History Help");
     $.get("/EquipTrack/GetHelpMsg/" + "ToolsAssignedToHist", {}, function(data) {
         $("#help_results").html(data);
     });
 
     $("#rpthist_loading").hide();
-    $("#rpt_dialog_hist").dialog('option', 'title', "Tools Assigned To History")
+    $("#rpt_dialog_hist").dialog('option', 'title', "Tools Assigned To History");
     $.get("/EquipTrack/GetRptDlgAssignToHist/", {}, function(data) {
         $("#rpt_dlg_hist_results").html(data);
     });
@@ -1167,7 +1192,7 @@ function ToolsAssignedToHistReport() {
 }
 
 function EquipBrokenHistReport() {
-    $("#help_popup").dialog('option', 'title', "Broken Equipment History Help")
+    $("#help_popup").dialog('option', 'title', "Broken Equipment History Help");
     $.get("/EquipTrack/GetHelpMsg/" + "EquipBrokenHist", {}, function(data) {
         $("#help_results").html(data);
     });
@@ -1191,7 +1216,7 @@ function EquipBrokenHistReport() {
 }
 
 function ToolsBrokenHistReport() {
-    $("#help_popup").dialog('option', 'title', "Broken Tools History Help")
+    $("#help_popup").dialog('option', 'title', "Broken Tools History Help");
     $.get("/EquipTrack/GetHelpMsg/" + "ToolsBrokenHist", {}, function(data) {
         $("#help_results").html(data);
     });
@@ -1674,8 +1699,7 @@ function AdminFindIds() {
     SetUpAdminIDGrid();
 
 
-    $("#admin_id_dlg").dialog('option', 'title', "Find IDs - All Offices")
-
+    $("#admin_id_dlg").dialog('option', 'title', "Find IDs - All Offices");
     jQuery('#admin_id_dlg').dialog('open');
 
 
@@ -1687,8 +1711,7 @@ function AdminSvcDue() {
     SetUpAdminSvcGrid();
 
 
-    $("#admin_svc_dlg").dialog('option', 'title', "Service Due Parameters")
-
+    $("#admin_svc_dlg").dialog('option', 'title', "Service Due Parameters");
     jQuery('#admin_svc_dlg').dialog('open');
 
 
@@ -1698,8 +1721,7 @@ function ExportEquipGrid() {
 
     //        $("#exp_loading").hide();
 
-    $("#export_dlg").dialog('option', 'title', "Export Equipment Grid To Excel")
-
+    $("#export_dlg").dialog('option', 'title', "Export Equipment Grid To Excel");
     var eID = document.getElementById("hdnExportType");
     eID.value = "EquipExport";
 
@@ -1710,8 +1732,7 @@ function ExportToolsGrid() {
 
     //        $("#exp_loading").hide();
 
-    $("#export_dlg").dialog('option', 'title', "Export Tools Grid To Excel")
-
+    $("#export_dlg").dialog('option', 'title', "Export Tools Grid To Excel");
     var eID = document.getElementById("hdnExportType");
     eID.value = "ToolsExport";
 
@@ -1722,8 +1743,7 @@ function ExportSmallToolsGrid() {
 
     //        $("#exp_loading").hide();
 
-    $("#export_dlg").dialog('option', 'title', "Export Small Tools Grid To Excel")
-
+    $("#export_dlg").dialog('option', 'title', "Export Small Tools Grid To Excel");
     var eID = document.getElementById("hdnExportType");
     eID.value = "SmallToolsExport";
 
@@ -1739,14 +1759,13 @@ function AdminAssignTo() {
     SetUpAdminAssignToGrid();
 
 
-    $("#admin_assignto_dlg").dialog('option', 'title', "Assign To List")
-
+    $("#admin_assignto_dlg").dialog('option', 'title', "Assign To List");
     jQuery('#admin_assignto_dlg').dialog('open');
 }
 
 function AdminUsers() {
 
-    $("#help_popup").dialog('option', 'title', "Admin - User Administration Help")
+    $("#help_popup").dialog('option', 'title', "Admin - User Administration Help");
     $.get("/EquipTrack/GetHelpMsg/" + "AdminUserAdmin", {}, function(data) {
         $("#help_results").html(data);
     });
@@ -1758,8 +1777,7 @@ function AdminUsers() {
     SetUpAdminUsersGrid();
 
 
-    $("#admin_users_dlg").dialog('option', 'title', "User Administration")
-
+    $("#admin_users_dlg").dialog('option', 'title', "User Administration");
     jQuery('#admin_users_dlg').dialog('open');
 }
 
@@ -1788,8 +1806,7 @@ function AdminXferAssignments() {
     
     SetUpAdminXferSmallToolAssignments();
 
-    $("#admin_xfer_assignments").dialog('option', 'title', "Transfer Assignments")
-
+    $("#admin_xfer_assignments").dialog('option', 'title', "Transfer Assignments");
     $('#admin_xfer_assignments').dialog('open');
 }
 
@@ -1805,8 +1822,7 @@ function AdminLocations() {
     SetUpAdminLocGrid();
 
 
-    $("#admin_loc_dlg").dialog('option', 'title', "Equipment Locations")
-
+    $("#admin_loc_dlg").dialog('option', 'title', "Equipment Locations");
     jQuery('#admin_loc_dlg').dialog('open');
 }
 
@@ -1815,8 +1831,7 @@ function AdminEquipTypes() {
     SetUpAdminGrid('/EquipTrack/GetAdminEquipTypes/');
 
 
-    $("#admin_dialog").dialog('option', 'title', "Equipment Types")
-
+    $("#admin_dialog").dialog('option', 'title', "Equipment Types");
     var eID = document.getElementById("hdnAdminType");
     eID.value = "AdminEquipTypes";
 
@@ -1830,8 +1845,7 @@ function AdminMakeTypes() {
     SetUpAdminGrid('/EquipTrack/GetAdminMakeTypes/');
 
 
-    $("#admin_dialog").dialog('option', 'title', "Make Types")
-
+    $("#admin_dialog").dialog('option', 'title', "Make Types");
     var eID = document.getElementById("hdnAdminType");
     eID.value = "AdminMakeTypes";
 
@@ -1844,8 +1858,7 @@ function AdminModelTypes() {
 
     SetUpAdminGrid('/EquipTrack/GetAdminModelTypes/');
 
-    $("#admin_dialog").dialog('option', 'title', "Model Types")
-
+    $("#admin_dialog").dialog('option', 'title', "Model Types");
     var eID = document.getElementById("hdnAdminType");
     eID.value = "AdminModelTypes";
 
@@ -1859,8 +1872,7 @@ function AdminToolTypes() {
     SetUpAdminGrid('/EquipTrack/GetAdminToolTypes/');
 
 
-    $("#admin_dialog").dialog('option', 'title', "Tool Types")
-
+    $("#admin_dialog").dialog('option', 'title', "Tool Types");
     var eID = document.getElementById("hdnAdminType");
     eID.value = "AdminToolTypes";
 
@@ -1874,8 +1886,7 @@ function AdminToolDesc() {
     SetUpAdminGrid('/EquipTrack/GetAdminToolDescs/');
 
 
-    $("#admin_dialog").dialog('option', 'title', "Tool Descriptions")
-
+    $("#admin_dialog").dialog('option', 'title', "Tool Descriptions");
     var eID = document.getElementById("hdnAdminType");
     eID.value = "AdminToolDescs";
 
@@ -1889,8 +1900,7 @@ function AdminToolManfs() {
     SetUpAdminGrid('/EquipTrack/GetAdminToolManfs/');
 
 
-    $("#admin_dialog").dialog('option', 'title', "Tool Manufacturers")
-
+    $("#admin_dialog").dialog('option', 'title', "Tool Manufacturers");
     var eID = document.getElementById("hdnAdminType");
     eID.value = "AdminToolManfs";
 
@@ -1904,8 +1914,7 @@ function AdminToolSizes() {
     SetUpAdminGrid('/EquipTrack/GetAdminToolSizes/');
 
 
-    $("#admin_dialog").dialog('option', 'title', "Tool Sizes")
-
+    $("#admin_dialog").dialog('option', 'title', "Tool Sizes");
     var eID = document.getElementById("hdnAdminType");
     eID.value = "AdminToolSizes";
 
@@ -2107,10 +2116,10 @@ function DeleteMsg(data) {
     if (data == "Success") {
         InitAdminControls();
 
-        AdminSuccessFailure(true)
+        AdminSuccessFailure(true);
     }
     else {
-        AdminSuccessFailure(false)
+        AdminSuccessFailure(false);
     }
 
 }
@@ -2120,10 +2129,10 @@ function DeleteMsgLoc(data) {
     if (data == "Success") {
         InitAdminLocControls();
 
-        AdminLocSuccessFailure(true)
+        AdminLocSuccessFailure(true);
     }
     else {
-        AdminLocSuccessFailure(false)
+        AdminLocSuccessFailure(false);
     }
 }
 
@@ -2132,10 +2141,10 @@ function DeleteMsgUser(data) {
     if (data == "Success") {
         InitAdminUsersControls();
 
-        AdminUsersSuccessFailure(true)
+        AdminUsersSuccessFailure(true);
     }
     else {
-        AdminUsersSuccessFailure(false)
+        AdminUsersSuccessFailure(false);
     }
 }
 
@@ -2144,10 +2153,10 @@ function DeleteMsgAssignTo(data) {
     if (data == "Success") {
         InitAdminAssignToControls();
 
-        AdminAssignToSuccessFailure(true)
+        AdminAssignToSuccessFailure(true);
     }
     else {
-        AdminAssignToSuccessFailure(false)
+        AdminAssignToSuccessFailure(false);
     }
 }
 
@@ -2552,10 +2561,11 @@ function setSelectedIndex(s, v) {
 }
 
 function CheckEquipInRepair() {
-    var chval = $("#chkEquipInRepair").attr('checked');
+    var chval = $("#chkEquipInRepair").prop('checked');
+//    alert(chval);
     var onoff;
 
-    if (chval == 'checked') {
+    if (chval == true) {
         onoff = "on";
     }
     else {
@@ -2565,10 +2575,10 @@ function CheckEquipInRepair() {
 }
 
 function CheckEquipLojack() {
-    var chval = $("#chkEquipLojack").attr('checked');
+    var chval = $("#chkEquipLojack").prop('checked');
     var onoff;
 
-    if (chval == 'checked') {
+    if (chval == true) {
         onoff = "on";
     }
     else {
@@ -2578,10 +2588,10 @@ function CheckEquipLojack() {
 }
 
 function CheckEquipTotaled() {
-    var chval = $("#chkEquipTotaled").attr('checked');
+    var chval = $("#chkEquipTotaled").prop('checked');
     var onoff;
 
-    if (chval == 'checked') {
+    if (chval == true) {
         onoff = "on";
     }
     else {
@@ -2591,10 +2601,10 @@ function CheckEquipTotaled() {
 }
 
 function CheckHUTSticker() {
-    var chval = $("#chkHUTSticker").attr('checked');
+    var chval = $("#chkHUTSticker").prop('checked');
     var onoff;
 
-    if (chval == 'checked') {
+    if (chval == true) {
         onoff = "on";
     }
     else {
@@ -2604,10 +2614,10 @@ function CheckHUTSticker() {
 }
 
 function CheckIFTASticker() {
-    var chval = $("#chkIFTASticker").attr('checked');
+    var chval = $("#chkIFTASticker").prop('checked');
     var onoff;
 
-    if (chval == 'checked') {
+    if (chval == true) {
         onoff = "on";
     }
     else {
@@ -2617,10 +2627,10 @@ function CheckIFTASticker() {
 }
 
 function CheckEquipStolen() {
-    var chval = $("#chkEquipStolen").attr('checked');
+    var chval = $("#chkEquipStolen").prop('checked');
     var onoff;
 
-    if (chval == 'checked') {
+    if (chval == true) {
         onoff = "on";
     }
     else {
@@ -2630,10 +2640,10 @@ function CheckEquipStolen() {
 }
 
 function CheckEquipSold() {
-    var chval = $("#chkEquipSold").attr('checked');
+    var chval = $("#chkEquipSold").prop('checked');
     var onoff;
 
-    if (chval == 'checked') {
+    if (chval == true) {
         onoff = "on";
     }
     else {
@@ -2643,10 +2653,10 @@ function CheckEquipSold() {
 }
 
 function CheckEquipToBeSold() {
-    var chval = $("#chkEquipToBeSold").attr('checked');
+    var chval = $("#chkEquipToBeSold").prop('checked');
     var onoff;
 
-    if (chval == 'checked') {
+    if (chval == true) {
         onoff = "on";
     }
     else {
@@ -2655,11 +2665,27 @@ function CheckEquipToBeSold() {
     $("#hdnEquipToBeSold").val(onoff);
 }
 
-function CheckEquipGPS() {
-    var chval = $("#chkEquipGPS").attr('checked');
+function CheckOtherAntiTheft() {
+   
+    var chval = $("#chkOtherAntiTheft").prop('checked');
     var onoff;
 
-    if (chval == 'checked') {
+    if (chval == true) {
+        onoff = "on";
+        $("#ddlOtherAntiTheftTypes").removeAttr("disabled", "disabled");
+    }
+    else {
+        onoff = "off";
+        $("#ddlOtherAntiTheftTypes").attr("disabled", "disabled");
+    }
+    $("#hdnOtherAntiTheft").val(onoff);
+}
+
+function CheckEquipGPS() {
+    var chval = $("#chkEquipGPS").prop('checked');
+    var onoff;
+
+    if (chval == true) {
         onoff = "on";
         $("#txtGPSNum").removeAttr("disabled", "disabled");
         $('#divGPS').css('color', 'black');
@@ -2674,10 +2700,10 @@ function CheckEquipGPS() {
 }
 
 function CheckEquipFuelCard() {
-    var chval = $("#chkEquipFuelCard").attr('checked');
+    var chval = $("#chkEquipFuelCard").prop('checked');
     var onoff;
 
-    if (chval == 'checked') {
+    if (chval == true) {
         onoff = "on";
         $("#txtFuelCardNum").removeAttr("disabled", "disabled");
         $("#ddlFuelCardLoc").removeAttr("disabled", "disabled");
@@ -2696,10 +2722,10 @@ function CheckEquipFuelCard() {
 }
 
 function CheckEquipEZPASS() {
-    var chval = $("#chkEquipEZPASS").attr('checked');
+    var chval = $("#chkEquipEZPASS").prop('checked');
     var onoff;
 
-    if (chval == 'checked') {
+    if (chval == true) {
         onoff = "on";
         $("#txtEZPASSNum").removeAttr("disabled", "disabled");
         $('#divEZPASS').css('color', 'black');
@@ -2714,10 +2740,10 @@ function CheckEquipEZPASS() {
 }
 
 function CheckEquipUnknown() {
-    var chval = $("#chkEquipUnknown").attr('checked');
+    var chval = $("#chkEquipUnknown").prop('checked');
     var onoff;
 
-    if (chval == 'checked') {
+    if (chval == true) {
         onoff = "on";
     }
     else {
@@ -2727,10 +2753,10 @@ function CheckEquipUnknown() {
 }
 
 function CheckEquipLeased() {
-    var chval = $("#chkEquipLeased").attr('checked');
+    var chval = $("#chkEquipLeased").prop('checked');
     var onoff;
 
-    if (chval == 'checked') {
+    if (chval == true) {
         onoff = "on";
     }
     else {
@@ -2740,10 +2766,10 @@ function CheckEquipLeased() {
 }
 
 function CheckEquipApportioned() {
-    var chval = $("#chkEquipApportioned").attr('checked');
+    var chval = $("#chkEquipApportioned").prop('checked');
     var onoff;
 
-    if (chval == 'checked') {
+    if (chval == true) {
         onoff = "on";
     }
     else {
@@ -2753,10 +2779,10 @@ function CheckEquipApportioned() {
 }
 
 function CheckToolStolen() {
-    var chval = $("#chkToolStolen").attr('checked');
+    var chval = $("#chkToolStolen").prop('checked');
     var onoff;
 
-    if (chval == 'checked') {
+    if (chval == true) {
         onoff = "on";
     }
     else {
@@ -2766,10 +2792,10 @@ function CheckToolStolen() {
 }
 
 function CheckToolSold() {
-    var chval = $("#chkToolSold").attr('checked');
+    var chval = $("#chkToolSold").prop('checked');
     var onoff;
 
-    if (chval == 'checked') {
+    if (chval == true) {
         onoff = "on";
     }
     else {
@@ -2779,10 +2805,10 @@ function CheckToolSold() {
 }
 
 function CheckToolElectrical() {
-    var chval = $("#chkToolElectrical").attr('checked');
+    var chval = $("#chkToolElectrical").prop('checked');
     var onoff;
 
-    if (chval == 'checked') {
+    if (chval == true) {
         onoff = "on";
     }
     else {
@@ -2792,10 +2818,10 @@ function CheckToolElectrical() {
 }
 
 function CheckToolLojack() {
-    var chval = $("#chkToolLojack").attr('checked');
+    var chval = $("#chkToolLojack").prop('checked');
     var onoff;
 
-    if (chval == 'checked') {
+    if (chval == true) {
         onoff = "on";
     }
     else {
@@ -2805,10 +2831,10 @@ function CheckToolLojack() {
 }
 
 function CheckToolUnknown() {
-    var chval = $("#chkToolUnknown").attr('checked');
+    var chval = $("#chkToolUnknown").prop('checked');
     var onoff;
 
-    if (chval == 'checked') {
+    if (chval == true) {
         onoff = "on";
     }
     else {
@@ -2818,10 +2844,10 @@ function CheckToolUnknown() {
 }
 
 function CheckToolToBeSold() {
-    var chval = $("#chkToolToBeSold").attr('checked');
+    var chval = $("#chkToolToBeSold").prop('checked');
     var onoff;
 
-    if (chval == 'checked') {
+    if (chval == true) {
         onoff = "on";
     }
     else {
@@ -2831,10 +2857,10 @@ function CheckToolToBeSold() {
 }
 
 function CheckToolInRepair() {
-    var chval = $("#chkToolInRepair").attr('checked');
+    var chval = $("#chkToolInRepair").prop('checked');
     var onoff;
 
-    if (chval == 'checked') {
+    if (chval == true) {
         onoff = "on";
     }
     else {
@@ -2844,10 +2870,10 @@ function CheckToolInRepair() {
 }
 
 function CheckToolTotaled() {
-    var chval = $("#chkToolTotaled").attr('checked');
+    var chval = $("#chkToolTotaled").prop('checked');
     var onoff;
 
-    if (chval == 'checked') {
+    if (chval == true) {
         onoff = "on";
     }
     else {

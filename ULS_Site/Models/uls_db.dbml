@@ -601,118 +601,6 @@
       <Column Name="comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
     </Type>
   </Table>
-  <Table Name="dbo.vw_EquipGrid" Member="vw_EquipGrids">
-    <Type Name="vw_EquipGrid">
-      <Column Name="equip_id" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="type_desc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="make_descr" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
-      <Column Name="model_descr" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
-      <Column Name="equip_year" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
-      <Column Name="work_loc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="insp_due_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="service_due_num" Type="System.Single" DbType="Real" CanBeNull="true" />
-      <Column Name="miles_hours" Type="System.Single" DbType="Real" CanBeNull="true" />
-      <Column Name="miles_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="registered_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="managed_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="managed_by_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="tag_expire_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="inspection_warn" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
-      <Column Name="service_warn" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
-      <Column Name="tag_warn" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
-      <Column Name="equip_loan_color" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="equip_assign_color" Type="System.String" DbType="VarChar(9) NOT NULL" CanBeNull="false" />
-      <Column Name="insp_rmdr_wks" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="vin_num" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="title_num" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="gross_v_wt" Type="System.Single" DbType="Real" CanBeNull="true" />
-      <Column Name="gross_c_wt" Type="System.Single" DbType="Real" CanBeNull="true" />
-      <Column Name="unlaiden_wt" Type="System.Single" DbType="Real" CanBeNull="true" />
-      <Column Name="tag_num" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="tag_state" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="fuel_descr" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="cost" Type="System.Single" DbType="Real" CanBeNull="true" />
-      <Column Name="stolen" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="sold" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="lojack" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="in_repair" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="totaled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="tag_expire_rmdr_wks" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="hut_sticker" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="apportioned" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="ifta_sticker" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="gps" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="unknown" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="current_value" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
-      <Column Name="img_cnt" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="leased" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="gps_num" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
-      <Column Name="ezpass" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="ezpass_num" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
-      <Column Name="fuelcard" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="fuelcard_num" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
-      <Column Name="rownum" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="to_be_sold" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="assigned_to" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="fuel_card_loc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.equipment" Member="equipments">
-    <Type Name="equipment">
-      <Column Name="equip_id" Type="System.String" DbType="NVarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="type_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="make_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="model_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="equip_year" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
-      <Column Name="vin_num" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="title_num" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="registered_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="work_loc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="gross_v_wt" Type="System.Single" DbType="Real" CanBeNull="true" />
-      <Column Name="gross_c_wt" Type="System.Single" DbType="Real" CanBeNull="true" />
-      <Column Name="unlaiden_wt" Type="System.Single" DbType="Real" CanBeNull="true" />
-      <Column Name="tag_num" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="tag_state" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="fuel" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="cost" Type="System.Single" DbType="Real" CanBeNull="true" />
-      <Column Name="service_due_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="insp_due_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="service_rmdr_wks" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="insp_rmdr_wks" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="lst_upd_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="stolen" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="sold" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="lojack" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="assigned" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="in_repair" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="totaled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="managed_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="miles_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="managed_by_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="pipeline" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="tag_expire_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="tag_expire_rmdr_wks" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="service_due_num" Type="System.Single" DbType="Real" CanBeNull="true" />
-      <Column Name="hut_sticker" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="apportioned" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="ifta_sticker" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="gps" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="gps_num" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
-      <Column Name="ezpass" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="ezpass_num" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
-      <Column Name="unknown" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="current_value" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
-      <Column Name="current_value_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="miles_hours" Type="System.Single" DbType="Real" CanBeNull="true" />
-      <Column Name="leased" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="fuelcard" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="fuelcard_num" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
-      <Column Name="to_be_sold" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="fuel_card_loc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.employee" Member="employees">
     <Type Name="employee">
       <Column Name="employeeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -783,6 +671,122 @@
       <Column Name="tools_descr_descr" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="size_descr" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="tool_mfg_descr" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.equipment" Member="equipments">
+    <Type Name="equipment">
+      <Column Name="equip_id" Type="System.String" DbType="NVarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="type_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="make_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="model_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="equip_year" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="vin_num" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="title_num" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="registered_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="work_loc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="gross_v_wt" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="gross_c_wt" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="unlaiden_wt" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="tag_num" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="tag_state" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="fuel" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="cost" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="service_due_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="insp_due_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="service_rmdr_wks" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="insp_rmdr_wks" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="lst_upd_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="stolen" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="sold" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="lojack" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="assigned" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="in_repair" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="totaled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="managed_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="miles_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="managed_by_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="pipeline" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="tag_expire_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="tag_expire_rmdr_wks" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="service_due_num" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="hut_sticker" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="apportioned" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ifta_sticker" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="gps" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="gps_num" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="ezpass" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ezpass_num" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="unknown" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="current_value" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
+      <Column Name="current_value_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="miles_hours" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="leased" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="fuelcard" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="fuelcard_num" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="to_be_sold" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="fuel_card_loc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="other_antitheft" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="other_antitheft_type" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_EquipGrid" Member="vw_EquipGrids">
+    <Type Name="vw_EquipGrid">
+      <Column Name="equip_id" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="type_desc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="make_descr" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="model_descr" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="equip_year" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="work_loc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="insp_due_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="service_due_num" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="miles_hours" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="miles_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="registered_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="managed_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="managed_by_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="tag_expire_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="inspection_warn" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="service_warn" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="tag_warn" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="equip_loan_color" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="equip_assign_color" Type="System.String" DbType="VarChar(9) NOT NULL" CanBeNull="false" />
+      <Column Name="insp_rmdr_wks" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="vin_num" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="title_num" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="gross_v_wt" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="gross_c_wt" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="unlaiden_wt" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="tag_num" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="tag_state" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="fuel_descr" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="cost" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="stolen" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="sold" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="lojack" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="in_repair" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="totaled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="tag_expire_rmdr_wks" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="hut_sticker" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="apportioned" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ifta_sticker" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="gps" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="unknown" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="current_value" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
+      <Column Name="img_cnt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="leased" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="gps_num" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="ezpass" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ezpass_num" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="fuelcard" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="fuelcard_num" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="rownum" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="to_be_sold" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="assigned_to" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="fuel_card_loc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="other_antitheft" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="other_antitheft_type" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.UpdateObsoleteId" Method="UpdateObsoleteId">

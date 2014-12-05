@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="EquipInvByType" targetNamespace="http://tempuri.org/EquipInvByType.xsd" xmlns:mstns="http://tempuri.org/EquipInvByType.xsd" xmlns="http://tempuri.org/EquipInvByType.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="InventoryByTypeDS" targetNamespace="http://tempuri.org/InventoryByTypeDS.xsd" xmlns:mstns="http://tempuri.org/InventoryByTypeDS.xsd" xmlns="http://tempuri.org/InventoryByTypeDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ULS_db1ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ULS_db1ConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ULS_db1ConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ULS_db1ConnectionString2" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ULS_db1ConnectionString2 (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ULS_db1ConnectionString2.ConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="GetInvByTypeReportTableAdapter" GeneratorDataComponentClassName="GetInvByTypeReportTableAdapter" Name="GetInvByTypeReport" UserDataComponentName="GetInvByTypeReportTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ULS_db1ConnectionString (Web.config)" DbObjectName="ULS_db1.dbo.GetInvByTypeReport" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ULS_db1ConnectionString2 (Web.config)" DbObjectName="ULS_db1.dbo.GetInvByTypeReport" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.GetInvByTypeReport</CommandText>
@@ -30,6 +30,7 @@
               <Mapping SourceColumn="equip_year" DataSetColumn="equip_year" />
               <Mapping SourceColumn="registered_by" DataSetColumn="registered_by" />
               <Mapping SourceColumn="work_loc" DataSetColumn="work_loc" />
+              <Mapping SourceColumn="assigned_to" DataSetColumn="assigned_to" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -38,7 +39,7 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="EquipInvByType" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="EquipInvByType" msprop:Generator_UserDSName="EquipInvByType" msprop:EnableTableAdapterManager="true">
+  <xs:element name="InventoryByTypeDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="InventoryByTypeDS" msprop:Generator_UserDSName="InventoryByTypeDS" msprop:EnableTableAdapterManager="true">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="GetInvByTypeReport" msprop:Generator_UserTableName="GetInvByTypeReport" msprop:Generator_RowDeletedName="GetInvByTypeReportRowDeleted" msprop:Generator_TableClassName="GetInvByTypeReportDataTable" msprop:Generator_RowChangedName="GetInvByTypeReportRowChanged" msprop:Generator_RowClassName="GetInvByTypeReportRow" msprop:Generator_RowChangingName="GetInvByTypeReportRowChanging" msprop:Generator_RowEvArgName="GetInvByTypeReportRowChangeEvent" msprop:Generator_RowEvHandlerName="GetInvByTypeReportRowChangeEventHandler" msprop:Generator_TablePropName="GetInvByTypeReport" msprop:Generator_TableVarName="tableGetInvByTypeReport" msprop:Generator_RowDeletingName="GetInvByTypeReportRowDeleting">
@@ -47,7 +48,7 @@
               <xs:element name="equip_id" msprop:Generator_UserColumnName="equip_id" msprop:Generator_ColumnPropNameInRow="equip_id" msprop:Generator_ColumnVarNameInTable="columnequip_id" msprop:Generator_ColumnPropNameInTable="equip_idColumn">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="15" />
+                    <xs:maxLength value="30" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -87,6 +88,13 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="work_loc" msprop:Generator_UserColumnName="work_loc" msprop:Generator_ColumnPropNameInRow="work_loc" msprop:Generator_ColumnVarNameInTable="columnwork_loc" msprop:Generator_ColumnPropNameInTable="work_locColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="assigned_to" msprop:Generator_UserColumnName="assigned_to" msprop:Generator_ColumnPropNameInRow="assigned_to" msprop:Generator_ColumnVarNameInTable="columnassigned_to" msprop:Generator_ColumnPropNameInTable="assigned_toColumn" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />

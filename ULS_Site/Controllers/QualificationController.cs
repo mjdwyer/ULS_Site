@@ -187,7 +187,7 @@ namespace ULS_Site.Controllers
             try
             {
                 string strOper = formValues.GetValues("oper")[0];
-                string strEmployeeID = formValues.GetValues("intEmployeeID")[0];
+                string strEmployeeID = formValues.GetValues("id")[0];
 
                 employee emp;
 

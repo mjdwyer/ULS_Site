@@ -374,18 +374,6 @@
         <elementListCompartment Id="7d4845e5-a506-4815-88c3-42307ce7ef34" absoluteBounds="1.39, 66.96, 2.3449999999999998, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="7364af17-b2a7-477e-8564-ba427b3c1ac8" absoluteBounds="6.625, 28, 2, 11.001365559895833">
-      <DataClassMoniker Name="/uls_dbDataContext/vw_EquipGrid" />
-      <nestedChildShapes>
-        <elementListCompartment Id="e46db4ba-00ba-4d1c-8040-ed559947ecf3" absoluteBounds="6.64, 28.46, 1.9700000000000002, 10.441365559895832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="068fa61c-a7e2-450c-a3f0-e171c6b6f0f6" absoluteBounds="4.5, 40.5, 2, 10.6167626953125">
-      <DataClassMoniker Name="/uls_dbDataContext/equipment" />
-      <nestedChildShapes>
-        <elementListCompartment Id="d8fe121c-a0db-4618-bb1b-3af5b6466383" absoluteBounds="4.515, 40.96, 1.9700000000000002, 10.0567626953125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="7b55abee-6075-4624-ad5c-b77b4194a9ac" absoluteBounds="4.5, 58.125, 2, 7.3476383463541657">
       <DataClassMoniker Name="/uls_dbDataContext/employee" />
       <nestedChildShapes>
@@ -402,6 +390,18 @@
       <DataClassMoniker Name="/uls_dbDataContext/vw_ToolsAssignXferGrid" />
       <nestedChildShapes>
         <elementListCompartment Id="d4e35e71-2c07-431e-a443-67ca9a8fe521" absoluteBounds="1.2650000000000001, 69.21, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b2367e19-fc88-4e5c-95f2-106101b1f7ee" absoluteBounds="3.5, 41.25, 2, 11.001365559895833">
+      <DataClassMoniker Name="/uls_dbDataContext/equipment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cc39c156-3d71-4bce-b0d8-cc7db732ff46" absoluteBounds="3.5149999999999997, 41.71, 1.9700000000000002, 10.441365559895832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3f5e3cc9-5457-487c-9ae3-cb78818bf18c" absoluteBounds="0.5, 43.25, 2, 11.385968424479165">
+      <DataClassMoniker Name="/uls_dbDataContext/vw_EquipGrid" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fe6e3f5b-bf93-46dc-b62f-2ec2724e8f42" absoluteBounds="0.515, 43.71, 1.9700000000000002, 10.825968424479166" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

@@ -15,7 +15,9 @@ namespace ULS_Site.Controllers
             ViewData["Title"] = "Utility Line Services Web Site";
 //            ViewData["Message"] = "Welcome to ASP.NET MVC!";
 
-            return View();
+            return RedirectToAction("Login", "Account");
+
+//            return View();
         }
 
         public ActionResult About()

@@ -9,14 +9,14 @@
 	<%if (Convert.ToString(ViewData["default_division"]) == "ULS-PA")
    { %>
    
-    <script type="text/javascript" src="/Scripts/ElectronicTracker.js?09"></script>
+    <script type="text/javascript" src="/Scripts/ElectronicTracker.js?12"></script>
     <%}%>
 	<%else if (Convert.ToString(ViewData["default_division"]) == "ULS-PA-RO")
    { %>
-    <script type="text/javascript" src="/Scripts/ElectronicTrackerRO.js?09"></script>
+    <script type="text/javascript" src="/Scripts/ElectronicTrackerRO.js?10"></script>
     <%}%>
    <%else { %>
-    <script type="text/javascript" src="/Scripts/ElectronicTrackerRO.js?09"></script>
+    <script type="text/javascript" src="/Scripts/ElectronicTrackerRO.js?10"></script>
    <% }%>
     <script type="text/javascript" src="/Scripts/ElectronicTrackerFuncs.js?07"></script>
     <script type="text/javascript" src="/Scripts/hoverIntent.js"></script>

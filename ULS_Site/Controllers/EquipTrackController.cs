@@ -785,6 +785,7 @@ namespace ULS_Site.Controllers
             string strSearchRegBy = "";
             string strSearchId = "";
             string strSearchToBeSold = "";
+            string strSearchOtherAntiTheft = "";
 
             if (_search == true)
             {
@@ -822,6 +823,7 @@ namespace ULS_Site.Controllers
                         strSearchRegBy = equipSearchAll.registered_by;
                         strSearchId = equipSearchAll.equip_id;
                         strSearchToBeSold = Convert.ToString(equipSearchAll.to_be_sold);
+                        strSearchOtherAntiTheft = Convert.ToString(equipSearchAll.other_antitheft);
                     }
                 }
             }
@@ -832,7 +834,7 @@ namespace ULS_Site.Controllers
                 total = 10000,
                 page = 1,
                 records = 10000,
-                userdata = new { searchVal = strSearchVal, searchLojack = strSearchLojack, searchStolen = strSearchStolen, searchUnknown = strSearchUnknown, searchSold = strSearchSold, searchInRepair = strSearchInRepair, searchTotaled = strSearchTotaled, searchRegBy = strSearchRegBy, searchId = strSearchId, searchLeased = strSearchLeased, searchToBeSold = strSearchToBeSold },
+                userdata = new { searchVal = strSearchVal, searchLojack = strSearchLojack, searchStolen = strSearchStolen, searchUnknown = strSearchUnknown, searchSold = strSearchSold, searchInRepair = strSearchInRepair, searchTotaled = strSearchTotaled, searchRegBy = strSearchRegBy, searchId = strSearchId, searchLeased = strSearchLeased, searchToBeSold = strSearchToBeSold, searchOtherAntiTheft =  strSearchOtherAntiTheft },
                 rows = (from e in equipment
                         select new
                         {
@@ -888,7 +890,9 @@ namespace ULS_Site.Controllers
                     Convert.ToString(e.fuelcard),
                     e.fuelcard_num,
                     Convert.ToString(e.to_be_sold),
-                    e.fuel_card_loc
+                    e.fuel_card_loc,
+                    Convert.ToString(e.other_antitheft),
+                    e.other_antitheft_type
                 }
                         }).ToArray()
             };
@@ -1672,13 +1676,112 @@ namespace ULS_Site.Controllers
 
                 tool tool;
 
+                string strId = Convert.ToString(id);
+
                 if (strOper == "del")
                 {
-//                    string strID = formValues.GetValues("id")[0];
-                    tool = db.tools.Single(t => t.tool_id == strToolID);
+                    string strID = formValues.GetValues("id")[0];
+                    tool = db.tools.Single(t => t.tool_id == strId);
 
                     db.tools.DeleteOnSubmit(tool);
                 }
+
+                db.SubmitChanges();
+
+
+                return Content("Success");
+
+            }
+            catch (Exception ex)
+            {
+
+                string strErr = ex.Message;
+                return Content(strErr);
+            }
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DeleteTool()
+        {
+            string  strToolID = Request.Form["hdnTID"];
+
+
+            uls_dbDataContext db = new uls_dbDataContext();
+
+            try
+            {
+//                string strOper = formValues.GetValues("oper")[0];
+//                string strToolID = formValues.GetValues("ToolID")[0];
+
+                tool tool;
+
+                tool = db.tools.Single(t => t.tool_id == strToolID);
+
+                db.tools.DeleteOnSubmit(tool);
+
+                db.SubmitChanges();
+
+
+                return Content("Success");
+
+            }
+            catch (Exception ex)
+            {
+
+                string strErr = ex.Message;
+                return Content(strErr);
+            }
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DeleteEquip()
+        {
+            string strEquipID = Request.Form["hdnEID"];
+
+
+            uls_dbDataContext db = new uls_dbDataContext();
+
+            try
+            {
+
+                equipment equip;
+
+                equip = db.equipments.Single(e => e.equip_id == strEquipID);
+
+                db.equipments.DeleteOnSubmit(equip);
+
+                db.SubmitChanges();
+
+
+                return Content("Success");
+
+            }
+            catch (Exception ex)
+            {
+
+                string strErr = ex.Message;
+                return Content(strErr);
+            }
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DeleteSmallTool()
+        {
+            string strSmallToolID = Request.Form["hdnSTID"];
+
+
+            uls_dbDataContext db = new uls_dbDataContext();
+
+            try
+            {
+
+                smalltool smtool;
+
+                int iSTID = Convert.ToInt32(strSmallToolID);
+
+                smtool = db.smalltools.Single(t => t.stID == iSTID);
+
+                db.smalltools.DeleteOnSubmit(smtool);
 
                 db.SubmitChanges();
 
@@ -3023,7 +3126,6 @@ namespace ULS_Site.Controllers
             //reportname,storedProcName,parm1,parm2,parm3
             try
             {
-
                 switch (rptName)
                 {
                     case "EquipAssignedTo":
@@ -3123,6 +3225,9 @@ namespace ULS_Site.Controllers
                         break;
                     case "EquipLojackInv":
                         strQueryString = "EquipLojackInv,GetLojackInventory," + Session["division"];
+                        break;
+                    case "EquipOtherAntiTheftInv":
+                        strQueryString = "EquipOtherAntiTheftInv,GetOtherAntiTheftInventory," + Session["division"];
                         break;
                     case "ToolsToBeSold":
                         strQueryString = "ToolsToBeSold,GetToolsToBeSoldInventory," + Session["division"];
@@ -4328,6 +4433,8 @@ namespace ULS_Site.Controllers
             string strUnknown = Request.Form["hdnEquipUnknown"];
             string strLeased = Request.Form["hdnEquipLeased"];
             string strComment = Request.Form["txtEquipComment"];
+            string strOtherAntiTheft = Request.Form["hdnOtherAntiTheft"];
+            string strOtherAntiTheftType = Request.Form["ddlOtherAntiTheftTypes"];
 
             string strLogEntry = "";
 
@@ -4922,6 +5029,24 @@ namespace ULS_Site.Controllers
                             strLogEntry = CheckEditField("Unlaiden Weight", equip.unlaiden_wt == null ? "0" : equip.unlaiden_wt.ToString(), strUnldnWt, strLogEntry);
                         }
                         equip.unlaiden_wt = sngUnlaidenWt;
+                    }
+
+                    if (strOtherAntiTheft != null)
+                    {
+                        if (strOperation == "Edit")
+                        {
+                            strLogEntry = CheckEditField("OtherAntiTheft", equip.other_antitheft == true ? "on" : "off", strOtherAntiTheft, strLogEntry);
+                        }
+                        equip.other_antitheft = strOtherAntiTheft == "on" ? true : false;
+                    }
+
+                    if (strOtherAntiTheftType != null)
+                    {
+                        if (strOperation == "Edit")
+                        {
+                            strLogEntry = CheckEditField("OtherAntiTheftType", equip.other_antitheft_type == null ? "" : equip.tag_num.ToString(), strOtherAntiTheftType, strLogEntry);
+                        }
+                        equip.other_antitheft_type = strOtherAntiTheftType;
                     }
 
                     if (strVIN != null)

@@ -138,12 +138,12 @@ jQuery(document).ready(function() {
     }).navGrid('#empgridp', { deltext: "Delete", searchtext: "Find", refreshtext: "Reload", edit: false, add: false, del: true, search: false, refresh: true }, //options
          {}, // edit options
          {}, // add options
-         {mtype: "POST", reloadAfterSubmit: true, serializeDelData: function(postdata) {
-             return ""; // the body MUST be empty in DELETE HTTP requests
-         },
+         {reloadAfterSubmit: false, closeOnEscape: true, closeAfterAdd: true,
          afterSubmit: function(response, postdata) {
 
              curRow = null;
+
+             alert(response.responseText);
 
              if (response.responseText == "Success") {
                  jQuery("#success").show();
@@ -155,15 +155,6 @@ jQuery(document).ready(function() {
              else {
                  return [false, response.responseText]
              }
-         },
-         onclickSubmit: function(params) {
-             var ajaxData = {};
-
-             var rowData = $("#empgrid").getRowData(curRow);
-
-             ajaxData = { id: '1', oper: 'del', intEmployeeID: rowData.employeeid };
-
-             return ajaxData;
          }
      }, // del options
             {odata: ['equals', 'not equal', 'less', 'less or equal', 'greater', 'greater or equal', 'begins with', 'does not begin with', 'is in', 'is not in', 'ends with', 'does not end with', 'contains', 'does not contain'],
@@ -400,7 +391,7 @@ jQuery(document).ready(function() {
                 qualIDs = qualIDs + "," + data.qualId;
             }
         }
-        
+
         var rowData = $("#empqualsgrid").getRowData(curRowQuals);
         ajaxData = { id: '1', oper: 'del', intEmployeeID: rowData.employeeId, strQualID: qualIDs };
 
@@ -716,7 +707,7 @@ $('#empWarnRecognitionForm').ajaxForm(function(data) {
 
 
 
-});                                                   //ready function end
+});                                                    //ready function end
 
 function OpenEmployeeEditDlg(dta) {
 
@@ -1448,6 +1439,16 @@ function CheckValidWRForm() {
     else {
         alert('You must suppy date and comment to save!');
         return false;
+    }
+}
+
+function CheckAdminDesc(desc) {
+
+    if (desc.length > 0) {
+        $("#btnAdminSave").removeAttr("disabled", "disabled");
+    }
+    else {
+        $("#btnAdminSave").attr("disabled", "disabled");
     }
 }
 

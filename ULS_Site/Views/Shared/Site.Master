@@ -45,7 +45,7 @@
 
 <body runat="server" id="MainBody"> 
 <!--    <div class="page"> -->
-    <div id="mastheadwrapper">
+ <!--   <div id="mastheadwrapper">
       <table id="mastheadtable" cellspacing="0px">
         <tr>
           <td><img src="/Content/images/masthead-1A.jpg" alt=" " width="239" height="60" /></td>
@@ -59,7 +59,7 @@
         </tr>
       </table>
     </div>
-  
+-->  
 <!-- This table (below) sits below the masthead and contains everything else on the page. It has only one row and two cells. The left cell creates the page's gray left column with the navbar, and the right cell holds the main content area and the footer. -->
 <table id="maintable" cellspacing="0">
   <tr>
@@ -67,14 +67,14 @@
         <div id="leftcol">
             <!-- NAVIGATION BAR -->
             <ul id="navlist">
-              <li class="navitem" id="home"><%= Html.ActionLink("Home", "Index", "Home")%></li>
-    <!--          <li class="navitem" id="services"><%= Html.ActionLink("About Us", "About", "Home")%></li> -->
-<!--              <li class="navitem" id="highlights"><a href="#">Project Highlights</a></li> -->
+ <!--              <li class="navitem" id="home"><%= Html.ActionLink("Home", "Index", "Home")%></li>
+           <li class="navitem" id="services"><%= Html.ActionLink("About Us", "About", "Home")%></li>
+              <li class="navitem" id="highlights"><a href="#">Project Highlights</a></li>
               <li class="navitem" id="highlights"><%= Html.ActionLink("Project Highlights", "ProjHighlights", "Home")%></li>
               <li class="navitem" id="management"><%= Html.ActionLink("Management", "Management", "Home")%></li>
               <li class="navitem" id="directions"><%= Html.ActionLink("Directions", "Directions", "Home")%></li>
               <li class="navitem" id="contact"><%= Html.ActionLink("Contact", "Contacts", "Home")%></li> 
- <!--             <li class="navitem" id="Li3"><%= Html.ActionLink("Contact", "UnderConstruction", "Home")%></li> 
+              <li class="navitem" id="Li3"><%= Html.ActionLink("Contact", "UnderConstruction", "Home")%></li> 
               <li class="navitem" id="Li1"><%= Html.ActionLink("Test", "About", "Home")%></li> -->
             </ul>
         </div>
@@ -90,13 +90,7 @@
             ]
             <%
             }
-            else
-            {
             %> 
-                    [ <%=Html.ActionLink("Login", "Login", "Account")%> ] 
-            <%
-            }
-            %>
             </p>
             </div> 
             
@@ -123,11 +117,11 @@
               </ul>
         </div>            
             
-       <div class="leftcol-box">
+<!--       <div class="leftcol-box">
         <p><i>"We sign our name to every project and stand by our workmanship."</i> <br />
           - Austin A. Meehan, President</p>
       </div> 
-      
+-->      
            
       </td>
     <td id="maintable-rightcell"><!-- MAIN CONTENT AREA -->

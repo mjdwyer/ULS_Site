@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="EquipHeadContent" runat="server">
     <link rel="stylesheet" type="text/css" media="screen" href="../../Content/superfish.css" />
 
-    <script type="text/javascript" src="/Scripts/Qualificatons2.js?12"></script> 
+    <script type="text/javascript" src="/Scripts/Qualificatons2.js?14"></script> 
     <script type="text/javascript" src="/Scripts/hoverIntent.js"></script>
     <script type="text/javascript" src="/Scripts/superfish.js"></script>
     <script type="text/javascript" src="/Scripts/supersubs.js"></script>

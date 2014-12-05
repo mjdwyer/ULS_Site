@@ -8,16 +8,16 @@
 
 	<%if (Convert.ToString(ViewData["default_division"]) == "ULS-PA")
    { %>
-    <script type="text/javascript" src="/Scripts/EquipTracker.js?66"></script> 
+    <script type="text/javascript" src="/Scripts/EquipTracker.js?74"></script> 
     <%}%>
 	<%else if (Convert.ToString(ViewData["default_division"]) == "ULS-PA-RO")
    { %>
-    <script type="text/javascript" src="/Scripts/EquipTrackerRO2.js?59"></script>
+    <script type="text/javascript" src="/Scripts/EquipTrackerRO2.js?66"></script>
     <%}%>
    <%else { %>7
-    <script type="text/javascript" src="/Scripts/EquipTrackerRO.js?59"></script>
+    <script type="text/javascript" src="/Scripts/EquipTrackerRO.js?67"></script>
    <% }%>
-    <script type="text/javascript" src="/Scripts/EquipTrackerFuncs.js?40"></script>
+    <script type="text/javascript" src="/Scripts/EquipTrackerFuncs.js?42"></script>
     <script type="text/javascript" src="/Scripts/hoverIntent.js"></script>
     <script type="text/javascript" src="/Scripts/superfish.js"></script>
     <script type="text/javascript" src="/Scripts/supersubs.js"></script>
@@ -147,6 +147,7 @@
 					            <li><a href="#" onclick="EquipHUTReport()">HUT Sticker Inventory</a></li>
 					            <li><a href="#" onclick="EquipApportionedReport()">Apportined Inventory</a></li>
 					            <li><a href="#" onclick="EquipLojackReport()">Lojack Inventory</a></li>
+					            <li><a href="#" onclick="EquipOtherAntiTheftReport()">Other Anti-theft Inventory</a></li>
 					            <li><a href="#" onclick="EquipIFTAReport()">IFTA Sticker Inventory</a></li>
 					            <li><a href="#" onclick="EquipGPSReport()">GPS Inventory</a></li>
 					            <li><a href="#" onclick="EquipEZPASSReport()">EZPASS Inventory</a></li>
@@ -565,6 +566,7 @@
         <input type="hidden"  id="hdnAsgnOldMileage" name="hdnAsgnOldMileage" value=""/>
         <input type="hidden"  id="hdnAsgnOldHours" name="hdnAsgnOldHours" value=""/>
         <input type="hidden"  id="hdnRetOldMileage" name="hdnRetOldMileage" value=""/>
+        <input type="hidden"  id="hdnRetOldHours" name="hdnRetOldHours" value=""/>
         <input type="hidden"  id="hdnAsgnFail" name="hdnAsgnFail" value=""/>
         <br />
         </td> 
@@ -658,7 +660,7 @@
         </form>         
     </div>
 
-    <div id="equip_edit_dlg" title="">
+    <div id="equip_edit_dlg" title="" style="z-index:9999">
         <center><h2><span id="equip_success" style="color:red">Save Successful!</span></h2></center>
         <form id="equip_edit_form"  action="/EquipTrack/EditEquip" method="post">
         <table>
@@ -904,7 +906,18 @@
         <div>To Be Sold</div>
         <input type="checkbox" id="chkEquipToBeSold" name="chkEquipToBeSold"  onclick="CheckEquipToBeSold()" />
         </td>
+        <td>
+        <div>Other Anti-Theft</div>
+        <input type="checkbox" id="chkOtherAntiTheft" name="chkOtherAntiTheft"  onclick="CheckOtherAntiTheft()" style="float:left" />
+        <div style="float:left;padding-left:15px;width:60px"><select name="ddlOtherAntiTheftTypes" id="ddlOtherAntiTheftTypes" style="width:100px" >
+        <option value=" "></option>
+        <option value="JD LINK">JD LINK</option>
+        <option value="SITEWATCH">SITEWATCH</option>
+        </select></div>
+        
+        </td>
         </tr>
+        
         <tr>
         <td colspan="4">
         <div>Comments</div>
@@ -939,6 +952,7 @@
         <input type="hidden"  id="hdnEquipUnknown" name="hdnEquipUnknown" value=""/>
         <input type="hidden"  id="hdnEquipLeased" name="hdnEquipLeased" value=""/>
         <input type="hidden"  id="hdnEquipRegBy" name="hdnEquipRegBy" value=""/>
+        <input type="hidden"  id="hdnOtherAntiTheft" name="hdnOtherAntiTheft" value=""/>
         
         <br />
         </td> 
@@ -1646,6 +1660,52 @@
 
 <input type="hidden" id="hdnDivision" value='<%= ViewData["division"] %>' />
 <input type="hidden" id="hdnDefaultDiv" value='<%= ViewData["default_division"] %>' />
+
+    <div id="delete_tool_dlg" title="">
+        <form id="deleteToolForm"  action="/EquipTrack/DeleteTool" method="post">         
+        <center>
+        <div id="Div2">Are you sure you want to delete this tool?</div>
+        
+        <p><input type="submit" value="OK" id="btnDelTool"/> 
+        <input type="button" onclick="CloseDeleteToolDialog()" value="Close" id="btnCloseDelToolFrm" />
+         </p>
+        <p></p> 
+        <input type="hidden"  id="hdnTID" name="hdnTID" value=""/>
+        <div id="deleteToolSuccess" style="color:red"></div>
+        </center>
+        </form>         
+    </div>
+
+    <div id="delete_smalltool_dlg" title="">
+        <form id="deleteSmallToolForm"  action="/EquipTrack/DeleteSmallTool" method="post">         
+        <center>
+        <div id="Div3">Are you sure you want to delete this small tool?</div>
+        
+        <p><input type="submit" value="OK" id="btnDelSmallTool"/> 
+        <input type="button" onclick="CloseDeleteSmallToolDialog()" value="Close" id="btnCloseDelSmallToolFrm" />
+         </p>
+        <p></p> 
+        <input type="hidden"  id="hdnSTID" name="hdnSTID" value=""/>
+        <div id="deleteSmallToolSuccess" style="color:red"></div>
+        </center>
+        </form>         
+    </div>
+
+    <div id="delete_equip_dlg" title="">
+        <form id="deleteEquipForm"  action="/EquipTrack/DeleteEquip" method="post">         
+        <center>
+        <div id="Div4">Are you sure you want to delete this equipment?</div>
+        
+        <p><input type="submit" value="OK" id="btnDelEquip"/> 
+        <input type="button" onclick="CloseDeleteEquipDialog()" value="Close" id="btnCloseDelEquipFrm" />
+         </p>
+        <p></p> 
+        <input type="hidden"  id="hdnEID" name="hdnEID" value=""/>
+        <div id="deleteEquipSuccess" style="color:red"></div>
+        </center>
+        </form>         
+    </div>
+
 
 
 </asp:Content>
